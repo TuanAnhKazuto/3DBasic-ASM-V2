@@ -10,9 +10,11 @@ public class NPC : MonoBehaviour
     public GameObject fKey;
     [HideInInspector] public bool isChating;
     Coroutine coroutine;
-
+    
+    // đoạn chat
     public string[] chat;
-
+    // nhiệm vụ
+    public QuestItem questItem;
 
     private void Awake()
     {

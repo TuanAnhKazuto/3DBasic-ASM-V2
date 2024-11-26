@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
                 break;
         }
 
-        switch(newState)
+        switch (newState)
         {
             case CharState.Normal:
                 animator.SetBool("Run", false);
@@ -50,6 +50,7 @@ public class PlayerMovement : MonoBehaviour
                 break;
             case CharState.Attack:
                 animator.SetBool("Attack", true);
+                animator.SetFloat("Speed", 0f);
                 isAttack = true;    
                 break;
             case CharState.Die:
@@ -65,52 +66,66 @@ public class PlayerMovement : MonoBehaviour
         {
             case CharState.Normal:
                 Movement();
-                Attack();
                 break;
             case CharState.Run:
                 Movement();
-                Attack();
                 break;
         }
+    }
+
+    private void Update()
+    {
+        Attack();
     }
 
     private void Movement()
     {
-        if(isAttack) return;
+        if (isAttack) return;
+
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
-        if(direction.magnitude >= 0.1f)
+        if (direction.magnitude >= 0.1f)
         {
-            float tarrgetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, tarrgetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0f, tarrgetAngle, 0f);
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
-            Vector3 moveDir = Quaternion.Euler(0f, tarrgetAngle, 0f) * Vector3.forward;
+            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
-        }
-        animator.SetFloat("Speed", direction.magnitude);
 
-        if(Input.GetKey(KeyCode.LeftShift) && direction.magnitude > 0.1)
-        {
-            ChageState(CharState.Run);
+            
+
+            // Chỉ chuyển sang trạng thái Run nếu đang không phải Run
+            if (Input.GetKey(KeyCode.LeftShift) && curState != CharState.Run)
+            {
+                ChageState(CharState.Run);
+            }
+            else if (!Input.GetKey(KeyCode.LeftShift) && curState != CharState.Normal)
+            {
+                ChageState(CharState.Normal);
+            }
         }
-        else
+        else if (curState != CharState.Normal) // Đứng yên -> Chuyển về trạng thái Normal
         {
             ChageState(CharState.Normal);
         }
+
+        animator.SetFloat("Speed", direction.magnitude);
     }
+
 
     void Attack()
     {
-        if(Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && curState != CharState.Attack)
         {
             ChageState(CharState.Attack);
         }
-        else
+        else if (!Input.GetMouseButton(0) && curState == CharState.Attack)
         {
             ChageState(CharState.Normal);
         }
     }
+
 }

@@ -36,8 +36,12 @@ public class PlayerMovement : MonoBehaviour
         switch(newState)
         {
             case CharState.Normal:
+                animator.SetBool("Run", false);
+                speed = 3f;
                 break;
             case CharState.Run:
+                animator.SetBool("Run", true);
+                speed = 7f;
                 break;
             case CharState.Attack:
                 break;

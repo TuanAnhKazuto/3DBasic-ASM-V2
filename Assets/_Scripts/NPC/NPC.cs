@@ -62,14 +62,15 @@ public class NPC : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             fKey.SetActive(false);
-            npcChatPanel.SetActive(false);
-            isChating = false;
-            // Kiểm tra nếu coroutine không null trước khi dừng nó
-            if (coroutine != null)
+
+            if (isChating)
             {
-                StopCoroutine(coroutine);
-                coroutine = null; // Đặt lại giá trị để tránh lỗi lần sau
+                StopCoroutine(coroutine); // Dừng đoạn chat 
+                coroutine = null;
+                isChating = false;
             }
+
+            npcChatPanel.SetActive(false);
         }
     }
 }

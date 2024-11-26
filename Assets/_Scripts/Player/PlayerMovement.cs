@@ -14,6 +14,9 @@ public class PlayerMovement : MonoBehaviour
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
 
+    // Attack
+    bool isAttack = false;
+
     // State 
     [HideInInspector] public enum CharState
     { Normal, Run, Attack, Die}
@@ -37,6 +40,8 @@ public class PlayerMovement : MonoBehaviour
         {
             case CharState.Normal:
                 animator.SetBool("Run", false);
+                animator.SetBool("Attack", false);
+                isAttack = false;
                 speed = 3f;
                 break;
             case CharState.Run:
@@ -44,6 +49,8 @@ public class PlayerMovement : MonoBehaviour
                 speed = 7f;
                 break;
             case CharState.Attack:
+                animator.SetBool("Attack", true);
+                isAttack = true;    
                 break;
             case CharState.Die:
                 break;
@@ -54,10 +61,22 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Movement();
+        switch(curState)
+        {
+            case CharState.Normal:
+                Movement();
+                Attack();
+                break;
+            case CharState.Run:
+                Movement();
+                Attack();
+                break;
+        }
     }
+
     private void Movement()
     {
+        if(isAttack) return;
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
@@ -70,6 +89,28 @@ public class PlayerMovement : MonoBehaviour
 
             Vector3 moveDir = Quaternion.Euler(0f, tarrgetAngle, 0f) * Vector3.forward;
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
+        }
+        animator.SetFloat("Speed", direction.magnitude);
+
+        if(Input.GetKey(KeyCode.LeftShift) && direction.magnitude > 0.1)
+        {
+            ChageState(CharState.Run);
+        }
+        else
+        {
+            ChageState(CharState.Normal);
+        }
+    }
+
+    void Attack()
+    {
+        if(Input.GetMouseButton(0))
+        {
+            ChageState(CharState.Attack);
+        }
+        else
+        {
+            ChageState(CharState.Normal);
         }
     }
 }

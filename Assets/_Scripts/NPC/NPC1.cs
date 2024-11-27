@@ -1,34 +1,75 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
 using TMPro;
-using UnityEditor.VersionControl;
 using UnityEngine;
 
 public class NPC1 : MonoBehaviour
 {
+    public GameObject npcChatPanel;
+    public TextMeshProUGUI chatText;
+    public GameObject fKey;
+    [HideInInspector] public bool isChating;
+    Coroutine coroutine;
 
-    public GameObject NPCPanel;
-    public TextMeshProUGUI NPCTextContent;
-    public string[] content;
+    public string[] chat;
 
 
-
-    private void Start()
+    private void Awake()
     {
-        NPCPanel.SetActive(false);
-        NPCTextContent.text = "";
+        fKey.SetActive(true);
+
+        fKey.SetActive(false);
+        npcChatPanel.SetActive(false);
     }
 
+
     private void OnTriggerEnter(Collider other)
-
     {
-
         if (other.gameObject.CompareTag("Player"))
-
         {
-            NPCPanel.SetActive(true);
+            fKey.SetActive(true);
+        }
+    }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player") && Input.GetKey(KeyCode.F) && !isChating)
+        {
+            isChating = true; // Đánh dấu đang trong trạng thái hội thoại
+            fKey.SetActive(false);
+            npcChatPanel.SetActive(true);
+            coroutine = StartCoroutine(ReadChat());
+        }
+    }
+
+
+    IEnumerator ReadChat()
+    {
+        foreach (var line in chat)
+        {
+            chatText.text = "";
+            for (int i = 0; i < line.Length; i++)
+            {
+                chatText.text += line[i];
+                yield return new WaitForSeconds(0.1f);
+            }
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            fKey.SetActive(false);
+            npcChatPanel.SetActive(false);
+            isChating = false;
+            // Kiểm tra nếu coroutine không null trước khi dừng nó
+            if (coroutine != null)
+            {
+                StopCoroutine(coroutine);
+                coroutine = null; // Đặt lại giá trị để tránh lỗi lần sau
+            }
         }
     }
 }

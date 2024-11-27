@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class NPC : MonoBehaviour
@@ -16,10 +17,14 @@ public class NPC : MonoBehaviour
     // nhiệm vụ
     public QuestItem questItem;
 
+    //Player
+    public PlayerQuest PlayerQuests;
+
     private void Awake()
     {
         fKey.SetActive(false);
-        npcChatPanel.SetActive(false);
+        npcChatPanel.SetActive(true);
+        coroutine = StartCoroutine(ReadChatta());
     }
 
 
@@ -27,6 +32,7 @@ public class NPC : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            PlayerQuests = other.gameObject.GetComponent<PlayerQuest>();
             fKey.SetActive(true);
         }
     }
@@ -62,6 +68,11 @@ public class NPC : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             fKey.SetActive(false);
+            if (PlayerQuests != null)
+            {
+                PlayerQuests.TakeQuest(questItem);
+            } 
+                
 
             if (isChating)
             {

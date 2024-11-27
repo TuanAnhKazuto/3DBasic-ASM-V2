@@ -5415,6 +5415,7 @@ GameObject:
   - component: {fileID: 3464592753947730340}
   - component: {fileID: 365142440209728835}
   - component: {fileID: 7847924866657789798}
+  - component: {fileID: 6535608517484018297}
   - component: {fileID: 7037141486192420414}
   - component: {fileID: 5183778606994109616}
   m_Layer: 0
@@ -5459,6 +5460,9 @@ MonoBehaviour:
   cam: {fileID: 0}
   speed: 3
   turnSmoothTime: 0.1
+  isRunning: 0
+  atkCollider: {fileID: 7847924866657789798}
+  stamina: {fileID: 6535608517484018297}
   curState: 0
 --- !u!114 &7847924866657789798
 MonoBehaviour:
@@ -5473,6 +5477,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boxAttack: {fileID: 15648974027065280}
+  isAttacking: 0
+--- !u!114 &6535608517484018297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9119571945475001888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f86c33d5aa12caa4796f06dc9611fe63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 365142440209728835}
+  atkCollider: {fileID: 7847924866657789798}
+  staminaBar: {fileID: 0}
+  curStamina: 0
 --- !u!95 &7037141486192420414
 Animator:
   serializedVersion: 5

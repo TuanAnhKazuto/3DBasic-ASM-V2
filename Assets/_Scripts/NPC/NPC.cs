@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class NPC : MonoBehaviour
@@ -16,12 +17,14 @@ public class NPC : MonoBehaviour
     // nhiệm vụ
     public QuestItem questItem;
 
+    //Player
+    public PlayerQuest PlayerQuests;
+
     private void Awake()
     {
-        fKey.SetActive(true);
-
         fKey.SetActive(false);
-        npcChatPanel.SetActive(false);
+        npcChatPanel.SetActive(true);
+        coroutine = StartCoroutine(ReadChatta());
     }
 
 
@@ -29,6 +32,7 @@ public class NPC : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            PlayerQuests = other.gameObject.GetComponent<PlayerQuest>();
             fKey.SetActive(true);
         }
     }
@@ -45,7 +49,7 @@ public class NPC : MonoBehaviour
     }
 
 
-    IEnumerator ReadChat()
+    IEnumerator ReadChatta()
     {
         foreach (var line in chat)
         {
@@ -64,6 +68,11 @@ public class NPC : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             fKey.SetActive(false);
+            if (PlayerQuests != null)
+            {
+                PlayerQuests.TakeQuest(questItem);
+            } 
+                
 
             if (isChating)
             {
@@ -74,5 +83,61 @@ public class NPC : MonoBehaviour
 
             npcChatPanel.SetActive(false);
         }
+    }
+    //IEnumerator NhiemVu()
+    //{
+    //    foreach (var line in chat)
+    //    {
+    //        chatText.text = "";
+    //        for (int i = 0; i < line.Length; i++)
+    //        {
+    //            chatText.text += line[i];
+    //            yield return new WaitForSeconds(0.1f);
+    //        }
+    //        yield return new WaitForSeconds(0.5f);
+    //    }
+
+    //    // Giao vật phẩm nhiệm vụ sau khi hội thoại kết thúc
+    //    if (questItem != null)
+    //    {
+    //        GiveQuestItem();
+    //    }
+
+    //    // Kết thúc hội thoại
+    //    isChating = false;
+    //    npcChatPanel.SetActive(false);
+    //}
+
+    //void GiveQuestItem()
+    //{
+    //    // Logic để giao questItem
+    //    Debug.Log($"Quest item {questItem.name} được giao cho người chơi!");
+    //    // Thêm vào hệ thống nhiệm vụ hoặc vật phẩm người chơi
+    //}
+
+
+    IEnumerator ReadChat()
+    {
+        foreach (var line in chat)
+        {
+            chatText.text = "";
+            for (int i = 0; i < line.Length; i++)
+            {
+                if (Input.GetKey(KeyCode.Escape))
+                {
+                    // Kết thúc hội thoại
+                    npcChatPanel.SetActive(false);
+                    isChating = false;
+                    yield break;
+                }
+
+                chatText.text += line[i];
+                yield return new WaitForSeconds(0.1f);
+            }
+            yield return new WaitForSeconds(0.5f);
+        }
+
+        isChating = false;
+        npcChatPanel.SetActive(false);
     }
 }

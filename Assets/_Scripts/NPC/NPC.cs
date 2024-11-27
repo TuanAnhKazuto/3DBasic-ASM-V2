@@ -23,7 +23,7 @@ public class NPC : MonoBehaviour
     private void Awake()
     {
         fKey.SetActive(false);
-        npcChatPanel.SetActive(true);
+        npcChatPanel.SetActive(false);
         coroutine = StartCoroutine(ReadChatta());
     }
 

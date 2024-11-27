@@ -43,9 +43,11 @@ public class PaneQuest : MonoBehaviour
         while (true)
         {
             var currentX = transform.localPosition.x;
-            var targetX = show ? initialPosition.x - 730 : initialPosition.x;
+            var currentY = transform.localPosition.y;
+            var currentZ = transform.localPosition.z;
+            var targetX = show ? initialPosition.x + 40 : initialPosition.x - 230 ;
             var newX = Mathf.Lerp(currentX, targetX, Time.deltaTime * 2);
-            transform.localPosition = new Vector3 (newX, 0, 0);
+            transform.localPosition = new Vector3 (newX, currentY, currentZ);
 
             if (Mathf.Abs(currentX - targetX) < 1)
             {

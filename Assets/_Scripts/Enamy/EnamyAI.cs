@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyAI : MonoBehaviour
+public class EnemyAI : Health
 {
     public NavMeshAgent navMeshAgent;
     public Transform target; // mục tiêu
@@ -15,11 +15,14 @@ public class EnemyAI : MonoBehaviour
     
     public Animator animator; // khai báo component
 
+    public DamageZone damageZone;
+
     // state machine
     public enum CharacterState
     {
         Normal,
-        Attack
+        Attack,
+        Die
     }
     public CharacterState currentState; // trạng thái hiện tại
     
@@ -27,11 +30,25 @@ public class EnemyAI : MonoBehaviour
     void Start()
     {
         originalePosition = transform.position;
-        navMeshAgent.SetDestination(target.position);
+        currentHP =  maxHP;
     }
     
     void Update()
     {
+        //Wander();     
+        //Xoay huong nhin ve muc tieu
+        if (target != null)
+        {
+            var lookPos = target.position -transform.position;
+            lookPos.y = 0;
+            var rotation = Quaternion.LookRotation(lookPos);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 5);
+        }
+
+        if (currentState == CharacterState.Die)
+        {   
+            return; 
+        }
         // khoảng cách từ vị trí hiện tại đến vị trí ban đầu
         var distanceToOriginal = Vector3.Distance(originalePosition, transform.position);
         // khoảng cách từ vị trí hiện tại đến mục tiêu
@@ -84,13 +101,53 @@ public class EnemyAI : MonoBehaviour
         switch (newState)
         {
             case CharacterState.Normal:
-                break;
+             damageZone.EndAttack();
+                break; 
             case CharacterState.Attack:
                 animator.SetTrigger("Attack");
+                damageZone.BeginAttack();
+                break;
+            case CharacterState.Die:
+                animator.SetTrigger("Die");
+                Destroy(gameObject, 5f);
                 break;
         }
         
         // update current state
         currentState = newState;
+    }
+
+    public override void TakeDamage(float damage)
+    {
+        base.TakeDamage(damage);
+        if (currentHP <= 0)
+        {
+            ChangeState(CharacterState.Die);
+        }
+    }
+
+    // di lang thang trong ban do
+    public void Wandar()
+    {
+        var randomDirection = Random.insideUnitSphere * radius;
+        randomDirection += originalePosition;
+        NavMeshHit hit;
+        NavMesh.SamplePosition(randomDirection,out hit, radius, 1);
+        var finalPosition = hit.position;
+        navMeshAgent.SetDestination(finalPosition);
+        animator.SetFloat("Speed", navMeshAgent.velocity.magnitude);
+    }
+}
+
+public class DamageZone
+{
+    internal void BeginAttack()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    internal void EndAttack()
+    {
+        throw new System.NotImplementedException();
     }
 }

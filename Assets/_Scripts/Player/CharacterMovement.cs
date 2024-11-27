@@ -9,13 +9,14 @@ public class CharacterMovement : MonoBehaviour
     public CharacterController controller;
     public Animator animator;
     public Transform cam;
-
     public float speed = 3f;
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
+    [HideInInspector] public bool isRunning = false;
 
-    // Attack
-    bool isAttack = false;
+    public AtkCollider atkCollider;
+
+    public PlayerStamina stamina;
 
     // State 
     [HideInInspector] public enum CharState
@@ -41,17 +42,17 @@ public class CharacterMovement : MonoBehaviour
             case CharState.Normal:
                 animator.SetBool("Run", false);
                 animator.SetBool("Attack", false);
-                isAttack = false;
                 speed = 3f;
                 break;
             case CharState.Run:
+                if(stamina.curStamina < 3) return;
                 animator.SetBool("Run", true);
                 speed = 7f;
                 break;
             case CharState.Attack:
+                if(stamina.curStamina < 5) return;
                 animator.SetBool("Attack", true);
                 animator.SetFloat("Speed", 0f);
-                isAttack = true;    
                 break;
             case CharState.Die:
                 break;
@@ -80,7 +81,7 @@ public class CharacterMovement : MonoBehaviour
 
     private void Movement()
     {
-        if (isAttack) return;
+        if (atkCollider.isAttacking) return;
 
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
@@ -98,13 +99,15 @@ public class CharacterMovement : MonoBehaviour
             
 
             // Chỉ chuyển sang trạng thái Run nếu đang không phải Run
-            if (Input.GetKey(KeyCode.LeftShift) && curState != CharState.Run)
+            if (Input.GetMouseButton(1) && curState != CharState.Run)
             {
                 ChageState(CharState.Run);
+                isRunning = true;
             }
-            else if (!Input.GetKey(KeyCode.LeftShift) && curState != CharState.Normal)
+            else if (!Input.GetMouseButton(1) && curState != CharState.Normal)
             {
                 ChageState(CharState.Normal);
+                isRunning = false;
             }
         }
         else if (curState != CharState.Normal) // Đứng yên -> Chuyển về trạng thái Normal
@@ -114,7 +117,6 @@ public class CharacterMovement : MonoBehaviour
 
         animator.SetFloat("Speed", direction.magnitude);
     }
-
 
     void Attack()
     {

@@ -483,7 +483,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8691188044625424278, guid: 485d662c63590f74dac20be0cf684019, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.881
+      value: -9.68
       objectReference: {fileID: 0}
     - target: {fileID: 8691188044625424278, guid: 485d662c63590f74dac20be0cf684019, type: 3}
       propertyPath: m_LocalRotation.w
@@ -744,7 +744,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -522, y: 111}
+  m_AnchoredPosition: {x: -520, y: 110}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &53371396
@@ -4465,7 +4465,7 @@ GameObject:
   - component: {fileID: 734817977}
   - component: {fileID: 734817976}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: '>'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4878,7 +4878,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 810882197}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 53371398}
+        m_TargetAssemblyTypeName: PaneQuest, Assembly-CSharp
+        m_MethodName: ShowHideQuestsPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &810882197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12056,10 +12068,10 @@ PrefabInstance:
       addedObject: {fileID: 1994652446}
     - targetCorrespondingSourceObject: {fileID: 1231873419245186938, guid: fdf678a7193c58346a367114b3da57ac, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1994652450}
+      addedObject: {fileID: 1994652454}
     - targetCorrespondingSourceObject: {fileID: 1231873419245186938, guid: fdf678a7193c58346a367114b3da57ac, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1994652451}
+      addedObject: {fileID: 1994652450}
   m_SourcePrefab: {fileID: 100100000, guid: fdf678a7193c58346a367114b3da57ac, type: 3}
 --- !u!1 &1994652444 stripped
 GameObject:
@@ -12103,7 +12115,7 @@ MonoBehaviour:
   questTargetAmount: 5
   currentAmount: 0
   TargetItemtag: Zombie
---- !u!114 &1994652451
+--- !u!114 &1994652454
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12112,14 +12124,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1994652444}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e52dca8d7f00857468daba5ae235bc4d, type: 3}
+  m_Script: {fileID: 11500000, guid: 95b7f4d3210598740a501cf47fcadd18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   npcChatPanel: {fileID: 862129131}
   chatText: {fileID: 1041016738}
   fKey: {fileID: 992678932}
   isChating: 0
-  chat: []
+  chat:
+  - 
+  - 
+  - 
+  questItem: {fileID: 0}
+  PlayerQuests: {fileID: 0}
 --- !u!1 &1994889605
 GameObject:
   m_ObjectHideFlags: 0

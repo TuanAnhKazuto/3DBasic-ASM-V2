@@ -9,6 +9,8 @@ public class PlayerQuest : MonoBehaviour
 
     public List<QuestItem> questItems = new List<QuestItem>();
 
+    public PaneQuest playerQuestPanel;
+
     // Nhận nhiệm vụ 
 
     public void TakeQuest(QuestItem questItem)
@@ -18,9 +20,11 @@ public class PlayerQuest : MonoBehaviour
                     .FirstOrDefault(x => x.QuetsItemName==
                                 questItem.QuetsItemName);
 
-        if (check != null) 
+        if (check == null) 
         questItems.Add(questItem);
-        Debug.Log("Nhận nhiệm vụ: " + questItem.QuetsItemName); 
-        
+
+        Debug.Log("Nhận nhiệm vụ: " + questItem.QuetsItemName);
+        // hiển thị 
+        playerQuestPanel.ShowAllQuestItem(questItems);
     }    
 }

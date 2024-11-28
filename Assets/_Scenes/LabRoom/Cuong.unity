@@ -128,6 +128,31 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3464592753947730340, guid: c7168ae6f3920664fbf002abdc97ae12, type: 3}
   m_PrefabInstance: {fileID: 230902542}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2928774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2928767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebe43f30072ed28448dabf09252d69b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questItems: []
+  PlayerQuestsPanel: {fileID: 53371398}
+--- !u!114 &53371398 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6227873105082518770, guid: 39005132e1236c14386b3f06ced10eed, type: 3}
+  m_PrefabInstance: {fileID: 25451147905393631}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 140eeb445d932ed44bdc3b4c2b974cbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &230902542
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -367,6 +392,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &991618770 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1489528531909664671, guid: 39005132e1236c14386b3f06ced10eed, type: 3}
+  m_PrefabInstance: {fileID: 25451147905393631}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &992678932 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2510478821793396009, guid: 39005132e1236c14386b3f06ced10eed, type: 3}
@@ -775,6 +811,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7798d5e850d73944fa07f6ad2d784ef2, type: 3}
+--- !u!114 &1994652450 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7626848599184003883, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
+  m_PrefabInstance: {fileID: 8790411845949102868}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8ac6696d3077004fbfd159d3659168d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &25451147905393631
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -783,6 +830,60 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2363951411403703870, guid: 39005132e1236c14386b3f06ced10eed, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363951411403703870, guid: 39005132e1236c14386b3f06ced10eed, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363951411403703870, guid: 39005132e1236c14386b3f06ced10eed, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363951411403703870, guid: 39005132e1236c14386b3f06ced10eed, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363951411403703870, guid: 39005132e1236c14386b3f06ced10eed, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 63.2626
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363951411403703870, guid: 39005132e1236c14386b3f06ced10eed, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 32.1045
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363951411403703870, guid: 39005132e1236c14386b3f06ced10eed, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -36.223
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363951411403703870, guid: 39005132e1236c14386b3f06ced10eed, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 31.4849
+      objectReference: {fileID: 0}
+    - target: {fileID: 2510478821793396009, guid: 39005132e1236c14386b3f06ced10eed, type: 3}
+      propertyPath: m_Name
+      value: Yes
+      objectReference: {fileID: 0}
+    - target: {fileID: 2810284363873381804, guid: 39005132e1236c14386b3f06ced10eed, type: 3}
+      propertyPath: m_text
+      value: 'Yes
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4270675981069784071, guid: 39005132e1236c14386b3f06ced10eed, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4270675981069784071, guid: 39005132e1236c14386b3f06ced10eed, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4270675981069784071, guid: 39005132e1236c14386b3f06ced10eed, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4270675981069784071, guid: 39005132e1236c14386b3f06ced10eed, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -791,6 +892,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas NPC
       objectReference: {fileID: 0}
+    - target: {fileID: 6227873105082518770, guid: 39005132e1236c14386b3f06ced10eed, type: 3}
+      propertyPath: questItemPrefab
+      value: 
+      objectReference: {fileID: 991618770}
     - target: {fileID: 9028636971635123472, guid: 39005132e1236c14386b3f06ced10eed, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -876,11 +981,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39005132e1236c14386b3f06ced10eed, type: 3}
---- !u!1 &1231873420627088481 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8580463398159898603, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
+--- !u!114 &5316820693142948617 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2747314067249645492, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
   m_PrefabInstance: {fileID: 8790411845949102868}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95b7f4d3210598740a501cf47fcadd18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8790411845949102868
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -889,15 +1000,19 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 490426556958203193, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
-      propertyPath: fKey
+    - target: {fileID: 2747314067249645492, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
+      propertyPath: yes
       value: 
       objectReference: {fileID: 992678932}
-    - target: {fileID: 490426556958203193, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
+    - target: {fileID: 2747314067249645492, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
       propertyPath: chatText
       value: 
       objectReference: {fileID: 1041016738}
-    - target: {fileID: 490426556958203193, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
+    - target: {fileID: 2747314067249645492, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
+      propertyPath: PlayerQuests
+      value: 
+      objectReference: {fileID: 2928774}
+    - target: {fileID: 2747314067249645492, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
       propertyPath: npcChatPanel
       value: 
       objectReference: {fileID: 862129131}
@@ -943,10 +1058,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8580463398159898603, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
       propertyPath: m_Name
-      value: NPC
-      objectReference: {fileID: 0}
-    - target: {fileID: 8580463398159898603, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
-      propertyPath: m_TagString
       value: NPC
       objectReference: {fileID: 0}
     m_RemovedComponents: []

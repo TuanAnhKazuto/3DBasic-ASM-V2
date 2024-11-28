@@ -11,7 +11,7 @@ public class NPC1 : MonoBehaviour
     [HideInInspector] public bool isChating;
     Coroutine coroutine;
 
-    public string[] content;
+    public string[] chat;
 
 
     private void Awake()
@@ -38,14 +38,14 @@ public class NPC1 : MonoBehaviour
             isChating = true; // Đánh dấu đang trong trạng thái hội thoại
             fKey.SetActive(false);
             npcChatPanel.SetActive(true);
-            coroutine = StartCoroutine(Readcontent());
+            coroutine = StartCoroutine(ReadChat());
         }
     }
 
 
-    IEnumerator Readcontent()
+    IEnumerator ReadChat()
     {
-        foreach (var line in content)
+        foreach (var line in chat)
         {
             chatText.text = "";
             for (int i = 0; i < line.Length; i++)
@@ -57,18 +57,13 @@ public class NPC1 : MonoBehaviour
         }
     }
 
-    public void SkipContent()
-    {
-        StopCoroutine(coroutine);
-        // Hiện nút nhiệm vụ
-    }
-
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            fKey.SetActive(false);
             npcChatPanel.SetActive(false);
-            StopCoroutine(coroutine);
+            isChating = false;
             // Kiểm tra nếu coroutine không null trước khi dừng nó
             if (coroutine != null)
             {

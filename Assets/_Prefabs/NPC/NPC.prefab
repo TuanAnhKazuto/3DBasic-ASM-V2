@@ -4938,11 +4938,11 @@ GameObject:
   - component: {fileID: 4678511911317060857}
   - component: {fileID: 5722036616377231221}
   - component: {fileID: 5618796138810314595}
-  - component: {fileID: 490426556958203193}
   - component: {fileID: 7626848599184003883}
+  - component: {fileID: 2747314067249645492}
   m_Layer: 0
   m_Name: NPC
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5007,7 +5007,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.4355893, y: 0.46396613, z: 1.946094}
   m_Center: {x: 0.004545331, y: 0.2731173, z: 0.031621695}
---- !u!114 &490426556958203193
+--- !u!114 &7626848599184003883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8580463398159898603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8ac6696d3077004fbfd159d3659168d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  QuetsItemName: "\u0110\xF2i Ti\u1EC1n Th\u1EB1ng Kh\xE1nh"
+  questTargetAmount: 5
+  currentAmount: 0
+  TargetItemtag: 
+--- !u!114 &2747314067249645492
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5021,30 +5037,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcChatPanel: {fileID: 0}
   chatText: {fileID: 0}
-  fKey: {fileID: 0}
+  yes: {fileID: 0}
   isChating: 0
+  maxline: 4
   chat:
-  - aaaaaaaaaaaaaaaaaaaaaa
-  - uuuuuuuuuuuuuuuuuuuuuuuuu
-  - oooooooooooooooooooooooooooooo
+  - aaaaaaaaaaaaaaaaa
+  - sssssssssssssssss
+  - eeeeeeeeeeeeeeeeeeeeee
+  - dddddddddddddddddddddddddddd
   questItem: {fileID: 7626848599184003883}
   PlayerQuests: {fileID: 0}
---- !u!114 &7626848599184003883
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8580463398159898603}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8ac6696d3077004fbfd159d3659168d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  QuetsItemName: "Ti\xEAu Di\u1EC7t 5 Zombie"
-  questTargetAmount: 5
-  currentAmount: 0
-  TargetItemtag: Zombie
 --- !u!1 &8582717948120093362
 GameObject:
   m_ObjectHideFlags: 0

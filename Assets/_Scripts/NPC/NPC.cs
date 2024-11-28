@@ -8,9 +8,10 @@ public class NPC : MonoBehaviour
 {
     public GameObject npcChatPanel;
     public TextMeshProUGUI chatText;
-    public GameObject fKey;
+    public GameObject yes;
     [HideInInspector] public bool isChating;
     Coroutine coroutine;
+    public int maxline;
     
     // đoạn chat
     public string[] chat;
@@ -22,9 +23,10 @@ public class NPC : MonoBehaviour
 
     private void Awake()
     {
-        fKey.SetActive(false);
+        yes.SetActive(false);
+        npcChatPanel.SetActive(true);
         npcChatPanel.SetActive(false);
-        coroutine = StartCoroutine(ReadChatta());
+     
     }
 
 
@@ -33,33 +35,18 @@ public class NPC : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             PlayerQuests = other.gameObject.GetComponent<PlayerQuest>();
-            fKey.SetActive(true);
+            //yes.SetActive(true);
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") && Input.GetKey(KeyCode.F) && !isChating)
+        if (other.gameObject.CompareTag("Player") && Input.GetKeyDown(KeyCode.F) && !isChating)
         {
-            isChating = true; // Đánh dấu đang trong trạng thái hội thoại
-            fKey.SetActive(false);
+            isChating = true; 
+            //yes.SetActive(false);
             npcChatPanel.SetActive(true);
             coroutine = StartCoroutine(ReadChat());
-        }
-    }
-
-
-    IEnumerator ReadChatta()
-    {
-        foreach (var line in chat)
-        {
-            chatText.text = "";
-            for (int i = 0; i < line.Length; i++)
-            {
-                chatText.text += line[i];
-                yield return new WaitForSeconds(0.1f);
-            }
-            yield return new WaitForSeconds(0.5f);
         }
     }
 
@@ -67,12 +54,12 @@ public class NPC : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            fKey.SetActive(false);
+            yes.SetActive(false);
             if (PlayerQuests != null)
             {
-                PlayerQuests.TakeQuest(questItem);
+                //PlayerQuests.TakeQuest(questItem);
+
             } 
-                
 
             if (isChating)
             {
@@ -84,60 +71,47 @@ public class NPC : MonoBehaviour
             npcChatPanel.SetActive(false);
         }
     }
-    //IEnumerator NhiemVu()
-    //{
-    //    foreach (var line in chat)
-    //    {
-    //        chatText.text = "";
-    //        for (int i = 0; i < line.Length; i++)
-    //        {
-    //            chatText.text += line[i];
-    //            yield return new WaitForSeconds(0.1f);
-    //        }
-    //        yield return new WaitForSeconds(0.5f);
-    //    }
-
-    //    // Giao vật phẩm nhiệm vụ sau khi hội thoại kết thúc
-    //    if (questItem != null)
-    //    {
-    //        GiveQuestItem();
-    //    }
-
-    //    // Kết thúc hội thoại
-    //    isChating = false;
-    //    npcChatPanel.SetActive(false);
-    //}
-
-    //void GiveQuestItem()
-    //{
-    //    // Logic để giao questItem
-    //    Debug.Log($"Quest item {questItem.name} được giao cho người chơi!");
-    //    // Thêm vào hệ thống nhiệm vụ hoặc vật phẩm người chơi
-    //}
-
+ 
 
     IEnumerator ReadChat()
     {
+        
         foreach (var line in chat)
         {
             chatText.text = "";
-            for (int i = 0; i < line.Length; i++)
+
+            if (Input.GetKeyDown(KeyCode.Q))
             {
-                if (Input.GetKey(KeyCode.Escape))
-                {
-                    // Kết thúc hội thoại
-                    npcChatPanel.SetActive(false);
-                    isChating = false;
-                    yield break;
-                }
-
-                chatText.text += line[i];
-                yield return new WaitForSeconds(0.1f);
+                chatText.text = line;
             }
-            yield return new WaitForSeconds(0.5f);
-        }
+            else
+            {
+                for (int i = 0; i < line.Length; i++)
+                {
 
+                    chatText.text += line[i];
+                    yield return new WaitForSeconds(0.1f);
+
+                }
+            }
+
+            yield return new WaitForSeconds(0.5f);
+
+        }
+        yes.SetActive(true);
         isChating = false;
-        npcChatPanel.SetActive(false);
+       
     }
+    // Nhận nhiệm vụ và đóng bảng chat
+    public void HidePanel()
+    {
+        npcChatPanel.SetActive(false);
+
+    }
+
+
+
+
+
+
 }

@@ -5021,8 +5021,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcChatPanel: {fileID: 0}
   chatText: {fileID: 0}
-  fKey: {fileID: 0}
+  yes: {fileID: 0}
   isChating: 0
+  maxline: 3
   chat:
   - aaaaaaaaaaaaaaaaaaaaaa
   - uuuuuuuuuuuuuuuuuuuuuuuuu
@@ -5041,10 +5042,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8ac6696d3077004fbfd159d3659168d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  QuetsItemName: "Ti\xEAu Di\u1EC7t 5 Zombie"
+  QuetsItemName: "Ti\xEAu Di\u1EC7t 5 Th\u1EB1ng Kh\xE1nh"
   questTargetAmount: 5
   currentAmount: 0
-  TargetItemtag: Zombie
+  TargetItemtag: "Kh\xE1nh"
 --- !u!1 &8582717948120093362
 GameObject:
   m_ObjectHideFlags: 0

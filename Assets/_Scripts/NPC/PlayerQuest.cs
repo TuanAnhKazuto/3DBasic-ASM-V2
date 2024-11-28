@@ -20,6 +20,7 @@ public class PlayerQuest : MonoBehaviour
 
         if (check != null) 
         questItems.Add(questItem);
+        Debug.Log("Nhận nhiệm vụ: " + questItem.QuetsItemName); 
         
     }    
 }

@@ -133,7 +133,21 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9119571945475001888, guid: c7168ae6f3920664fbf002abdc97ae12, type: 3}
   m_PrefabInstance: {fileID: 230902542}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &69015043
+--- !u!114 &69015044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69015037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 140eeb445d932ed44bdc3b4c2b974cbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPane: 0
+  questItemPrefab: {fileID: 1922858381}
+--- !u!114 &69015049
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,11 +160,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questItems: []
---- !u!1 &107606795 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8580463398159898603, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
-  m_PrefabInstance: {fileID: 8790411845949102868}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &230902542
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -225,7 +234,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 9119571945475001888, guid: c7168ae6f3920664fbf002abdc97ae12, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 69015043}
+      addedObject: {fileID: 69015044}
+    - targetCorrespondingSourceObject: {fileID: 9119571945475001888, guid: c7168ae6f3920664fbf002abdc97ae12, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 69015049}
   m_SourcePrefab: {fileID: 100100000, guid: c7168ae6f3920664fbf002abdc97ae12, type: 3}
 --- !u!4 &272601240 stripped
 Transform:
@@ -898,7 +910,7 @@ GameObject:
   - component: {fileID: 1922858382}
   - component: {fileID: 1922858381}
   m_Layer: 5
-  m_Name: Quest Item
+  m_Name: Quest Item Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1025,7 +1037,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7626848599184003883, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
   m_PrefabInstance: {fileID: 8790411845949102868}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 107606795}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8ac6696d3077004fbfd159d3659168d, type: 3}
@@ -1036,26 +1048,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 490426556958203193, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
   m_PrefabInstance: {fileID: 8790411845949102868}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 107606795}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95b7f4d3210598740a501cf47fcadd18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1994652455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 107606795}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 140eeb445d932ed44bdc3b4c2b974cbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isPane: 0
-  questItemPrefab: {fileID: 1922858381}
 --- !u!1001 &25451147905393631
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1125,7 +1123,7 @@ PrefabInstance:
     - target: {fileID: 4270675981069784071, guid: 39005132e1236c14386b3f06ced10eed, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 69015043}
+      objectReference: {fileID: 69015049}
     - target: {fileID: 4270675981069784071, guid: 39005132e1236c14386b3f06ced10eed, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -1297,7 +1295,7 @@ PrefabInstance:
     - target: {fileID: 490426556958203193, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
       propertyPath: PlayerQuests
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 69015049}
     - target: {fileID: 490426556958203193, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
       propertyPath: npcChatPanel
       value: 
@@ -1373,10 +1371,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8580463398159898603, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1994652455}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

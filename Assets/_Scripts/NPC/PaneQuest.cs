@@ -1,5 +1,6 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -10,6 +11,10 @@ public class PaneQuest : MonoBehaviour
     private bool isShown = false;
     private Vector3 initialPosition;
     private Coroutine coroutine;
+    [HideInInspector] public bool isPane;
+    //public GameObject Tab;
+    public TextMeshProUGUI questItemPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,8 +24,43 @@ public class PaneQuest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        // Kiểm tra nếu người chơi nhấn Tab và không có bảng nào đang mở
+        if (Input.GetKeyDown(KeyCode.Tab) && !isPane)
+        {
+            ShowHideQuestsPanel();
+            isPane = true;
+            //Tab.SetActive(false); 
+        }
+        else if (Input.GetKeyDown(KeyCode.Tab) && isPane)
+        {
+            ShowHideQuestsPanel();
+            isPane = false;
+            //Tab.SetActive(true); 
+        }
     }
+
+
+    public void ShowAllQuestItem(List<QuestItem> questItems)
+    {
+        // xóa danh sách cũ 
+        for (int i = 0; i < questItemPrefab.transform.parent.childCount; i++)
+        {
+            if (questItemPrefab.transform.parent.GetChild(i).gameObject != questItemPrefab.gameObject)
+            {
+                Destroy(questItemPrefab.transform.parent.GetChild(i).gameObject);
+            }
+        }
+
+
+        // Tạo danh sách mới
+        foreach (var item in questItems)
+        {
+            var questItem = Instantiate(questItemPrefab, questItemPrefab.transform.parent);
+            questItem.text = $"{item.QuetsItemName} : {item.currentAmount}/{item.questTargetAmount}";
+            questItem.gameObject.SetActive(true);
+        }
+    }
+
 
 
     public void ShowHideQuestsPanel()
@@ -38,6 +78,18 @@ public class PaneQuest : MonoBehaviour
         }
     }
 
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player") && Input.GetKey(KeyCode.Tab) && !isPane)
+        {
+            isPane = true;
+            //Tab.SetActive(false);
+        }
+    }
+
+
+
     IEnumerator MovingPanel(bool show)
     {
         while (true)
@@ -45,9 +97,9 @@ public class PaneQuest : MonoBehaviour
             var currentX = transform.localPosition.x;
             var currentY = transform.localPosition.y;
             var currentZ = transform.localPosition.z;
-            var targetX = show ? initialPosition.x + 40 : initialPosition.x - 230 ;
+            var targetX = show ? initialPosition.x + 40 : initialPosition.x - 230;
             var newX = Mathf.Lerp(currentX, targetX, Time.deltaTime * 2);
-            transform.localPosition = new Vector3 (newX, currentY, currentZ);
+            transform.localPosition = new Vector3(newX, currentY, currentZ);
 
             if (Mathf.Abs(currentX - targetX) < 1)
             {

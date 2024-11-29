@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using Unity.Profiling;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
@@ -64,18 +65,15 @@ public class CharacterMovement : MonoBehaviour
         {
             case CharState.Normal:
                 animator.SetBool("Run", false);
-                animator.SetBool("Attack", false);
-                //isRun = false;
+                //isAttacking = false;
                 speed = 3f;
                 break;
             case CharState.Run:
                 animator.SetBool("Run", true);
-                //isRun = true;
                 speed = 7f;
                 break;
             case CharState.Attack:
-                if (curStamina < 7f) return;
-                animator.SetBool("Attack", true);
+                //animator.SetBool("Attack", true);
                 animator.SetFloat("Speed", 0f);
                 break;
             case CharState.Die:
@@ -103,108 +101,92 @@ public class CharacterMovement : MonoBehaviour
         Attack();
         RecoveryStamina();
         SubStaminaWhenRun();
-
-        if (curStamina <= 0)
-        {
-            curStamina = 0;
-        }
-        if(curStamina >= maxStm)
-        {
-            curStamina = maxStm;
-        }
     }
 
     private void Movement()
+{
+    if (isAttacking) return;
+
+    float horizontal = Input.GetAxisRaw("Horizontal");
+    float vertical = Input.GetAxisRaw("Vertical");
+    direction = new Vector3(horizontal, 0f, vertical).normalized;
+
+    if (direction.magnitude >= 0.1f)
     {
-        if (isAttacking) return;
+        float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+        float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+        transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-        direction = new Vector3(horizontal, 0f, vertical).normalized;
+        Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+        controller.Move(moveDir.normalized * speed * Time.deltaTime);
 
-        if (direction.magnitude >= 0.1f)
+        if (Input.GetMouseButton(1) && curState != CharState.Run && curStamina > 3f)
         {
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
-            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            controller.Move(moveDir.normalized * speed * Time.deltaTime);
-
-            if (Input.GetMouseButton(1) && curState != CharState.Run)
-            {
-                ChageState(CharState.Run);
-                isRunning = true;
-            }
-            else if (!Input.GetMouseButton(1) && curState != CharState.Normal)
-            {
-                ChageState(CharState.Normal);
-                isRunning = false;
-            }
+            ChageState(CharState.Run);
+            isRunning = true;
         }
-        else if (curState != CharState.Normal) 
+        else if (curState == CharState.Run && (curStamina <= 3f || !Input.GetMouseButton(1)))
         {
+            // Chuyển về Normal khi hết Stamina hoặc không giữ chuột phải
             ChageState(CharState.Normal);
+            isRunning = false;
         }
-
-        animator.SetFloat("Speed", direction.magnitude);
     }
+    else if (curState != CharState.Normal)
+    {
+        ChageState(CharState.Normal);
+    }
+
+    animator.SetFloat("Speed", direction.magnitude);
+}
 
     #region Code Attack
     void Attack()
     {
-        //if (Input.GetMouseButton(0) && curState != CharState.Attack)
-        //{
-        //    ChageState(CharState.Attack);
-        //}
-        //else if (!Input.GetMouseButton(0) && curState == CharState.Attack)
-        //{
-        //    ChageState(CharState.Normal);
-        //}
-
-        if(Time.time - lastClickTime > maxCombooDelay)
+        if (noOfClicks > 0)
         {
-            noOfClicks = 0;
+            isAttacking = true;
         }
-
-        if(Input.GetMouseButtonDown(0))
-        {
-            lastClickTime = Time.time;
-            noOfClicks++;
-            if(noOfClicks == 1)
-            {
-                SubStaminaWhenAttack();
-                animator.SetBool("Attack01", true);
-
-            }
-            noOfClicks = Mathf.Clamp(noOfClicks, 0, 5);
-        }
-
-        if(noOfClicks == 0)
+        else if (noOfClicks == 0)
         {
             isAttacking = false;
         }
 
+        if (Time.time - lastClickTime > maxCombooDelay)
+        {
+            noOfClicks = 0;
+        }
+
+        if (Input.GetMouseButtonDown(0) && curStamina >= 7f) // Chỉ cho phép Attack nếu curStamina đủ
+        {
+            lastClickTime = Time.time;
+            noOfClicks++;
+            if (noOfClicks == 1)
+            {
+                SubStaminaWhenAttack();
+                animator.SetBool("Attack01", true);
+            }
+            noOfClicks = Mathf.Clamp(noOfClicks, 0, 5);
+        }
     }
 
     public void EndAttack01()
     {
-        if(noOfClicks >= 2)
+        if (noOfClicks >= 2)
         {
             SubStaminaWhenAttack();
             hasSubStamina = true;
 
             animator.SetBool("Attack02", true);
             animator.SetBool("Attack01", false);
-
         }
         else
         {
             hasSubStamina = false;
-
             animator.SetBool("Attack01", false);
         }
     }
+
     public void EndAttack02()
     {
         if (noOfClicks >= 3)
@@ -218,10 +200,10 @@ public class CharacterMovement : MonoBehaviour
         else
         {
             hasSubStamina = false;
-
             animator.SetBool("Attack02", false);
         }
     }
+
     public void EndAttack03()
     {
         if (noOfClicks >= 4)
@@ -231,49 +213,75 @@ public class CharacterMovement : MonoBehaviour
 
             animator.SetBool("Attack04", true);
             animator.SetBool("Attack03", false);
-
         }
         else
         {
             hasSubStamina = false;
-
             animator.SetBool("Attack03", false);
         }
     }
+
     public void EndAttack04()
+    {
+        if (noOfClicks >= 5)
+        {
+            SubStaminaWhenAttack();
+            hasSubStamina = true;
+
+            animator.SetBool("Attack05", true);
+            animator.SetBool("Attack04", false);
+        }
+        else
+        {
+            hasSubStamina = false;
+            animator.SetBool("Attack04", false);
+        }
+    }
+
+    public void EndAttack05()
     {
         isAttacking = false;
         animator.SetBool("Attack01", false);
         animator.SetBool("Attack02", false);
         animator.SetBool("Attack03", false);
         animator.SetBool("Attack04", false);
+        animator.SetBool("Attack05", false);
         noOfClicks = 0;
     }
     #endregion
 
-    // Stamina
-
+    #region Stamina
     public void SubStaminaWhenRun()
     {
-        if(curState == CharState.Run)
+        if (curState == CharState.Run)
         {
             curStamina -= 3f * Time.deltaTime;
             staminaSlider.value = curStamina;
-            //Debug.Log(direction.magnitude);     
-        }
 
+            if (curStamina <= 3) // Khi stamina về 0, chuyển sang trạng thái Normal
+            {
+                curStamina = 0;
+                ChageState(CharState.Normal);
+                isRunning = false;
+            }
+        }
     }
 
     public void SubStaminaWhenAttack()
     {
-        curStamina -= 7f;
+        curStamina -= 7f; // Giảm stamina khi Attack
+        if (curStamina < 0)
+        {
+            curStamina = 0;
+        }
         staminaSlider.value = curStamina;
     }
 
     public void RecoveryStamina()
     {
-        if (isAttacking || curState == CharState.Run) return;
-        if(curStamina < maxStm)
+        if (curState == CharState.Run || isAttacking) return;
+        if (curStamina < 3f && Input.GetMouseButton(1)) return;
+        if (curStamina < maxStm)
         {
             curStamina += countReturn * Time.deltaTime;
             staminaSlider.value = curStamina;
@@ -281,11 +289,12 @@ public class CharacterMovement : MonoBehaviour
 
         if (direction.magnitude <= 0f)
         {
-            countReturn = 5;
+            countReturn = 5f;
         }
-        else if(direction.magnitude > 0.1f)
+        else if (curState == CharState.Normal)
         {
-            countReturn = 3;
+            countReturn = 3f;
         }
     }
+    #endregion
 }

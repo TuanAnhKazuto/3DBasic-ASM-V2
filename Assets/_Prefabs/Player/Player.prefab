@@ -5461,10 +5461,15 @@ MonoBehaviour:
   turnSmoothTime: 0.1
   isRunning: 0
   atkCollider: {fileID: 7847924866657789798}
+  direction: {x: 0, y: 0, z: 0}
+  curState: 0
+  noOfClicks: 0
+  maxCombooDelay: 0.9
+  isAttacking: 0
   staminaSlider: {fileID: 0}
   maxStm: 0
-  curStm: 0
-  curState: 0
+  curStamina: 0
+  countReturn: 0
 --- !u!114 &7847924866657789798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5478,7 +5483,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boxAttack: {fileID: 15648974027065280}
-  isAttacking: 0
 --- !u!95 &7037141486192420414
 Animator:
   serializedVersion: 5
@@ -5489,7 +5493,7 @@ Animator:
   m_GameObject: {fileID: 9119571945475001888}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: dd4802cc7972ecb4699ed0b29916793f, type: 3}
-  m_Controller: {fileID: 9100000, guid: 91fa2d05066b6e84082539a9fd26e322, type: 2}
+  m_Controller: {fileID: 9100000, guid: 18cc5e7cd093fe340b59ec0b563a7ed7, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1

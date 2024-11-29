@@ -140,7 +140,7 @@ public class CharacterMovement : MonoBehaviour
     animator.SetFloat("Speed", direction.magnitude);
 }
 
-    #region Code Attack
+        #region Code Attack
     void Attack()
     {
         if (noOfClicks > 0)

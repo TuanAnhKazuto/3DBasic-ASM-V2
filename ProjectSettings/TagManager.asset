@@ -6,6 +6,9 @@ TagManager:
   tags:
   - NPC
   - PlayerAtk
+  - Yandere
+  - Mana
+  - Binh mau
   layers:
   - Default
   - TransparentFX

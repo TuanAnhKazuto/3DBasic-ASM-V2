@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using System.Xml.Serialization;
 using Unity.Profiling;
 using UnityEngine;
@@ -11,12 +12,12 @@ public class CharacterMovement : MonoBehaviour
 {
     public CharacterController controller;
     public Animator animator;
+
     public Transform cam;
     public float speed = 3f;
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
     [HideInInspector] public bool isRunning = false;
-    public AtkCollider atkCollider;
     public Vector3 direction;
 
     // State 
@@ -31,13 +32,18 @@ public class CharacterMovement : MonoBehaviour
     public float maxCombooDelay = 0.9f;
     public bool isAttacking = false;
     bool hasSubStamina = false;
+    public AtkCollider atkCollider;
 
     [Header("Status")]
     public Slider staminaSlider;
     [HideInInspector] public float maxStm = 100f;
     public float curStamina;
-    
+
+    [Header("Stamina")]
     [HideInInspector] public float countReturn;
+
+    [Header("Sound")]
+    public PlayerSound sound;
 
 
     private void Awake()
@@ -45,6 +51,7 @@ public class CharacterMovement : MonoBehaviour
         maxStm = 100f;
         curStamina = maxStm;
         staminaSlider.value = curStamina;
+        Cursor.visible = false;
     }
 
     public void ChageState(CharState newState)
@@ -101,6 +108,20 @@ public class CharacterMovement : MonoBehaviour
         Attack();
         RecoveryStamina();
         SubStaminaWhenRun();
+        MouseBehaviour();
+        SoundControler();
+    }
+
+    private void MouseBehaviour()
+    {
+        if (Input.GetKey(KeyCode.LeftAlt))
+        {
+            Cursor.visible = true;
+        }
+        else
+        {
+            Cursor.visible = false;
+        }
     }
 
     private void Movement()
@@ -140,7 +161,7 @@ public class CharacterMovement : MonoBehaviour
     animator.SetFloat("Speed", direction.magnitude);
 }
 
-        #region Code Attack
+    #region Code Attack
     void Attack()
     {
         if (noOfClicks > 0)
@@ -294,6 +315,37 @@ public class CharacterMovement : MonoBehaviour
         else if (curState == CharState.Normal)
         {
             countReturn = 3f;
+        }
+    }
+    #endregion
+
+    #region Sound Code
+    public void SoundControler()
+    {
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+
+        if (stateInfo.IsName("Walk"))
+        {
+            if (!sound.soundWalk.isPlaying)
+            {
+                sound.soundWalk.Play();
+            }
+        }
+        else
+        {
+            sound.soundWalk.Stop();
+        }
+
+        if (stateInfo.IsName("Run"))
+        {
+            if (!sound.soundRunning.isPlaying) 
+            {
+                sound.soundRunning.Play();
+            }
+        }
+        else
+        {
+            sound.soundRunning.Stop();
         }
     }
     #endregion

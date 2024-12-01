@@ -6,7 +6,6 @@ public class AtkCollider : MonoBehaviour
 {
     public GameObject boxAttack;
     public PlayerSound sound;
-
     private void Awake()
     {
         boxAttack.SetActive(false);
@@ -15,8 +14,6 @@ public class AtkCollider : MonoBehaviour
     {
         boxAttack.SetActive(true);
         sound.soundAttack01.Play();
-
-        
     }
 
     public void OffAtkCollider()

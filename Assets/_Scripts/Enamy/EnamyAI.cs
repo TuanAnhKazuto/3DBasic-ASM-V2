@@ -5,125 +5,131 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
+    [Header("References")]
     public NavMeshAgent navMeshAgent;
     public Transform target;
-
-    public float radius = 10f;
-    public Vector3 originalPos;
-    public float maxDistace = 50f;
     public Animator animator;
-    public DamegeZone damageZone;
+    public DamageZone damageZone;
     public Health health;
-   
 
+    [Header("Settings")]
+    [SerializeField] private float radius = 10f; // Bán kính phát hiện mục tiêu
+    [SerializeField] private float maxDistance = 50f; // Khoảng cách tối đa từ vị trí ban đầu
+    [SerializeField] private float attackDistance = 2f; // Khoảng cách để tấn công
 
-    // state machine
+    private Vector3 originalPos;
+    private CharacterState curState;
+
+    // State Machine
     public enum CharacterState
-    { Normal, Attack, Die }
-
-    public CharacterState curState; // trạng thái hiện tại
-    private Vector3 originalePosition;
+    {
+        Normal,
+        Attack,
+        Die
+    }
 
     private void Start()
     {
         originalPos = transform.position;
-
+        curState = CharacterState.Normal; // Khởi tạo trạng thái ban đầu
     }
 
     private void Update()
     {
-        // Khoảng cách từ vị trí hiện tại đến vị trí ban đầu
-        var distanceToOriginal = Vector3.Distance(originalPos, transform.position);
-        // Khoảng cách từ vị trí hiện tại đến vị trí mục tiêu
+        if (curState == CharacterState.Die)
+            return; // Không làm gì nếu đang chết
 
-        var distance = Vector3.Distance(target.position, transform.position);
-        if (distance <= radius)
+        float sqrDistanceToOriginal = (originalPos - transform.position).sqrMagnitude;
+        float sqrRadius = radius * radius;
+        float sqrDistanceToTarget = (target.position - transform.position).sqrMagnitude;
+
+        if (sqrDistanceToTarget <= sqrRadius)
         {
-            // di chuyển đến mục tiêu
+            // Trong phạm vi phát hiện
             navMeshAgent.SetDestination(target.position);
             animator.SetFloat("Speed", navMeshAgent.velocity.magnitude);
 
-            if (distance < 2f)
+            if (sqrDistanceToTarget <= attackDistance * attackDistance)
             {
-                // tan cong
                 ChangeState(CharacterState.Attack);
             }
-
         }
-
-        if (distance > radius || distanceToOriginal > maxDistace)
+        else if (sqrDistanceToOriginal > maxDistance * maxDistance || sqrDistanceToTarget > sqrRadius)
         {
-            //quay ve vi tri ban dau
+            // Quay về vị trí ban đầu nếu quá xa
             navMeshAgent.SetDestination(originalPos);
             animator.SetFloat("Speed", navMeshAgent.velocity.magnitude);
 
-            //chuyen sang trang thai dung yen
-            distance = Vector3.Distance(originalPos, transform.position);
-            if (distance < 1f)
-
+            if (Vector3.Distance(transform.position, originalPos) < 1f)
             {
+                navMeshAgent.ResetPath(); // Dừng hoàn toàn
                 animator.SetFloat("Speed", 0);
+                ChangeState(CharacterState.Normal);
             }
-
-            // binh thuong
-            ChangeState(CharacterState.Normal);
         }
     }
-    // chuyển đổi trạng thái
+
     private void ChangeState(CharacterState newState)
     {
+        if (curState == newState)
+            return;
 
-
-        // B1: exit curState
+        // Exit current state
         switch (curState)
-        {
-            case CharacterState.Normal:
-                break;
-            case CharacterState.Attack:
-                animator.SetTrigger("Attack");
-                break;
-        }
-
-        // B2: enter newState
-        switch (newState)
         {
             case CharacterState.Normal:
                 damageZone.EndAttack();
                 break;
             case CharacterState.Attack:
-                damageZone.BeginAttack();
-                break;
-            case CharacterState.Die:
-                animator.SetTrigger("Die");
-                Destroy(gameObject, 5f);
+                damageZone.EndAttack();
                 break;
         }
 
-        // B3: Update state
-        curState = newState;
+        // Enter new state
+        switch (newState)
+        {
+            case CharacterState.Normal:
+                Debug.Log("Enemy ở trạng thái bình thường");
+                break;
+            case CharacterState.Attack:
+                animator.SetTrigger("Attack");
+                damageZone.BeginAttack();
+                Debug.Log("Enemy đang tấn công!");
+                break;
+            case CharacterState.Die:
+                animator.SetTrigger("Die");
+                navMeshAgent.enabled = false;
+                Destroy(gameObject, 5f); // Xóa đối tượng sau 5 giây
+                Debug.Log("Enemy đã chết!");
+                break;
+        }
+
+        curState = newState; // Cập nhật trạng thái
     }
 
-    public void Wandar()
+    public void Wander()
     {
-        var randomDirection = Random.insideUnitSphere * radius;
-        randomDirection += originalePosition;
+        Vector3 randomDirection = Random.insideUnitSphere * radius;
+        randomDirection += originalPos;
+
         NavMeshHit hit;
-        NavMesh.SamplePosition(randomDirection, out hit, radius, 1);
-        var finalPosition = hit.position;
-        navMeshAgent.SetDestination(finalPosition);
-        animator.SetFloat("Speed", navMeshAgent.velocity.magnitude);
-    }
-}
-
-public class DamageZone
-{
-    internal void BeginAttack()
-    {
-        throw new System.NotImplementedException();
-    }
-    internal void EndAttack()
-    {
-        throw new System.NotImplementedException();
+        if (NavMesh.SamplePosition(randomDirection, out hit, radius, NavMesh.AllAreas))
+        {
+            navMeshAgent.SetDestination(hit.position);
+            animator.SetFloat("Speed", navMeshAgent.velocity.magnitude);
+            Debug.Log("Enemy đang đi lang thang!");
+        }
     }
 
+    public void TakeDamage(float amount)
+    {
+        if (curState == CharacterState.Die)
+            return;
+
+        health.TakeDamage(amount);
+        if (health.CurrentHealth <= 0)
+        {
+            ChangeState(CharacterState.Die);
+        }
+    }
 }

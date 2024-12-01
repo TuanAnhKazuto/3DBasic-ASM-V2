@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/hehe.unity
     guid: 1369da32594d8d148bd5f00ada96346b
+  - enabled: 1
+    path: Assets/_Scenes/Scene1.unity
+    guid: 77fa4eed280ee0d4080baf54b35c5da2
   m_configObjects: {}

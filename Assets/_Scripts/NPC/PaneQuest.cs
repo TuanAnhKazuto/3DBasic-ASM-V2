@@ -6,15 +6,13 @@ using UnityEngine;
 
 public class PaneQuest : MonoBehaviour
 {
-  
-
-
     private bool isShown = false;
     private Vector3 initialPosition;
     private Coroutine coroutine;
     [HideInInspector] public bool isPane;
     //public GameObject Tab;
     public TextMeshProUGUI questItemPrefab;
+    public GameObject muiTen;
 
     // Start is called before the first frame update
     void Start()
@@ -27,19 +25,24 @@ public class PaneQuest : MonoBehaviour
     void Update()
     {
         
+
         // Kiểm tra nếu người chơi nhấn Tab và không có bảng nào đang mở
         if (Input.GetKeyDown(KeyCode.Tab) && !isPane)
         {
+            muiTen.transform.Rotate(0, 0, 180);
             ShowHideQuestsPanel();
             isPane = true;
-            //Tab.SetActive(false); 
+            
         }
         else if (Input.GetKeyDown(KeyCode.Tab) && isPane)
         {
+            muiTen.transform.Rotate(0, 0, 180);
             ShowHideQuestsPanel();
             isPane = false;
-            //Tab.SetActive(true); 
+            
         }
+
+
     }
     public void ShowAllQuestItem(List<QuestItem> questItems)
     {
@@ -66,10 +69,12 @@ public class PaneQuest : MonoBehaviour
     public void ShowHideQuestsPanel()
     {
         isShown = !isShown;
+        
         if (isShown)
         {
             if (coroutine != null) StopCoroutine(coroutine);
             coroutine = StartCoroutine(MovingPanel(true));
+            
         }
         else
         {
@@ -92,12 +97,13 @@ public class PaneQuest : MonoBehaviour
 
     IEnumerator MovingPanel(bool show)
     {
+        
         while (true)
         {
             var currentX = transform.localPosition.x;
             var currentY = transform.localPosition.y;
             var currentZ = transform.localPosition.z;
-            var targetX = show ? initialPosition.x + 40 : initialPosition.x - 230;
+            var targetX = show ? initialPosition.x + 40  : initialPosition.x - 230;
             var newX = Mathf.Lerp(currentX, targetX, Time.deltaTime * 2);
             transform.localPosition = new Vector3(newX, currentY, currentZ);
 

@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scene Mo dau.unity
+    path: Assets/_Scenes/Scene Mo dau.unity
     guid: e975d8549c4eac047adcd494011ee952
   - enabled: 1
-    path: Assets/hehe.unity
+    path: Assets/_Scenes/hehe.unity
     guid: 1369da32594d8d148bd5f00ada96346b
   m_configObjects: {}

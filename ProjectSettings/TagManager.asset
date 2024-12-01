@@ -6,6 +6,12 @@ TagManager:
   tags:
   - Enamy
   - New tag
+  - NPC
+  - PlayerAtk
+  - Yandere
+  - Mana
+  - Binh mau
+  - PLAY
   layers:
   - Default
   - TransparentFX

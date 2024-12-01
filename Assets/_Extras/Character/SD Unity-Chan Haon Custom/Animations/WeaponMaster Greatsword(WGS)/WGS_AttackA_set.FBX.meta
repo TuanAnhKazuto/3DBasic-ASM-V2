@@ -826,14 +826,14 @@ ModelImporter:
       - time: 0.30295157
         functionName: OnAtkCollider
         data: 
-        objectReferenceParameter: {instanceID: 0}
+        objectReferenceParameter: {fileID: 11500000, guid: 9acd52d9d51538c40b88fd6f090154df, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.70552665
         functionName: OffAtkCollider
         data: 
-        objectReferenceParameter: {instanceID: 0}
+        objectReferenceParameter: {fileID: 11500000, guid: 9acd52d9d51538c40b88fd6f090154df, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0

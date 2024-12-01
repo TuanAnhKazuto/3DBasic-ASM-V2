@@ -92,7 +92,7 @@ public class CharacterMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        switch(curState)
+        switch (curState)
         {
             case CharState.Normal:
                 Movement();
@@ -125,41 +125,41 @@ public class CharacterMovement : MonoBehaviour
     }
 
     private void Movement()
-{
-    if (isAttacking) return;
-
-    float horizontal = Input.GetAxisRaw("Horizontal");
-    float vertical = Input.GetAxisRaw("Vertical");
-    direction = new Vector3(horizontal, 0f, vertical).normalized;
-
-    if (direction.magnitude >= 0.1f)
     {
-        float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-        float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-        transform.rotation = Quaternion.Euler(0f, angle, 0f);
+        if (isAttacking) return;
 
-        Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-        controller.Move(moveDir.normalized * speed * Time.deltaTime);
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+        direction = new Vector3(horizontal, 0f, vertical).normalized;
 
-        if (Input.GetMouseButton(1) && curState != CharState.Run && curStamina > 3f)
+        if (direction.magnitude >= 0.1f)
         {
-            ChageState(CharState.Run);
-            isRunning = true;
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            controller.Move(moveDir.normalized * speed * Time.deltaTime);
+
+            if (Input.GetMouseButton(1) && curState != CharState.Run && curStamina > 3f)
+            {
+                ChageState(CharState.Run);
+                isRunning = true;
+            }
+            else if (curState == CharState.Run && (curStamina <= 3f || !Input.GetMouseButton(1)))
+            {
+                // Chuyển về Normal khi hết Stamina hoặc không giữ chuột phải
+                ChageState(CharState.Normal);
+                isRunning = false;
+            }
         }
-        else if (curState == CharState.Run && (curStamina <= 3f || !Input.GetMouseButton(1)))
+        else if (curState != CharState.Normal)
         {
-            // Chuyển về Normal khi hết Stamina hoặc không giữ chuột phải
             ChageState(CharState.Normal);
-            isRunning = false;
         }
-    }
-    else if (curState != CharState.Normal)
-    {
-        ChageState(CharState.Normal);
-    }
 
-    animator.SetFloat("Speed", direction.magnitude);
-}
+        animator.SetFloat("Speed", direction.magnitude);
+    }
 
     #region Code Attack
     void Attack()
@@ -338,7 +338,7 @@ public class CharacterMovement : MonoBehaviour
 
         if (stateInfo.IsName("Run"))
         {
-            if (!sound.soundRunning.isPlaying) 
+            if (!sound.soundRunning.isPlaying)
             {
                 sound.soundRunning.Play();
             }

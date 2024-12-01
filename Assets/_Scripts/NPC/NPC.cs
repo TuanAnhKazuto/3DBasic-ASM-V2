@@ -110,8 +110,4 @@ public class NPC : MonoBehaviour
     }
 
 
-
-
-
-
 }

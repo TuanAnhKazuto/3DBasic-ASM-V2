@@ -10,6 +10,7 @@ using UnityEngine.UI;
 
 public class CharacterMovement : MonoBehaviour
 {
+    #region Variable
     public CharacterController controller;
     public Animator animator;
 
@@ -19,6 +20,7 @@ public class CharacterMovement : MonoBehaviour
     float turnSmoothVelocity;
     [HideInInspector] public bool isRunning = false;
     public Vector3 direction;
+    bool canMove = true;
 
     // State 
     public enum CharState
@@ -33,6 +35,7 @@ public class CharacterMovement : MonoBehaviour
     public bool isAttacking = false;
     bool hasSubStamina = false;
     public AtkCollider atkCollider;
+    public bool isUserSkill;
 
     [Header("Status")]
     public Slider staminaSlider;
@@ -45,13 +48,76 @@ public class CharacterMovement : MonoBehaviour
     [Header("Sound")]
     public PlayerSound sound;
 
+    [Header("Effect")]
+    public ParticleSystem slashExplosion;
+    #endregion
 
+    #region Base Function
     private void Awake()
     {
         maxStm = 100f;
         curStamina = maxStm;
         staminaSlider.value = curStamina;
-      
+        isUserSkill = false;
+    }
+
+    private void FixedUpdate()
+    {
+        switch (curState)
+        {
+            case CharState.Normal:
+                Movement();
+                break;
+            case CharState.Run:
+                Movement();
+                break;
+        }
+    }
+
+    private void Update()
+    {
+        Attack();
+        SkillControler();
+        RecoveryStamina();
+        SubStaminaWhenRun();
+        SoundControler();
+    }
+    #endregion
+    private void Movement()
+    {
+        if (!canMove || isAttacking) return;
+
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+        direction = new Vector3(horizontal, 0f, vertical).normalized;
+
+        if (direction.magnitude >= 0.1f)
+        {
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            controller.Move(moveDir.normalized * speed * Time.deltaTime);
+
+            if (Input.GetMouseButton(1) && curState != CharState.Run && curStamina > 3f)
+            {
+                ChageState(CharState.Run);
+                isRunning = true;
+            }
+            else if (curState == CharState.Run && (curStamina <= 3f || !Input.GetMouseButton(1)))
+            {
+                // Chuyển về Normal khi hết Stamina hoặc không giữ chuột phải
+                ChageState(CharState.Normal);
+                isRunning = false;
+            }
+        }
+        else if (curState != CharState.Normal)
+        {
+            ChageState(CharState.Normal);
+        }
+
+        animator.SetFloat("Speed", direction.magnitude);
     }
 
     public void ChageState(CharState newState)
@@ -90,68 +156,10 @@ public class CharacterMovement : MonoBehaviour
         curState = newState;
     }
 
-    private void FixedUpdate()
-    {
-        switch (curState)
-        {
-            case CharState.Normal:
-                Movement();
-                break;
-            case CharState.Run:
-                Movement();
-                break;
-        }
-    }
-
-    private void Update()
-    {
-        Attack();
-        RecoveryStamina();
-        SubStaminaWhenRun();
-      
-        SoundControler();
-    }
-
-    private void Movement()
-    {
-        if (isAttacking) return;
-
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-        direction = new Vector3(horizontal, 0f, vertical).normalized;
-
-        if (direction.magnitude >= 0.1f)
-        {
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
-            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            controller.Move(moveDir.normalized * speed * Time.deltaTime);
-
-            if (Input.GetMouseButton(1) && curState != CharState.Run && curStamina > 3f)
-            {
-                ChageState(CharState.Run);
-                isRunning = true;
-            }
-            else if (curState == CharState.Run && (curStamina <= 3f || !Input.GetMouseButton(1)))
-            {
-                // Chuyển về Normal khi hết Stamina hoặc không giữ chuột phải
-                ChageState(CharState.Normal);
-                isRunning = false;
-            }
-        }
-        else if (curState != CharState.Normal)
-        {
-            ChageState(CharState.Normal);
-        }
-
-        animator.SetFloat("Speed", direction.magnitude);
-    }
-
-    #region Code Attack
+    #region Attack
     void Attack()
     {
+        if (!canMove || isUserSkill) return;
         if (noOfClicks > 0)
         {
             isAttacking = true;
@@ -259,6 +267,46 @@ public class CharacterMovement : MonoBehaviour
     }
     #endregion
 
+    #region Skill
+    public void SkillControler()
+    {
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            isUserSkill = true;
+
+            if (Input.GetMouseButtonDown(0) && !slashExplosion.isPlaying &&
+                !animator.GetCurrentAnimatorStateInfo(0).IsName("SkillExplosion") &&
+                !sound.soundAttack01.isPlaying)
+            {
+                canMove = false; 
+                animator.SetTrigger("SkillExplosion");
+                sound.soundAttack01.Play();
+                speed = 0;
+                Invoke(nameof(EffectDelay), 0.5f);
+                Invoke(nameof(ResetSkillState), 1.65f);
+                SubStaminaWhenUserSkillSlashExplositon();
+            }
+        }
+        else
+        {
+            isUserSkill = false;
+        }
+    }
+
+    void ResetSkillState()
+    {
+        canMove = true; 
+        isUserSkill = false; 
+        speed = 3f; 
+    }
+
+    void EffectDelay()
+    {
+        slashExplosion.Play();
+    }
+    #endregion
+
     #region Stamina
     public void SubStaminaWhenRun()
     {
@@ -286,10 +334,17 @@ public class CharacterMovement : MonoBehaviour
         staminaSlider.value = curStamina;
     }
 
+    public void SubStaminaWhenUserSkillSlashExplositon()
+    {
+        curStamina -= 20;
+        staminaSlider.value = curStamina;
+
+    }
+
     public void RecoveryStamina()
     {
-        if (curState == CharState.Run || isAttacking) return;
-        if (curStamina < 3f && Input.GetMouseButton(1)) return;
+        if (curState == CharState.Run || isAttacking || isUserSkill) return;
+
         if (curStamina < maxStm)
         {
             curStamina += countReturn * Time.deltaTime;
@@ -307,7 +362,7 @@ public class CharacterMovement : MonoBehaviour
     }
     #endregion
 
-    #region Sound Code
+    #region Sound
     public void SoundControler()
     {
         AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);

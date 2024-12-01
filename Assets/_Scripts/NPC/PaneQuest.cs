@@ -41,8 +41,6 @@ public class PaneQuest : MonoBehaviour
             //Tab.SetActive(true); 
         }
     }
-
-
     public void ShowAllQuestItem(List<QuestItem> questItems)
     {
         // xóa danh sách cũ 
@@ -63,7 +61,6 @@ public class PaneQuest : MonoBehaviour
             questItem.gameObject.SetActive(true);
         }
     }
-
 
 
     public void ShowHideQuestsPanel()

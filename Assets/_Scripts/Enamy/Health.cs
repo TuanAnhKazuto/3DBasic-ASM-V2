@@ -1,25 +1,29 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Health : MonoBehaviour
 {
+    [SerializeField] private float maxHealth = 100f;
+    private float currentHealth;
 
-    public float maxHP;
-    public float currentHP;
+    public float CurrentHealth => currentHealth;
 
     private void Start()
     {
-        currentHP = maxHP;
+        currentHealth = maxHealth;
     }
 
-    public virtual void TakeDamage(float damege)
+    public void TakeDamage(float amount)
     {
-        currentHP -= damege;
-        currentHP = Mathf.Max(0, currentHP);
+        currentHealth -= amount;
+        Debug.Log($"Máu hiện tại: {currentHealth}");
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
 
+    private void Die()
+    {
+        Debug.Log("Đối tượng đã chết!");
     }
 }
-
-   

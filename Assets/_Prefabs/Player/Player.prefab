@@ -10775,9 +10775,12 @@ GameObject:
   - component: {fileID: 7847924866657789798}
   - component: {fileID: 7037141486192420414}
   - component: {fileID: 5183778606994109616}
+  - component: {fileID: 1363348566145625103}
+  - component: {fileID: 9142399540226433293}
+  - component: {fileID: 3707448805490640638}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10912,6 +10915,47 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.57, z: 0}
+--- !u!114 &1363348566145625103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9119571945475001888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 140eeb445d932ed44bdc3b4c2b974cbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPane: 0
+  questItemPrefab: {fileID: 0}
+--- !u!114 &9142399540226433293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9119571945475001888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebe43f30072ed28448dabf09252d69b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questItems: []
+  playerQuestPanel: {fileID: 0}
+--- !u!114 &3707448805490640638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9119571945475001888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 250250178be188f428e93c0926fa8ecb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryUI: {fileID: 0}
 --- !u!1 &9148358490405166817
 GameObject:
   m_ObjectHideFlags: 0

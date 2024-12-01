@@ -5027,7 +5027,6 @@ MonoBehaviour:
   chat:
   - aaaaaaaaaaaaaaaaaaaaaa
   - uuuuuuuuuuuuuuuuuuuuuuuuu
-  - oooooooooooooooooooooooooooooo
   questItem: {fileID: 7626848599184003883}
   PlayerQuests: {fileID: 0}
 --- !u!114 &7626848599184003883

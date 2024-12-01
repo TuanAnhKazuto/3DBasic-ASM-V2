@@ -51,8 +51,7 @@ public class CharacterMovement : MonoBehaviour
         maxStm = 100f;
         curStamina = maxStm;
         staminaSlider.value = curStamina;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+      
     }
 
     public void ChageState(CharState newState)
@@ -109,7 +108,7 @@ public class CharacterMovement : MonoBehaviour
         Attack();
         RecoveryStamina();
         SubStaminaWhenRun();
-        MouseBehaviour();
+      
         SoundControler();
     }
 

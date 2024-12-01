@@ -4,11 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - NPC
-  - PlayerAtk
-  - Yandere
-  - Mana
-  - Binh mau
+  - Enamy
+  - New tag
   layers:
   - Default
   - TransparentFX

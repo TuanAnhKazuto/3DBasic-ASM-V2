@@ -12,6 +12,7 @@ TagManager:
   - Mana
   - Binh mau
   - PLAY
+  - tele
   layers:
   - Default
   - TransparentFX

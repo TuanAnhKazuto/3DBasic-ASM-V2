@@ -77,7 +77,7 @@ public class CharacterMovement : MonoBehaviour
                 break;
             case CharState.Run:
                 animator.SetBool("Run", true);
-                speed = 7f;
+                speed = 8f;
                 break;
             case CharState.Attack:
                 //animator.SetBool("Attack", true);
@@ -110,18 +110,6 @@ public class CharacterMovement : MonoBehaviour
         SubStaminaWhenRun();
       
         SoundControler();
-    }
-
-    private void MouseBehaviour()
-    {
-        if (Input.GetKey(KeyCode.LeftAlt))
-        {
-            Cursor.visible = true;
-        }
-        else
-        {
-            Cursor.visible = false;
-        }
     }
 
     private void Movement()
@@ -310,11 +298,11 @@ public class CharacterMovement : MonoBehaviour
 
         if (direction.magnitude <= 0f)
         {
-            countReturn = 5f;
+            countReturn = 8f;
         }
         else if (curState == CharState.Normal)
         {
-            countReturn = 3f;
+            countReturn = 4f;
         }
     }
     #endregion
@@ -346,6 +334,50 @@ public class CharacterMovement : MonoBehaviour
         else
         {
             sound.soundRunning.Stop();
+        }
+
+        if (stateInfo.IsName("WGS_attackA3"))
+        {
+            if (!sound.soundAttack02.isPlaying)
+            {
+                sound.soundAttack02.Play();
+            }
+        }
+        else
+        {
+            sound.soundAttack02.Stop();
+        }
+
+        if (stateInfo.IsName("WGS_attackA1") || stateInfo.IsName("WGS_attackA2") || stateInfo.IsName("WGS_attackA5"))
+        {
+            if (!sound.soundAttack01.isPlaying)
+            {
+            }
+            speed = 0f;
+        }
+        else
+        {
+            sound.soundAttack01.Stop();
+            if (curState == CharState.Normal)
+            {
+                speed = 3f;
+            }
+        }
+
+        if (stateInfo.IsName("WGS_attackA5toStand"))
+        {
+            if (!sound.soundAttack01.isPlaying)
+            {
+                sound.soundAttack01.Play();
+            }
+            speed = 0f;
+        }
+        else
+        {
+            if(curState == CharState.Normal)
+            {
+                speed = 3f;
+            }
         }
     }
     #endregion

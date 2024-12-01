@@ -48,7 +48,7 @@ public class PlayerHealth : MonoBehaviour
             playerScript.animator.SetBool("Death", true);
             playerScript.speed = 0;
             deathEf.Play();
-            Invoke(nameof(HideBodyAndDestroy), 0.4f);
+            Invoke(nameof(HideBodyAndDestroy), 0.2f);
         }
     }
 

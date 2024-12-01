@@ -4,17 +4,14 @@ using UnityEngine;
 
 public class ZombieManager : MonoBehaviour
 {
-
-    
+    // luu so luong zombie tieu diet
     private int zombiesKilled;
-
-    // Dữ liệu sẽ được lưu vào PlayerPrefs (lưu trữ tạm thời)
     private const string ZombiesKilledKey = "ZombiesKilled";
 
-    // Hàm khởi tạo, đọc dữ liệu từ PlayerPrefs khi game bắt đầu
+
     void Start()
     {
-        zombiesKilled = PlayerPrefs.GetInt(ZombiesKilledKey, 0); // 0 là giá trị mặc định
+        zombiesKilled = PlayerPrefs.GetInt(ZombiesKilledKey, 0); 
         Debug.Log("Zombies killed so far: " + zombiesKilled);
     }
 
@@ -22,20 +19,19 @@ public class ZombieManager : MonoBehaviour
     public void OnZombieKilled()
     {
         zombiesKilled++;
-        // Lưu số lượng zombie đã giết vào PlayerPrefs
+       
         PlayerPrefs.SetInt(ZombiesKilledKey, zombiesKilled);
         PlayerPrefs.Save();
 
         Debug.Log("Zombie killed! Total: " + zombiesKilled);
     }
 
-    // Hàm để lấy số lượng zombie đã giết
     public int GetZombiesKilled()
     {
         return zombiesKilled;
     }
 
-    // Hàm reset số lượng zombie
+    // reset số lượng zombie
     public void ResetZombiesKilled()
     {
         zombiesKilled = 0;

@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class PaneQuest : MonoBehaviour
 {
+    private KillZombieQuest quest;
 
 
     private bool isShown = false;
@@ -19,11 +20,13 @@ public class PaneQuest : MonoBehaviour
     void Start()
     {
         initialPosition = transform.position;
+        quest = GameObject.Find("QuestManager").GetComponent<KillZombieQuest>();
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
+        
         // Kiểm tra nếu người chơi nhấn Tab và không có bảng nào đang mở
         if (Input.GetKeyDown(KeyCode.Tab) && !isPane)
         {

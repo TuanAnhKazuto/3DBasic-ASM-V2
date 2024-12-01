@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PaneQuest : MonoBehaviour
 {
-    private KillZombieQuest quest;
+  
 
 
     private bool isShown = false;
@@ -20,7 +20,7 @@ public class PaneQuest : MonoBehaviour
     void Start()
     {
         initialPosition = transform.position;
-        quest = GameObject.Find("QuestManager").GetComponent<KillZombieQuest>();
+        
     }
 
     

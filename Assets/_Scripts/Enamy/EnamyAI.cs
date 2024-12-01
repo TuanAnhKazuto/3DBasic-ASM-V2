@@ -32,6 +32,12 @@ public class EnemyAI : MonoBehaviour
     {
         originalPos = transform.position;
         curState = CharacterState.Normal; // Khởi tạo trạng thái ban đầu
+
+        // Bật isKinematic để quái không bị đẩy
+        if (navMeshAgent != null && navMeshAgent.GetComponent<Rigidbody>())
+        {
+            navMeshAgent.GetComponent<Rigidbody>().isKinematic = true;
+        }
     }
 
     private void Update()
@@ -130,6 +136,18 @@ public class EnemyAI : MonoBehaviour
         if (health.CurrentHealth <= 0)
         {
             ChangeState(CharacterState.Die);
+        }
+    }
+
+    // Xử lý va chạm mà không đẩy player
+    private void OnTriggerEnter(Collider other)
+    {
+        // Kiểm tra xem quái vật có va vào người chơi không
+        if (other.CompareTag("Player"))
+        {
+            // Xử lý va chạm mà không làm thay đổi vị trí của player
+            // Ví dụ: kích hoạt một hành động tấn công hoặc hư hại cho player
+            Debug.Log("Quái vật va vào người chơi nhưng không đẩy!");
         }
     }
 }

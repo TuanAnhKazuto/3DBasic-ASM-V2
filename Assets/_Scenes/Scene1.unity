@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3655059, g: 0.55901355, b: 0.68998814, a: 1}
+  m_IndirectSpecularColor: {r: 0.36550677, g: 0.5585923, b: 0.6900113, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1758,9 +1758,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1937983056}
     - target: {fileID: 1363348566145625103, guid: c7168ae6f3920664fbf002abdc97ae12, type: 3}
+      propertyPath: muiTen
+      value: 
+      objectReference: {fileID: 1945095217}
+    - target: {fileID: 1363348566145625103, guid: c7168ae6f3920664fbf002abdc97ae12, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1363348566145625103, guid: c7168ae6f3920664fbf002abdc97ae12, type: 3}
+      propertyPath: questItemPrefab
+      value: 
+      objectReference: {fileID: 1990257082}
     - target: {fileID: 3464592753947730340, guid: c7168ae6f3920664fbf002abdc97ae12, type: 3}
       propertyPath: m_LocalPosition.x
       value: -97.094185
@@ -1805,6 +1813,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3707448805490640638, guid: c7168ae6f3920664fbf002abdc97ae12, type: 3}
+      propertyPath: inventoryUI
+      value: 
+      objectReference: {fileID: 1679525863}
     - target: {fileID: 6961835310550437778, guid: c7168ae6f3920664fbf002abdc97ae12, type: 3}
       propertyPath: healthBar
       value: 
@@ -1813,6 +1825,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 9142399540226433293, guid: c7168ae6f3920664fbf002abdc97ae12, type: 3}
+      propertyPath: playerQuestPanel
+      value: 
+      objectReference: {fileID: 988775661}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4496,6 +4512,14 @@ PrefabInstance:
       propertyPath: npcChatPanel
       value: 
       objectReference: {fileID: 2090104709}
+    - target: {fileID: 490426556958203193, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
+      propertyPath: chat.Array.data[0]
+      value: "Ng\xF4i L\xE0ng \u0111\xE3 b\u1ECB TR\u1EA7n Kim Kh\xE1nh x\xE2m chi\u1EBFm"
+      objectReference: {fileID: 0}
+    - target: {fileID: 490426556958203193, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
+      propertyPath: chat.Array.data[1]
+      value: "H\xE3y \u0111\u1EBFn ti\xEAu di\u1EC7t Kh\xE1nh "
+      objectReference: {fileID: 0}
     - target: {fileID: 4678511911317060857, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -96.818
@@ -5825,6 +5849,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 416096, guid: 2394d7d557201f048b00c84246231eb0, type: 3}
   m_PrefabInstance: {fileID: 1029805192}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &988775661 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6227873105082518770, guid: 39005132e1236c14386b3f06ced10eed, type: 3}
+  m_PrefabInstance: {fileID: 1593309273}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 140eeb445d932ed44bdc3b4c2b974cbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &989271376 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 0ee3f20eba7c1414a8508d1965a6706a, type: 3}
@@ -6200,6 +6235,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 416096, guid: 2394d7d557201f048b00c84246231eb0, type: 3}
   m_PrefabInstance: {fileID: 1620300537}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1082719825 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 490426556958203193, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
+  m_PrefabInstance: {fileID: 669009589}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95b7f4d3210598740a501cf47fcadd18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1082719826 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7626848599184003883, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
+  m_PrefabInstance: {fileID: 669009589}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8ac6696d3077004fbfd159d3659168d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1096252442 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 416096, guid: 2394d7d557201f048b00c84246231eb0, type: 3}
@@ -9393,10 +9450,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4270675981069784071, guid: 39005132e1236c14386b3f06ced10eed, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1221880954}
+    - target: {fileID: 4270675981069784071, guid: 39005132e1236c14386b3f06ced10eed, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1082719825}
+    - target: {fileID: 4270675981069784071, guid: 39005132e1236c14386b3f06ced10eed, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TakeQuest
+      objectReference: {fileID: 0}
+    - target: {fileID: 4270675981069784071, guid: 39005132e1236c14386b3f06ced10eed, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: HidePanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 4270675981069784071, guid: 39005132e1236c14386b3f06ced10eed, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1082719826}
     - target: {fileID: 4804135225193408530, guid: 39005132e1236c14386b3f06ced10eed, type: 3}
       propertyPath: m_Name
       value: Canvas NPC
       objectReference: {fileID: 0}
+    - target: {fileID: 6227873105082518770, guid: 39005132e1236c14386b3f06ced10eed, type: 3}
+      propertyPath: muiTen
+      value: 
+      objectReference: {fileID: 1945095217}
     - target: {fileID: 9028636971635123472, guid: 39005132e1236c14386b3f06ced10eed, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -9894,6 +9975,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 416096, guid: 2394d7d557201f048b00c84246231eb0, type: 3}
   m_PrefabInstance: {fileID: 1429102646}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1679525863 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 843429780957068190, guid: 39005132e1236c14386b3f06ced10eed, type: 3}
+  m_PrefabInstance: {fileID: 1593309273}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1688912864 stripped
 Transform:
@@ -11231,6 +11317,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1945095217 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8812875271673497228, guid: 39005132e1236c14386b3f06ced10eed, type: 3}
+  m_PrefabInstance: {fileID: 1593309273}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1946698584 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 416096, guid: 2394d7d557201f048b00c84246231eb0, type: 3}
@@ -11694,6 +11785,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2394d7d557201f048b00c84246231eb0, type: 3}
+--- !u!114 &1990257082 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 771941584408617108, guid: 39005132e1236c14386b3f06ced10eed, type: 3}
+  m_PrefabInstance: {fileID: 1593309273}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2002746997
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -31,7 +31,7 @@ public class CharacterMovement : MonoBehaviour
     float lastClickTime = 0;
     public float maxCombooDelay = 0.9f;
     public bool isAttacking = false;
-    bool hasSubStamina = false;
+    private bool hasSubStamina = false;
     public AtkCollider atkCollider;
 
     [Header("Status")]

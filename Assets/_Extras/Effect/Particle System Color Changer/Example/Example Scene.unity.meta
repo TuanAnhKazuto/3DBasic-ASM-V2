@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/_Extras/Effect/Particle System Color Changer/Example/Example Scene.unity.meta
 guid: a0c1edf9d4bdd764a9473d2b13822e71
+========
+guid: 89cfdbeb4307fc648a68a4527a82c87e
+folderAsset: yes
+>>>>>>>> 015c131 (Zom):Assets/_Scenes/hehe.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

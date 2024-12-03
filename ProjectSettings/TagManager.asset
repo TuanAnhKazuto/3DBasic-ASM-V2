@@ -13,6 +13,9 @@ TagManager:
   - Binh mau
   - PLAY
   - tele
+  - Golem
+  - Zombie
+  - ZomAtk
   layers:
   - Default
   - TransparentFX

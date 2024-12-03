@@ -62,4 +62,12 @@ public class PlayerHealth : MonoBehaviour
         Destroy(gameObject, 0.2f);
         
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("ZomAtk"))
+        {
+            TakeDamage(2);
+        }
+    }
 }

@@ -2,12 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Experimental.AI;
-using static UnityEditor.Rendering.InspectorCurveEditor;
 
 public class EnemyAI : MonoBehaviour
 {
-    public CharacterMovement character;
     public NavMeshAgent navMeshAgent;
     public Transform target;
 
@@ -28,7 +25,6 @@ public class EnemyAI : MonoBehaviour
 
     public EnemyState curState; // trạng thái hiện tại
 
-
     private void Start()
     {
         originalPos = transform.position;
@@ -38,42 +34,51 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-        // Khoảng cách từ vị trí hiện tại đến vị trí ban đầu
-        var distanceToOriginal = Vector3.Distance(originalPos,transform.position);
-        // Khoảng cách từ vị trí hiện tại đến vị trí mục tiêu
-
-        var distance = Vector3.Distance(target.position, transform.position);
-        if(distance <= radius && distanceToOriginal <= maxDistace)
+        if (target != null) // Kiểm tra nếu có mục tiêu
         {
-            // di chuyển đến mục tiêu
+            // Xoay mặt đối tượng về phía mục tiêu
+            var lookPos = target.position - transform.position;
+            lookPos.y = 0;
+            var rotation = Quaternion.LookRotation(lookPos);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 5);
+        }
+
+        if (curState == EnemyState.Die) // Nếu đang ở trạng thái chết, không thực hiện gì thêm
+        {
+            return;
+        }
+
+        // Khoảng cách từ vị trí hiện tại đến vị trí ban đầu
+        var distanceToOriginal = Vector3.Distance(originalPos, transform.position);
+
+        // Khoảng cách từ vị trí hiện tại đến vị trí mục tiêu
+        var distance = Vector3.Distance(target.position, transform.position);
+
+        if (distance <= radius && distanceToOriginal <= maxDistace) // Nếu mục tiêu trong phạm vi
+        {
+            // Di chuyển đến mục tiêu
             navMeshAgent.SetDestination(target.position);
             animator.SetFloat("Speed", navMeshAgent.velocity.magnitude);
 
-            distance = Vector3.Distance(target.position, transform.position);
-            if(distance <= 2f /*&& !character.onDead*/)
+            if (distance <= 2f) // Nếu đến gần mục tiêu, tấn công
             {
-                // Tấn công
                 ChangeState(EnemyState.Attack);
             }
         }
 
-        if(distance > radius || distanceToOriginal > maxDistace /*|| character.onDead*/)
+        if (distance > radius || distanceToOriginal > maxDistace) // Nếu mục tiêu ra ngoài phạm vi
         {
             // Quay về vị trí ban đầu
             navMeshAgent.SetDestination(originalPos);
 
-            // Chuyển sang trạng thái đứng yên
-            distance = Vector3.Distance(originalPos, transform.position);
-            if(distance < 1f)
+            // Chuyển sang trạng thái đứng yên khi về đến vị trí ban đầu
+            if (Vector3.Distance(originalPos, transform.position) < 1f)
             {
                 animator.SetFloat("Speed", 0);
             }
 
-            // Bình thường
             ChangeState(EnemyState.Normal);
         }
-
-        OnDead();
     }
 
     public void StartAttack()
@@ -88,7 +93,6 @@ public class EnemyAI : MonoBehaviour
 
     private void ChangeState(EnemyState newState)
     {
-        // B1: exit curState
         switch (curState)
         {
             case EnemyState.Normal:
@@ -99,7 +103,6 @@ public class EnemyAI : MonoBehaviour
                 break;
         }
 
-        // B2: enter newState
         switch (newState)
         {
             case EnemyState.Normal:
@@ -112,29 +115,29 @@ public class EnemyAI : MonoBehaviour
                 break;
         }
 
-        // B3: Update state
         curState = newState;
+    }
+
+    public void TakeDamage(int damageAmount)
+    {
+        curHp -= damageAmount;
+        if (curHp <= 0)
+        {
+            curHp = 0;
+            ChangeState(EnemyState.Die);
+            Debug.Log("Enemy đã chết!");
+        }
+        else
+        {
+            Debug.Log($"Enemy nhận {damageAmount} sát thương, máu còn lại: {curHp}");
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Sword")
+        if (other.gameObject.CompareTag("PlayerAtk"))
         {
-            curHp -= 30f;
+            TakeDamage(30);
         }
-    }
-
-    public void OnDead()
-    {
-        if(curHp <= 0)
-        {
-            curHp = 0;
-            ChangeState(EnemyState.Die);
-        }
-    }
-
-    public void Destroy()
-    {
-        Destroy(gameObject, 1f);
     }
 }

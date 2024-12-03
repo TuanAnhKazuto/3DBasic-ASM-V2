@@ -50,6 +50,9 @@ public class CharacterMovement : MonoBehaviour
 
     [Header("Effect")]
     public ParticleSystem slashExplosion;
+
+    [Header("Inventory")]
+    public Inventory inventory;
     #endregion
 
     #region Base Function
@@ -159,7 +162,7 @@ public class CharacterMovement : MonoBehaviour
     #region Attack
     void Attack()
     {
-        if (!canMove || isUserSkill) return;
+        if (!canMove || isUserSkill || inventory.isInventoryOpen) return;
         if (noOfClicks > 0)
         {
             isAttacking = true;

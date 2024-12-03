@@ -4,73 +4,41 @@ using UnityEngine;
 
 public class DamageZone : MonoBehaviour
 {
-    [Header("Damage Settings")]
-    public int damage = 10; // Sát thương gây ra mỗi đòn đánh
-    public Collider attackCollider; // Collider cho vùng tấn công
+    public Collider damageCollider; // Collider cho vùng sát thương
+    public int damageAmount = 20; // Số sát thương gây ra
 
-    private void Awake()
+    public string targetTag; // Tag của mục tiêu (ví dụ: "Enemy")
+    public List<Collider> collidersTargets = new List<Collider>(); // Danh sách các collider của mục tiêu
+
+    void Start()
     {
-        // Tự động tìm Collider nếu chưa gán
-        if (attackCollider == null)
+        damageCollider.enabled = false;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag(targetTag) && !collidersTargets.Contains(other))
         {
-            attackCollider = GetComponent<Collider>();
-            if (attackCollider != null)
+            collidersTargets.Add(other);
+            var enemyAI = other.GetComponent<EnemyAI>();
+            if (enemyAI != null)
             {
-                Debug.Log("Tự động gán Attack Collider.");
-            }
-            else
-            {
-                Debug.LogError("Không tìm thấy Collider! Vui lòng thêm Collider và bật Is Trigger.");
+                enemyAI.TakeDamage(damageAmount);
             }
         }
     }
 
-    /// <summary>
-    /// Bật vùng sát thương.
-    /// </summary>
     public void BeginAttack()
     {
-        if (attackCollider != null)
-        {
-            attackCollider.enabled = true; // Bật vùng sát thương
-            Debug.Log("Bắt đầu tấn công!");
-        }
-        else
-        {
-            Debug.LogWarning("Attack Collider chưa được gán! Vui lòng gán trong Inspector.");
-        }
+        collidersTargets.Clear();
+        damageCollider.enabled = true;
+        Debug.Log("Bắt đầu tấn công!");
     }
 
-    /// <summary>
-    /// Tắt vùng sát thương.
-    /// </summary>
     public void EndAttack()
     {
-        if (attackCollider != null)
-        {
-            attackCollider.enabled = false; // Tắt vùng sát thương
-            Debug.Log("Kết thúc tấn công!");
-        }
-        else
-        {
-            Debug.LogWarning("Attack Collider chưa được gán! Vui lòng gán trong Inspector.");
-        }
-    }
-
-    /// <summary>
-    /// Xử lý va chạm với đối tượng trong vùng sát thương.
-    /// </summary>
-    /// <param name="other">Đối tượng va chạm.</param>
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player")) // Kiểm tra Tag của đối tượng
-        {
-            Health playerHealth = other.GetComponent<Health>();
-            if (playerHealth != null)
-            {
-                playerHealth.TakeDamage(damage); // Gây sát thương
-                Debug.Log($"Gây sát thương {damage} cho {other.name}.");
-            }
-        }
+        collidersTargets.Clear();
+        damageCollider.enabled = false;
+        Debug.Log("Kết thúc tấn công!");
     }
 }

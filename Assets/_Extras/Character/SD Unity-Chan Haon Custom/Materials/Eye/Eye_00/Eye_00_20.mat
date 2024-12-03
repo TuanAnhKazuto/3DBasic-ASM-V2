@@ -2,39 +2,23 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 8
+  serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Eye_00_20
   m_Shader: {fileID: 4800000, guid: af8454e09b3a41448a4140e792059446, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
-  - _EMISSIVE_SIMPLE
-  m_InvalidKeywords:
-  - _
-  - _INVERSE_Z_AXIS_BLD_ON
-  - _IS_BLENDADDTOMATCAP_ON
-  - _IS_FILTER_HICUTPOINTLIGHTCOLOR_ON
-  - _IS_LIGHTCOLOR_1ST_SHADE_ON
-  - _IS_LIGHTCOLOR_2ND_SHADE_ON
-  - _IS_LIGHTCOLOR_AP_RIMLIGHT_ON
-  - _IS_LIGHTCOLOR_HIGHCOLOR_ON
-  - _IS_LIGHTCOLOR_MATCAP_ON
-  - _IS_LIGHTCOLOR_RIMLIGHT_ON
-  - _OUTLINE_NML
-  - _SET_SYSTEMSHADOWSTOBASE_ON
-  - _USE_1STAS2ND_ON
-  - _USE_BASEAS1ST_ON
+  m_ShaderKeywords: _INVERSE_Z_AXIS_BLD_ON _IS_BLENDADDTOMATCAP_ON _IS_FILTER_HICUTPOINTLIGHTCOLOR_ON
+    _IS_LIGHTCOLOR_1ST_SHADE_ON _IS_LIGHTCOLOR_2ND_SHADE_ON _IS_LIGHTCOLOR_AP_RIMLIGHT_ON
+    _IS_LIGHTCOLOR_HIGHCOLOR_ON _IS_LIGHTCOLOR_MATCAP_ON _IS_LIGHTCOLOR_RIMLIGHT_ON
+    _OUTLINE_NML _SET_SYSTEMSHADOWSTOBASE_ON _USE_1STAS2ND_ON _USE_BASEAS1ST_ON
   m_LightmapFlags: 5
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
-  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -142,7 +126,6 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    m_Ints: []
     m_Floats:
     - _1st2nd_Shades_Feather: 0.0001
     - _1st_ShadeColor_Feather: 0.58
@@ -152,8 +135,8 @@ Material:
     - _Add_Antipodean_RimLight: 0
     - _Ap_RimLight_FeatherOff: 0
     - _Ap_RimLight_Power: 0.1
-    - _BaseColor_Step: 0.258
-    - _BaseShade_Feather: 0.58
+    - _BaseColor_Step: 0.222
+    - _BaseShade_Feather: 0.464
     - _Base_Speed: 0
     - _BlurLevelMatcap: 0
     - _BlurLevelSGM: 0
@@ -246,7 +229,7 @@ Material:
     - _2nd_ShadeColor: {r: 0.6603774, g: 0.6603774, b: 0.6603774, a: 1}
     - _Ap_RimLightColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.7647059, g: 0.7647059, b: 0.7647059, a: 1}
     - _ColorShift: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Emissive_Color: {r: 0, g: 0, b: 0, a: 1}

@@ -11101,7 +11101,8 @@ GameObject:
   - component: {fileID: 5183778606994109616}
   - component: {fileID: 1363348566145625103}
   - component: {fileID: 9142399540226433293}
-  - component: {fileID: 3707448805490640638}
+  - component: {fileID: 487829426458689262}
+  - component: {fileID: 6034125119933339316}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -11162,6 +11163,7 @@ MonoBehaviour:
   countReturn: 0
   sound: {fileID: 3736212959586043281}
   slashExplosion: {fileID: 2003703856307830296}
+  inventory: {fileID: 487829426458689262}
 --- !u!114 &6961835310550437778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11196,7 +11198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxAttack: {fileID: 15648974027065280}
   sound: {fileID: 3736212959586043281}
-  player: {fileID: 0}
+  player: {fileID: 5183778606994109616}
 --- !u!95 &7037141486192420414
 Animator:
   serializedVersion: 5
@@ -11251,7 +11253,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9119571945475001888}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 140eeb445d932ed44bdc3b4c2b974cbd, type: 3}
   m_Name: 
@@ -11273,19 +11275,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questItems: []
   playerQuestPanel: {fileID: 0}
---- !u!114 &3707448805490640638
+--- !u!114 &487829426458689262
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9119571945475001888}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 250250178be188f428e93c0926fa8ecb, type: 3}
+  m_Script: {fileID: 11500000, guid: 28cdaadac566e244ea964ba5c12d0640, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryUI: {fileID: 0}
+  freeLookCamera: {fileID: 0}
+  isInventoryOpen: 0
+--- !u!114 &6034125119933339316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9119571945475001888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf50fdbb8ccc3af4cb8b6a03c35ffcad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items: []
 --- !u!1 &9148358490405166817
 GameObject:
   m_ObjectHideFlags: 0

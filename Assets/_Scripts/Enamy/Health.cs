@@ -2,28 +2,15 @@
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private float maxHealth = 100f;
+    private float maxHealth = 100f;
     private float currentHealth;
 
     public float CurrentHealth => currentHealth;
 
-    private void Start()
+    public virtual void TakeDamage(float damage)
     {
-        currentHealth = maxHealth;
-    }
+        currentHealth -= damage;
+        currentHealth = Mathf.Max(0, currentHealth);
 
-    public void TakeDamage(float amount)
-    {
-        currentHealth -= amount;
-        Debug.Log($"Máu hiện tại: {currentHealth}");
-        if (currentHealth <= 0)
-        {
-            Die();
-        }
-    }
-
-    private void Die()
-    {
-        Debug.Log("Đối tượng đã chết!");
     }
 }

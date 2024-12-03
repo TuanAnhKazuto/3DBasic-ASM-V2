@@ -1,7 +1,17 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/_Extras/Character/SD Unity-Chan Haon Custom/Scenes/_Guide/0 License Guide.unity.meta
 guid: a7ffcd95e1f13ae40b6ee75b3ddbca84
+========
+<<<<<<<< HEAD:Assets/_Extras/Effect/Particle System Color Changer/README.pdf.meta
+guid: d8526dd85e6dfc049b69087d36c9c7f8
+>>>>>>>> 84ad6db2559237bdb61267cfab29420067688013:Assets/_Extras/Effect/Particle System Color Changer/README.pdf.meta
 DefaultImporter:
+========
+guid: 757cb30f884fb6742a64a7e3d9300ade
+NativeFormatImporter:
+>>>>>>>> 015c131 (Zom):Assets/_Scenes/hehe/NavMesh-NavMesh Surface.asset.meta
   externalObjects: {}
+  mainObjectFileID: 23800000
   userData: 
   assetBundleName: 
   assetBundleVariant: 

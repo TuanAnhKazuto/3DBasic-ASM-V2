@@ -13,6 +13,7 @@ public class CharacterMovement : MonoBehaviour
     #region Variable
     public CharacterController controller;
     public Animator animator;
+    public SceneSwitcher tele;
 
     public Transform cam;
     public float speed = 3f;
@@ -62,10 +63,12 @@ public class CharacterMovement : MonoBehaviour
         curStamina = maxStm;
         staminaSlider.value = curStamina;
         isUserSkill = false;
+        Time.timeScale = 1.0f;
     }
 
     private void FixedUpdate()
     {
+        
         switch (curState)
         {
             case CharState.Normal:
@@ -79,11 +82,21 @@ public class CharacterMovement : MonoBehaviour
 
     private void Update()
     {
-        Attack();
-        SkillControler();
-        RecoveryStamina();
-        SubStaminaWhenRun();
-        SoundControler();
+        if (!tele.isLoadScene)
+        {
+            Attack();
+            SkillControler();
+            RecoveryStamina();
+            SubStaminaWhenRun();
+            SoundControler();
+        }
+        else
+        {
+            sound.soundAttack01.Stop();
+            sound.soundAttack02.Stop();
+            sound.soundWalk.Stop();
+            sound.soundRunning.Stop();
+        }
     }
     #endregion
     private void Movement()

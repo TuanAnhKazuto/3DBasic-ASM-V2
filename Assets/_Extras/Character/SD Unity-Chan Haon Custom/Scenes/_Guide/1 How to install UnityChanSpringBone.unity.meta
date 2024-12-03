@@ -1,5 +1,14 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/_Extras/Character/SD Unity-Chan Haon Custom/Scenes/_Guide/1 How to install UnityChanSpringBone.unity.meta
 guid: 822b00a42a6913343bc2073bee5dc4f0
+========
+<<<<<<<< HEAD:Assets/_Extras/Effect/Particle System Color Changer/Example/Example Scene.unity.meta
+guid: 1fa8fbb5643551349a3a560795bd3d92
+========
+guid: 89cfdbeb4307fc648a68a4527a82c87e
+folderAsset: yes
+>>>>>>>> 015c131 (Zom):Assets/_Scenes/hehe.meta
+>>>>>>>> 964872c3911551bc1e10552c3ab0cd04495032cb:Assets/_Extras/Effect/Particle System Color Changer/Example/Example Scene.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

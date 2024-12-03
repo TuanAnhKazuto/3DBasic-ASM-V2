@@ -1,7 +1,17 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/_Extras/Character/SD Unity-Chan Haon Custom/Scenes/_Guide/2 Face Blenshape and Node Mask Guide.unity.meta
 guid: 43628ad1de059ef4790f23fb7cf41058
+========
+<<<<<<<< HEAD:Assets/_Extras/Effect/Particle System Color Changer/README.pdf.meta
+guid: 31396dc45455c9041b34908c8de43d9a
+>>>>>>>> 964872c3911551bc1e10552c3ab0cd04495032cb:Assets/_Extras/Effect/Particle System Color Changer/README.pdf.meta
 DefaultImporter:
+========
+guid: 757cb30f884fb6742a64a7e3d9300ade
+NativeFormatImporter:
+>>>>>>>> 015c131 (Zom):Assets/_Scenes/hehe/NavMesh-NavMesh Surface.asset.meta
   externalObjects: {}
+  mainObjectFileID: 23800000
   userData: 
   assetBundleName: 
   assetBundleVariant: 

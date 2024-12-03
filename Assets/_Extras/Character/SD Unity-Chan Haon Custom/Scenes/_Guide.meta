@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/_Extras/Character/SD Unity-Chan Haon Custom/Scenes/_Guide.meta
 guid: 588efb1cb8d1a9d4b9a1599a52d921fd
+========
+guid: 3b11004d81a167a488c08443a43d37a4
+>>>>>>>> 964872c3911551bc1e10552c3ab0cd04495032cb:Assets/_Extras/Effect/Hovl Studio.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

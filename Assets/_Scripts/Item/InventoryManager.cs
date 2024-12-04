@@ -33,7 +33,7 @@ public class InventoryManager : MonoBehaviour
     {
         foreach (Transform item in itemContentPane)
         {
-            Destroy(item);
+            Destroy(item.gameObject);
         }
 
         foreach (Item item in items)
@@ -41,6 +41,7 @@ public class InventoryManager : MonoBehaviour
             GameObject obj = Instantiate(itemPrefab, itemContentPane);
             var itemImager = obj.transform.Find("Image").GetComponent<Image>();
             itemImager.sprite = item.inmage;
+            Debug.Log("add item done");
         }
     }
 

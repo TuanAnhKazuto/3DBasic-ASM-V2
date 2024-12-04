@@ -2158,15 +2158,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3538633568081349428, guid: 7798d5e850d73944fa07f6ad2d784ef2, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.1841239
+      value: 0.18412392
       objectReference: {fileID: 0}
     - target: {fileID: 3538633568081349428, guid: 7798d5e850d73944fa07f6ad2d784ef2, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.12840806
+      value: -0.12840813
       objectReference: {fileID: 0}
     - target: {fileID: 3538633568081349428, guid: 7798d5e850d73944fa07f6ad2d784ef2, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.024269708
+      value: 0.024269724
       objectReference: {fileID: 0}
     - target: {fileID: 3538633568081349428, guid: 7798d5e850d73944fa07f6ad2d784ef2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4853,11 +4853,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4389679935202778997, guid: 66ce708da2aefc041aaaa32814f41895, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.12840809
+      value: -0.12840813
       objectReference: {fileID: 0}
     - target: {fileID: 4389679935202778997, guid: 66ce708da2aefc041aaaa32814f41895, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.024269715
+      value: 0.024269722
       objectReference: {fileID: 0}
     - target: {fileID: 5192802593820143204, guid: 66ce708da2aefc041aaaa32814f41895, type: 3}
       propertyPath: m_Follow
@@ -9806,6 +9806,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -100
       objectReference: {fileID: 0}
+    - target: {fileID: 9067381238109003657, guid: 39005132e1236c14386b3f06ced10eed, type: 3}
+      propertyPath: m_Name
+      value: Item
+      objectReference: {fileID: 0}
     - target: {fileID: 9067381238170024266, guid: 39005132e1236c14386b3f06ced10eed, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -9836,7 +9840,7 @@ PrefabInstance:
     - {fileID: 9067381238013490343, guid: 39005132e1236c14386b3f06ced10eed, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 9067381238109003654, guid: 39005132e1236c14386b3f06ced10eed, type: 3}
-      insertIndex: -1
+      insertIndex: 0
       addedObject: {fileID: 984055021}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39005132e1236c14386b3f06ced10eed, type: 3}
@@ -18752,7 +18756,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.6664, y: 11.347}
+  m_AnchoredPosition: {x: 1.6664, y: 4.2}
   m_SizeDelta: {x: 163.3331, y: 146.301}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &984055022

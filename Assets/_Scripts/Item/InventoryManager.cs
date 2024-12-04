@@ -31,10 +31,10 @@ public class InventoryManager : MonoBehaviour
 
     public void DisplayInventory()
     {
-        foreach (Transform item in itemContentPane)
-        {
-            Destroy(item);
-        }
+        //foreach (Transform item in itemContentPane)
+        //{
+        //    Destroy(item);
+        //}
 
         foreach (Item item in items)
         {

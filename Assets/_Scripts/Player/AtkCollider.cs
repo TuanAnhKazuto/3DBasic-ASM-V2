@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class AtkCollider : MonoBehaviour
 {
-    public GameObject boxAttack;
+    public BoxCollider boxAttack;
     public PlayerSound sound;
     public CharacterController player;
     private void Awake()
     {
-        boxAttack.SetActive(false);
+        boxAttack.enabled = false;
     }
     public void OnAtkCollider()
     {
-        boxAttack.SetActive(true);
+        boxAttack.enabled = true;
         sound.soundAttack01.Play();
     }
 
     public void OffAtkCollider()
     {
-        boxAttack.SetActive(false);
+        boxAttack.enabled = false;
         sound.soundAttack01.Stop();
     }
 }

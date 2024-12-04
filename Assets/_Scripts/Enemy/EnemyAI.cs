@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyAI : MonoBehaviour
+public class EnemyAI : Health
 {
     public NavMeshAgent navMeshAgent;
     public Transform target;
@@ -13,9 +13,6 @@ public class EnemyAI : MonoBehaviour
     public float maxDistace = 50f;
 
     public Animator animator;
-
-    public float curHp;
-    private float maxHp = 100f;
 
     public GameObject atkCollider;
 
@@ -28,7 +25,6 @@ public class EnemyAI : MonoBehaviour
     private void Start()
     {
         originalPos = transform.position;
-        curHp = maxHp;
         atkCollider.SetActive(false);
     }
 
@@ -41,6 +37,10 @@ public class EnemyAI : MonoBehaviour
             lookPos.y = 0;
             var rotation = Quaternion.LookRotation(lookPos);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 5);
+        }
+        else
+        {
+            return;
         }
 
         if (curState == EnemyState.Die) // Nếu đang ở trạng thái chết, không thực hiện gì thêm
@@ -79,6 +79,8 @@ public class EnemyAI : MonoBehaviour
 
             ChangeState(EnemyState.Normal);
         }
+
+        Death();
     }
 
     public void StartAttack()
@@ -112,24 +114,20 @@ public class EnemyAI : MonoBehaviour
                 break;
             case EnemyState.Die:
                 animator.SetTrigger("Die");
+                Destroy(gameObject, 1.5f);
                 break;
         }
 
         curState = newState;
     }
 
-    public void TakeDamage(int damageAmount)
+    private void Death()
     {
-        curHp -= damageAmount;
-        if (curHp <= 0)
+        if(currentHealth <= 0)
         {
-            curHp = 0;
+            currentHealth = 0;
             ChangeState(EnemyState.Die);
-            Debug.Log("Enemy đã chết!");
-        }
-        else
-        {
-            Debug.Log($"Enemy nhận {damageAmount} sát thương, máu còn lại: {curHp}");
+            Debug.Log("Is die");
         }
     }
 
@@ -137,7 +135,8 @@ public class EnemyAI : MonoBehaviour
     {
         if (other.gameObject.CompareTag("PlayerAtk"))
         {
-            TakeDamage(30);
+            TakeDamage(20);
+            Debug.Log(currentHealth);
         }
     }
 }

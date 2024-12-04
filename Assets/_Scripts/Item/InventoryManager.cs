@@ -31,16 +31,17 @@ public class InventoryManager : MonoBehaviour
 
     public void DisplayInventory()
     {
-        //foreach (Transform item in itemContentPane)
-        //{
-        //    Destroy(item);
-        //}
+        foreach (Transform item in itemContentPane)
+        {
+            Destroy(item.gameObject);
+        }
 
         foreach (Item item in items)
         {
             GameObject obj = Instantiate(itemPrefab, itemContentPane);
             var itemImager = obj.transform.Find("Image").GetComponent<Image>();
             itemImager.sprite = item.inmage;
+            Debug.Log("add item done");
         }
     }
 

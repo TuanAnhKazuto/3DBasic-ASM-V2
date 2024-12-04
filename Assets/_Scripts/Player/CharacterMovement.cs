@@ -13,7 +13,6 @@ public class CharacterMovement : MonoBehaviour
     #region Variable
     public CharacterController controller;
     public Animator animator;
-    public SceneSwitcher tele;
 
     public Transform cam;
     public float speed = 3f;
@@ -82,21 +81,11 @@ public class CharacterMovement : MonoBehaviour
 
     private void Update()
     {
-        if (!tele.isLoadScene)
-        {
-            Attack();
-            SkillControler();
-            RecoveryStamina();
-            SubStaminaWhenRun();
-            SoundControler();
-        }
-        else
-        {
-            sound.soundAttack01.Stop();
-            sound.soundAttack02.Stop();
-            sound.soundWalk.Stop();
-            sound.soundRunning.Stop();
-        }
+        Attack();
+        SkillControler();
+        RecoveryStamina();
+        SubStaminaWhenRun();
+        SoundControler();
     }
     #endregion
     private void Movement()

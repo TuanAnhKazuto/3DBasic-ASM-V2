@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class EnemyAI : Health
 {
     public NavMeshAgent navMeshAgent;
     public Transform target;
+    public Slider hpSlider;
 
     public float radius = 10f;
     public Vector3 originalPos;
@@ -25,11 +27,13 @@ public class EnemyAI : Health
     private void Start()
     {
         originalPos = transform.position;
+        hpSlider.value = currentHealth;
         atkCollider.SetActive(false);
     }
 
     private void Update()
     {
+
         if (target != null) // Kiểm tra nếu có mục tiêu
         {
             // Xoay mặt đối tượng về phía mục tiêu
@@ -115,6 +119,7 @@ public class EnemyAI : Health
             case EnemyState.Die:
                 animator.SetTrigger("Die");
                 Destroy(gameObject, 1.8f);
+                Vector3 isDeathPos = new(0, transform.position.y, 0);
                 break;
         }
 
@@ -135,8 +140,8 @@ public class EnemyAI : Health
     {
         if (other.gameObject.CompareTag("PlayerAtk"))
         {
-            TakeDamage(20);
-            Debug.Log(currentHealth);
+            TakeDamage(30);
+            hpSlider.value = currentHealth;
         }
     }
 }

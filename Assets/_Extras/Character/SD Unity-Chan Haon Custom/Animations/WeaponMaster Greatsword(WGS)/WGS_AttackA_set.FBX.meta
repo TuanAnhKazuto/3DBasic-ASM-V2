@@ -2024,15 +2024,15 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.9757282
-        functionName: OffAtkCollider
+      - time: 0.36363637
+        functionName: OnAtkCollider
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0
-        functionName: OnAtkCollider
+      - time: 0.9757282
+        functionName: OffAtkCollider
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

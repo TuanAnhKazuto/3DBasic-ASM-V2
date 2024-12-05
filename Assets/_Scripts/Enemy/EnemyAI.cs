@@ -114,7 +114,7 @@ public class EnemyAI : Health
                 break;
             case EnemyState.Die:
                 animator.SetTrigger("Die");
-                Destroy(gameObject, 1.5f);
+                Destroy(gameObject, 1.8f);
                 break;
         }
 

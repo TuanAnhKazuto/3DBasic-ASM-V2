@@ -235,10 +235,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zombie
       objectReference: {fileID: 0}
-    - target: {fileID: 3940233897926065031, guid: 19912f0d35adf81478c3f775a7db95cc, type: 3}
-      propertyPath: m_TagString
-      value: Zombie
-      objectReference: {fileID: 0}
     - target: {fileID: 4286971977112469908, guid: 19912f0d35adf81478c3f775a7db95cc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 560.7
@@ -292,9 +288,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9047361030105734056, guid: 19912f0d35adf81478c3f775a7db95cc, type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 5189784866513711470}
+      propertyPath: radius
+      value: 20
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -730,7 +726,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9070518563686442050, guid: 66ce708da2aefc041aaaa32814f41895, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.1388101
+      value: 0.13881008
       objectReference: {fileID: 0}
     - target: {fileID: 9070518563686442050, guid: 66ce708da2aefc041aaaa32814f41895, type: 3}
       propertyPath: m_LocalRotation.y
@@ -738,7 +734,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9070518563686442050, guid: 66ce708da2aefc041aaaa32814f41895, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0943859
+      value: -0.094385885
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1056,6 +1052,14 @@ PrefabInstance:
       propertyPath: freeLookCamera
       value: 
       objectReference: {fileID: 70350416}
+    - target: {fileID: 1640953173748838174, guid: c7168ae6f3920664fbf002abdc97ae12, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.2696514
+      objectReference: {fileID: 0}
+    - target: {fileID: 1640953173748838174, guid: c7168ae6f3920664fbf002abdc97ae12, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.404
+      objectReference: {fileID: 0}
     - target: {fileID: 3464592753947730340, guid: c7168ae6f3920664fbf002abdc97ae12, type: 3}
       propertyPath: m_LocalPosition.x
       value: 586.43115

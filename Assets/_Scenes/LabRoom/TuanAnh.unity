@@ -235,17 +235,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zombie
       objectReference: {fileID: 0}
+    - target: {fileID: 3940233897926065031, guid: 19912f0d35adf81478c3f775a7db95cc, type: 3}
+      propertyPath: m_TagString
+      value: Zombie
+      objectReference: {fileID: 0}
     - target: {fileID: 4286971977112469908, guid: 19912f0d35adf81478c3f775a7db95cc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 587.75946
+      value: 560.7
       objectReference: {fileID: 0}
     - target: {fileID: 4286971977112469908, guid: 19912f0d35adf81478c3f775a7db95cc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0000038146973
+      value: 0.77
       objectReference: {fileID: 0}
     - target: {fileID: 4286971977112469908, guid: 19912f0d35adf81478c3f775a7db95cc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 238.43141
+      value: 240.81
       objectReference: {fileID: 0}
     - target: {fileID: 4286971977112469908, guid: 19912f0d35adf81478c3f775a7db95cc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -697,6 +701,10 @@ PrefabInstance:
       value: -7.57
       objectReference: {fileID: 0}
     - target: {fileID: 8893644469198766273, guid: 66ce708da2aefc041aaaa32814f41895, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893644469198766273, guid: 66ce708da2aefc041aaaa32814f41895, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
@@ -706,7 +714,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8893644469198766273, guid: 66ce708da2aefc041aaaa32814f41895, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.16833085
+      value: 0.16833083
       objectReference: {fileID: 0}
     - target: {fileID: 8893644469198766273, guid: 66ce708da2aefc041aaaa32814f41895, type: 3}
       propertyPath: m_LocalRotation.y
@@ -714,7 +722,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8893644469198766273, guid: 66ce708da2aefc041aaaa32814f41895, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.11445895
+      value: -0.114458956
       objectReference: {fileID: 0}
     - target: {fileID: 9070518563686442050, guid: 66ce708da2aefc041aaaa32814f41895, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1103,6 +1111,10 @@ PrefabInstance:
     - target: {fileID: 9119571945475001888, guid: c7168ae6f3920664fbf002abdc97ae12, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 9119571945475001888, guid: c7168ae6f3920664fbf002abdc97ae12, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9142399540226433293, guid: c7168ae6f3920664fbf002abdc97ae12, type: 3}
       propertyPath: playerQuestPanel

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Timeline.Actions;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -7,7 +8,7 @@ using UnityEngine.UI;
 public class EnemyAI : Health
 {
     public NavMeshAgent navMeshAgent;
-    public Transform target;
+    [HideInInspector] public Transform playerTranform;
     public Slider hpSlider;
 
     public float radius = 10f;
@@ -26,18 +27,20 @@ public class EnemyAI : Health
 
     private void Start()
     {
+        GameObject playerObj = GameObject.FindWithTag("Player");
         originalPos = transform.position;
         hpSlider.value = currentHealth;
         atkCollider.SetActive(false);
+        playerTranform = playerObj.GetComponent<Transform>();
     }
 
     private void Update()
     {
 
-        if (target != null) // Kiểm tra nếu có mục tiêu
+        if (playerTranform != null) // Kiểm tra nếu có mục tiêu
         {
             // Xoay mặt đối tượng về phía mục tiêu
-            var lookPos = target.position - transform.position;
+            var lookPos = playerTranform.position - transform.position;
             lookPos.y = 0;
             var rotation = Quaternion.LookRotation(lookPos);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 5);
@@ -56,12 +59,12 @@ public class EnemyAI : Health
         var distanceToOriginal = Vector3.Distance(originalPos, transform.position);
 
         // Khoảng cách từ vị trí hiện tại đến vị trí mục tiêu
-        var distance = Vector3.Distance(target.position, transform.position);
+        var distance = Vector3.Distance(playerTranform.position, transform.position);
 
         if (distance <= radius && distanceToOriginal <= maxDistace) // Nếu mục tiêu trong phạm vi
         {
             // Di chuyển đến mục tiêu
-            navMeshAgent.SetDestination(target.position);
+            navMeshAgent.SetDestination(playerTranform.position);
             animator.SetFloat("Speed", navMeshAgent.velocity.magnitude);
 
             if (distance <= 2f) // Nếu đến gần mục tiêu, tấn công

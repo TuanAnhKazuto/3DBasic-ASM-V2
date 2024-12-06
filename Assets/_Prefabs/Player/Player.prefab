@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1640953173748838174}
+  - component: {fileID: 6756580604871199162}
   m_Layer: 0
   m_Name: BoxAttack
   m_TagString: PlayerAtk
@@ -24,13 +25,34 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 15648974027065280}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.010255574, y: -0.010733365, z: -0.94252783, w: -0.33379775}
-  m_LocalPosition: {x: 0.2467041, y: 0.453211, z: -0.043640137}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.602, z: 0.644}
+  m_LocalScale: {x: 1.8421, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3464592753947730340}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6756580604871199162
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 15648974027065280}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.9999996, y: 1.0935091, z: 1.1692047}
+  m_Center: {x: 0, y: 0.04675454, z: 0.084602356}
 --- !u!1 &34617672858808996
 GameObject:
   m_ObjectHideFlags: 0
@@ -3848,7 +3870,7 @@ Transform:
   m_GameObject: {fileID: 5552229629148196792}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.465, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3874,7 +3896,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 0.51971436
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -11008,7 +11030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9acd52d9d51538c40b88fd6f090154df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boxAttack: {fileID: 0}
+  boxAttack: {fileID: 6756580604871199162}
   sound: {fileID: 3736212959586043281}
   player: {fileID: 5183778606994109616}
 --- !u!95 &7037141486192420414

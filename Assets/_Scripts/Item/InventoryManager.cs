@@ -18,6 +18,7 @@ public class InventoryManager : MonoBehaviour
         if (Instance != null || Instance != this)
         {
             Destroy(Instance);
+            //return;
         }    
 
         Instance = this;
@@ -41,6 +42,7 @@ public class InventoryManager : MonoBehaviour
             GameObject obj = Instantiate(itemPrefab, itemContentPane);
             var itemImager = obj.transform.Find("Image").GetComponent<Image>();
             itemImager.sprite = item.inmage;
+
             Debug.Log("add item done");
         }
     }

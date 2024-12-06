@@ -45,6 +45,9 @@ public class UIManager : MonoBehaviour
     //    gameOverPanel.SetActive(false);
     //    StartCoroutine(LoadReplayLevel());
     //}
+
+    
+
     IEnumerator LoadNextLevel()
     {
         var value = 1f;
@@ -68,7 +71,7 @@ public class UIManager : MonoBehaviour
         {
             nextIndex = 0;
         }
-        SceneManager.LoadScene(nextIndex);
+        SceneManager.LoadSceneAsync(nextIndex);
     }
     IEnumerator LoadMainMenu()
     {

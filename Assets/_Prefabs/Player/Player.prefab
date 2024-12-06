@@ -11030,7 +11030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9acd52d9d51538c40b88fd6f090154df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boxAttack: {fileID: 15648974027065280}
+  boxAttack: {fileID: 1916089939728990384}
   sound: {fileID: 3736212959586043281}
   player: {fileID: 5183778606994109616}
 --- !u!95 &7037141486192420414

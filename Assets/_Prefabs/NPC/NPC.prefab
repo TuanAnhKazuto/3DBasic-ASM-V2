@@ -4942,7 +4942,7 @@ GameObject:
   - component: {fileID: 7626848599184003883}
   m_Layer: 0
   m_Name: NPC
-  m_TagString: Untagged
+  m_TagString: Acction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5025,8 +5025,11 @@ MonoBehaviour:
   isChating: 0
   maxline: 3
   chat:
-  - aaaaaaaaaaaaaaaaaaaaaa
-  - uuuuuuuuuuuuuuuuuuuuuuuuu
+  - "\u0110\u1EBFn ng\xF4i l\xE0ng \u0111\xE3 b\u1ECB TR\u1EA7n Kim Kh\xE1nh x\xE2m
+    chi\u1EBFm"
+  - "H\xE3y \u0111\u1EBFn ti\xEAu di\u1EC7t Kh\xE1nh "
+  - "H\xE3y \u0111\u1EBFn C\u1ED5ng d\u1ECBch chuy\u1EC3n"
+  - "D\xE0nh l\u1EA1i ng\xF4i l\xE0ng "
   questItem: {fileID: 7626848599184003883}
   PlayerQuests: {fileID: 0}
 --- !u!114 &7626848599184003883
@@ -5041,10 +5044,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8ac6696d3077004fbfd159d3659168d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  QuetsItemName: "Ti\xEAu Di\u1EC7t 5 Th\u1EB1ng Kh\xE1nh"
-  questTargetAmount: 5
+  QuetsItemName: "Ti\xEAu Di\u1EC7t 5 To\xE0n b\u1ED9 qu\xE1i v\u1EADt"
+  questTargetAmount: 100
   currentAmount: 0
-  TargetItemtag: "Kh\xE1nh"
+  TargetItemtag: Zombie
 --- !u!1 &8582717948120093362
 GameObject:
   m_ObjectHideFlags: 0

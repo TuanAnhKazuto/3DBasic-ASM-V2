@@ -18,25 +18,32 @@ public class EnemyAI : Health
 
     public GameObject atkCollider;
 
+    // Vật phẩm rơi ra khi quái chết
+    public GameObject itemPrefab;
+
     // state machine
     public enum EnemyState
     { Normal, Attack, Die }
 
     public EnemyState curState; // trạng thái hiện tại
 
+    public Vector3 moveAreaMin; // Corner 1 của khu vực di chuyển
+    public Vector3 moveAreaMax; // Corner 2 của khu vực di chuyển
+
     private void Start()
     {
         originalPos = transform.position;
         hpSlider.value = currentHealth;
         atkCollider.SetActive(false);
+
+        // Bắt đầu di chuyển trong khu vực nhỏ
+        StartCoroutine(MoveRandomly());
     }
 
     private void Update()
     {
-
-        if (target != null) // Kiểm tra nếu có mục tiêu
+        if (target != null)
         {
-            // Xoay mặt đối tượng về phía mục tiêu
             var lookPos = target.position - transform.position;
             lookPos.y = 0;
             var rotation = Quaternion.LookRotation(lookPos);
@@ -47,44 +54,50 @@ public class EnemyAI : Health
             return;
         }
 
-        if (curState == EnemyState.Die) // Nếu đang ở trạng thái chết, không thực hiện gì thêm
+        if (curState == EnemyState.Die)
         {
             return;
         }
 
-        // Khoảng cách từ vị trí hiện tại đến vị trí ban đầu
         var distanceToOriginal = Vector3.Distance(originalPos, transform.position);
-
-        // Khoảng cách từ vị trí hiện tại đến vị trí mục tiêu
         var distance = Vector3.Distance(target.position, transform.position);
 
-        if (distance <= radius && distanceToOriginal <= maxDistace) // Nếu mục tiêu trong phạm vi
+        // Nếu Player ở trong phạm vi phát hiện, lao đến tấn công
+        if (distance <= radius)
         {
-            // Di chuyển đến mục tiêu
             navMeshAgent.SetDestination(target.position);
-            animator.SetFloat("Speed", navMeshAgent.velocity.magnitude);
+            animator.SetFloat("Speed", navMeshAgent.velocity.magnitude); // Điều chỉnh tốc độ animation
 
-            if (distance <= 2f) // Nếu đến gần mục tiêu, tấn công
+            if (distance <= 2f)
             {
                 ChangeState(EnemyState.Attack);
             }
         }
-
-        if (distance > radius || distanceToOriginal > maxDistace) // Nếu mục tiêu ra ngoài phạm vi
+        else
         {
-            // Quay về vị trí ban đầu
-            navMeshAgent.SetDestination(originalPos);
-
-            // Chuyển sang trạng thái đứng yên khi về đến vị trí ban đầu
-            if (Vector3.Distance(originalPos, transform.position) < 1f)
-            {
-                animator.SetFloat("Speed", 0);
-            }
-
+            // Nếu không phát hiện Player, tiếp tục di chuyển ngẫu nhiên trong khu vực nhỏ
+            animator.SetFloat("Speed", navMeshAgent.velocity.magnitude); // Điều chỉnh tốc độ animation
             ChangeState(EnemyState.Normal);
         }
 
+        // Handle Death
         Death();
+    }
+
+    private IEnumerator MoveRandomly()
+    {
+        while (curState != EnemyState.Die)
+        {
+            Vector3 randomPos = new Vector3(
+                Random.Range(moveAreaMin.x, moveAreaMax.x),
+                transform.position.y, // Giữ chiều cao của zombie
+                Random.Range(moveAreaMin.z, moveAreaMax.z)
+            );
+
+            navMeshAgent.SetDestination(randomPos);
+            animator.SetFloat("Speed", navMeshAgent.velocity.magnitude); // Điều chỉnh tốc độ animation
+            yield return new WaitForSeconds(Random.Range(2f, 5f)); // Di chuyển ngẫu nhiên mỗi 2-5 giây
+        }
     }
 
     public void StartAttack()
@@ -118,8 +131,14 @@ public class EnemyAI : Health
                 break;
             case EnemyState.Die:
                 animator.SetTrigger("Die");
+
+                // Rơi vật phẩm tại vị trí quái chết
+                if (itemPrefab != null)
+                {
+                    Instantiate(itemPrefab, transform.position, Quaternion.identity);
+                }
+
                 Destroy(gameObject, 1.8f);
-                Vector3 isDeathPos = new(0, transform.position.y, 0);
                 break;
         }
 
@@ -128,7 +147,7 @@ public class EnemyAI : Health
 
     private void Death()
     {
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
             currentHealth = 0;
             ChangeState(EnemyState.Die);

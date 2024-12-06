@@ -218,11 +218,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1078668682 stripped
-BoxCollider:
-  m_CorrespondingSourceObject: {fileID: 4947354178138505216, guid: c7168ae6f3920664fbf002abdc97ae12, type: 3}
-  m_PrefabInstance: {fileID: 9170672279529999109}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1092321363 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5377558962585717360, guid: 60ad4a90e6724fd4aabcba90b7be7e74, type: 3}
@@ -284,22 +279,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 2021901456}
-    - target: {fileID: 7671948514929900715, guid: 19912f0d35adf81478c3f775a7db95cc, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7671948514929900715, guid: 19912f0d35adf81478c3f775a7db95cc, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 9047361030105734056, guid: 19912f0d35adf81478c3f775a7db95cc, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 5189784866513711470}
-    - target: {fileID: 9047361030105734056, guid: 19912f0d35adf81478c3f775a7db95cc, type: 3}
-      propertyPath: hpSlider
-      value: 
-      objectReference: {fileID: 1655267122}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -377,17 +360,6 @@ Transform:
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5514327018016001036, guid: 60ad4a90e6724fd4aabcba90b7be7e74, type: 3}
   m_PrefabInstance: {fileID: 3087295162376270275}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1655267122 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8614962552521579764, guid: 19912f0d35adf81478c3f775a7db95cc, type: 3}
-  m_PrefabInstance: {fileID: 1221454704}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -742,7 +714,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9070518563686442050, guid: 66ce708da2aefc041aaaa32814f41895, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.13881008
+      value: 0.1388101
       objectReference: {fileID: 0}
     - target: {fileID: 9070518563686442050, guid: 66ce708da2aefc041aaaa32814f41895, type: 3}
       propertyPath: m_LocalRotation.y
@@ -750,7 +722,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9070518563686442050, guid: 66ce708da2aefc041aaaa32814f41895, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.094385885
+      value: -0.0943859
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1108,10 +1080,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5269836321745974421, guid: c7168ae6f3920664fbf002abdc97ae12, type: 3}
-      propertyPath: m_Name
-      value: Skill
-      objectReference: {fileID: 0}
     - target: {fileID: 6034125119933339316, guid: c7168ae6f3920664fbf002abdc97ae12, type: 3}
       propertyPath: itemPrefab
       value: 
@@ -1124,10 +1092,6 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 94407068}
-    - target: {fileID: 7847924866657789798, guid: c7168ae6f3920664fbf002abdc97ae12, type: 3}
-      propertyPath: boxAttack
-      value: 
-      objectReference: {fileID: 1078668682}
     - target: {fileID: 9119571945475001888, guid: c7168ae6f3920664fbf002abdc97ae12, type: 3}
       propertyPath: m_Name
       value: Player

@@ -746,6 +746,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7755137094781349915, guid: 60ad4a90e6724fd4aabcba90b7be7e74, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7755137094781349915, guid: 60ad4a90e6724fd4aabcba90b7be7e74, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1019,7 +1027,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6154437958247943773, guid: 3979749a0d257c1478bc0738d1b6dbfe, type: 3}
       propertyPath: m_Name
-      value: Bottle_Mana
+      value: Mp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1076,7 +1084,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4642149312042086235, guid: a4f219cbf4db69f44a34a5d1237cb16b, type: 3}
       propertyPath: m_Name
-      value: Bottle_Health
+      value: Hp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1093,7 +1101,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2726964755018704290, guid: a620715602c706c46a0ccf51623d2677, type: 3}
       propertyPath: m_Name
-      value: Bottle_Endurance
+      value: Xp
       objectReference: {fileID: 0}
     - target: {fileID: 5128573798241534158, guid: a620715602c706c46a0ccf51623d2677, type: 3}
       propertyPath: m_LocalPosition.x

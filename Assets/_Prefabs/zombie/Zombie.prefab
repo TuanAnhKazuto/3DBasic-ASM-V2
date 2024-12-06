@@ -2032,7 +2032,7 @@ GameObject:
   - component: {fileID: 8907253071572574401}
   m_Layer: 0
   m_Name: Zombie
-  m_TagString: Untagged
+  m_TagString: Zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2106,9 +2106,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   navMeshAgent: {fileID: 2987553175454358159}
-  target: {fileID: 0}
+  playerTranform: {fileID: 0}
   hpSlider: {fileID: 8614962552521579764}
-  radius: 10
+  radius: 20
   originalPos: {x: 0, y: 0, z: 0}
   maxDistace: 50
   animator: {fileID: 258125890417509911}

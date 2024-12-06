@@ -5,7 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enamy
-  - New tag
   - NPC
   - PlayerAtk
   - Yandere
@@ -16,6 +15,8 @@ TagManager:
   - Golem
   - Zombie
   - ZomAtk
+  - Acction
+  - fKey
   layers:
   - Default
   - TransparentFX

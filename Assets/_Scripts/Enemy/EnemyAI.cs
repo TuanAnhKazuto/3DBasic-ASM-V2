@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
@@ -16,7 +14,7 @@ public class EnemyAI : Health
 
     public Animator animator;
 
-    public GameObject atkCollider;
+    public BoxCollider atkCollider;
 
     // Vật phẩm rơi ra khi quái chết
     public GameObject itemPrefab;
@@ -34,7 +32,7 @@ public class EnemyAI : Health
     {
         GameObject player = GameObject.FindWithTag("Player");
 
-        target = player.GetComponent<Transform>();  
+        target = player.GetComponent<Transform>();
 
         originalPos = transform.position;
 
@@ -43,7 +41,7 @@ public class EnemyAI : Health
         moveAreaMax = originalPos + new Vector3(maxDistace, 0, maxDistace);
 
         hpSlider.value = currentHealth;
-        atkCollider.SetActive(false);
+        atkCollider.enabled = false;
 
         // Quái sẽ không di chuyển cho đến khi phát hiện người chơi
         navMeshAgent.isStopped = false;
@@ -125,7 +123,6 @@ public class EnemyAI : Health
                 {
                     Instantiate(itemPrefab, transform.position, Quaternion.identity);
                 }
-
                 Destroy(gameObject, 1.8f);
                 break;
         }
@@ -139,7 +136,7 @@ public class EnemyAI : Health
         {
             currentHealth = 0;
             ChangeState(EnemyState.Die);
-            Debug.Log("Enemy died.");
+            Debug.Log("Enemy die.");
         }
     }
 
@@ -150,5 +147,15 @@ public class EnemyAI : Health
             TakeDamage(40);
             hpSlider.value = currentHealth;
         }
+    }
+
+    public void OnAttack()
+    {
+        atkCollider.enabled = true;
+    }
+
+    public void EndAttack()
+    {
+        atkCollider.enabled = false;
     }
 }

@@ -2251,7 +2251,7 @@ MonoBehaviour:
   originalPos: {x: 0, y: 0, z: 0}
   maxDistace: 50
   animator: {fileID: 258125890417509911}
-  atkCollider: {fileID: 5150374698019475477}
+  atkCollider: {fileID: 8965188098194101363}
   itemPrefab: {fileID: 0}
   curState: 0
   moveAreaMin: {x: 0, y: 0, z: 0}
@@ -3078,8 +3078,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.3965367, z: 0.6136322}
-  m_Center: {x: 0, y: 0.8472552, z: 0.3942032}
+  m_Size: {x: 1, y: 1.3965367, z: 1.443924}
+  m_Center: {x: 0, y: 0.8472552, z: 0.80934906}
 --- !u!1 &5213630254063382720
 GameObject:
   m_ObjectHideFlags: 0

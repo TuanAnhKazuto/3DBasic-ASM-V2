@@ -11720,6 +11720,7 @@ MonoBehaviour:
   mC: {fileID: 2562256402232167435}
   mC_skin: {fileID: 3755290822654019100}
   root: {fileID: 6359218642766695639}
+  uiManager: {fileID: 0}
 --- !u!114 &7847924866657789798
 MonoBehaviour:
   m_ObjectHideFlags: 0

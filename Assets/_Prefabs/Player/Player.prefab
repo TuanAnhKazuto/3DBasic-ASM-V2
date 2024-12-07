@@ -11795,8 +11795,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebe43f30072ed28448dabf09252d69b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questItems:
-  - {fileID: 0}
+  questItems: []
   playerQuestPanel: {fileID: 0}
 --- !u!114 &487829426458689262
 MonoBehaviour:

@@ -25,7 +25,7 @@ public class FKey : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Acction"))
+        if (other.gameObject.CompareTag("NPC"))
         {
             ShowFKey();
         }
@@ -33,7 +33,7 @@ public class FKey : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Acction"))
+        if (other.gameObject.CompareTag("NPC"))
         {
             HideFKey();
         }

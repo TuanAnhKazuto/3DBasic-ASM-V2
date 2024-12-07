@@ -14,8 +14,13 @@ public class PlayerHealth : MonoBehaviour
     public GameObject mC_skin;
     public GameObject root;
 
+    [HideInInspector] public UIManager uiManager;
+
     private void Awake()
     {
+        GameObject uiM = GameObject.FindWithTag("UIManager");
+        uiManager = uiM.GetComponent<UIManager>();
+
         maxHp = 100;
         curHp = maxHp;
         playerScript.enabled = true;
@@ -60,7 +65,7 @@ public class PlayerHealth : MonoBehaviour
         root.SetActive(false);
         deathEf.Stop();
         Destroy(gameObject, 0.2f);
-        
+        uiManager.OnGameOverPanel();
     }
 
     private void OnTriggerEnter(Collider other)

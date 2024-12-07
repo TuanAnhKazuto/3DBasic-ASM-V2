@@ -18,6 +18,7 @@ TagManager:
   - Acction
   - fKey
   - Explosion
+  - UIManager
   layers:
   - Default
   - TransparentFX

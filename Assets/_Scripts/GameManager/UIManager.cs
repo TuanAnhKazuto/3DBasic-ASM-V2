@@ -1,28 +1,35 @@
+using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
     public GameObject playerCanvas;
+    public GameObject npcCanvas;
+
     public GameObject statusPanel;
     public GameObject quetPanel;
     public GameObject inventoryPanel;
-    public GameObject npcCanvas;
+    public GameObject gameOverPanel;
+
     public GameObject miniMap;
     public GameObject fullMap;
 
+    [HideInInspector]
     public bool isViewMap = false;
 
 
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        Time.timeScale = 1f;
+        
+        HideMouse();
 
         SetActiveTrue();
         SetActiveFalse();
     }
 
+    #region Mouse Setting
     private void ShowMouse()
     {
         Cursor.lockState = CursorLockMode.None;
@@ -33,21 +40,27 @@ public class UIManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
+    #endregion
 
+    #region Set Active When Start
     private void SetActiveTrue(bool b = true)
     {
         playerCanvas.SetActive(b);
         npcCanvas.SetActive(b);
         quetPanel.SetActive(b);
         statusPanel.SetActive(b);
+
         miniMap.SetActive(b);
     }
 
     private void SetActiveFalse(bool b = false)
     {
         inventoryPanel.SetActive(b);
+        gameOverPanel.SetActive(b);
+
         fullMap.SetActive(b);
     }
+    #endregion
 
     private void Update()
     {
@@ -72,7 +85,6 @@ public class UIManager : MonoBehaviour
             quetPanel.SetActive(false);
             fullMap.SetActive(true);
             isViewMap = true;
-            Debug.Log("FullMap");
         }
         else if (isViewMap && Input.GetKeyDown(KeyCode.M))
         {
@@ -82,5 +94,17 @@ public class UIManager : MonoBehaviour
             fullMap.SetActive(false);
             isViewMap = false;
         }
+    }
+
+    public void OnGameOverPanel()
+    {
+        playerCanvas.SetActive(false);
+        gameOverPanel.SetActive(true);
+        Invoke(nameof(StopGame), 0.2f);
+    }
+
+    void StopGame()
+    {
+        Time.timeScale = 0;
     }
 }

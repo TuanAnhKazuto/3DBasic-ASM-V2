@@ -21,12 +21,12 @@ public class SceneSwitcher : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             LoadSceneWithProgress(2);
-            loadingPanel.SetActive(true);
         }
     }
 
     public void LoadSceneWithProgress(int sceneIndex)
     {
+        loadingPanel.SetActive(true);
         StartCoroutine(LoadSceneRoutine(sceneIndex));
     }
 

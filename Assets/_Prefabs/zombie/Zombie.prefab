@@ -2106,14 +2106,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   navMeshAgent: {fileID: 2987553175454358159}
-  playerTranform: {fileID: 0}
+  target: {fileID: 0}
   hpSlider: {fileID: 8614962552521579764}
   radius: 20
   originalPos: {x: 0, y: 0, z: 0}
   maxDistace: 50
   animator: {fileID: 258125890417509911}
   atkCollider: {fileID: 5150374698019475477}
+  itemPrefab: {fileID: 0}
   curState: 0
+  moveAreaMin: {x: 0, y: 0, z: 0}
+  moveAreaMax: {x: 0, y: 0, z: 0}
 --- !u!195 &2987553175454358159
 NavMeshAgent:
   m_ObjectHideFlags: 0

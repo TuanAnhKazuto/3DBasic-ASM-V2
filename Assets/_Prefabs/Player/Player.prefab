@@ -11633,6 +11633,7 @@ GameObject:
   - component: {fileID: 9142399540226433293}
   - component: {fileID: 487829426458689262}
   - component: {fileID: 8647081668235126079}
+  - component: {fileID: 7598281074384122786}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -11794,7 +11795,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebe43f30072ed28448dabf09252d69b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questItems: []
+  questItems:
+  - {fileID: 0}
   playerQuestPanel: {fileID: 0}
 --- !u!114 &487829426458689262
 MonoBehaviour:
@@ -11824,6 +11826,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fKey: {fileID: 0}
+--- !u!114 &7598281074384122786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9119571945475001888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf50fdbb8ccc3af4cb8b6a03c35ffcad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items: []
+  itemContentPane: {fileID: 0}
+  itemPrefab: {fileID: 0}
 --- !u!1 &9148358490405166817
 GameObject:
   m_ObjectHideFlags: 0

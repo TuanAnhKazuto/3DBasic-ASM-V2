@@ -1841,20 +1841,20 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 13294ff9ac4314a8cb3e0f6777452308, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.53
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 20
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -1862,23 +1862,59 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
+      time: 0.05
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: -5.2610035
+      outSlope: -5.2610035
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0.9788201
+    - serializedVersion: 3
+      time: 0.13940582
+      value: 0.74768066
+      inSlope: -1.5568312
+      outSlope: -1.5568312
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.8676148
+    - serializedVersion: 3
+      time: 0.32807845
+      value: 0.46126556
+      inSlope: -2.49465
+      outSlope: -2.49465
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.79432005
+      outWeight: 1
+    - serializedVersion: 3
+      time: 0.47389832
+      value: 0.29252625
+      inSlope: -0.7860946
+      outSlope: -0.7860946
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 1
+      outWeight: 0.92127645
+    - serializedVersion: 3
+      time: 0.6867035
+      value: 0.15718079
+      inSlope: -0.46258458
+      outSlope: -0.46258458
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.7327009
     - serializedVersion: 3
       time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
+      value: 0.05
+      inSlope: -0.05001994
+      outSlope: -0.05001994
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -1887,7 +1923,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2825,7 +2861,7 @@ GameObject:
   - component: {fileID: 8965188098194101363}
   m_Layer: 0
   m_Name: AttackBox
-  m_TagString: Untagged
+  m_TagString: ZomAtk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

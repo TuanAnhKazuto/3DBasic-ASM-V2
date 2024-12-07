@@ -17,6 +17,7 @@ TagManager:
   - ZomAtk
   - Acction
   - fKey
+  - Explosion
   layers:
   - Default
   - TransparentFX

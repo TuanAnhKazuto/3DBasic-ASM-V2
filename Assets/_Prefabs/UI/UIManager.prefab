@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8699269668807061358}
   m_Layer: 0
   m_Name: UIManager
-  m_TagString: Untagged
+  m_TagString: UIManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,10 +45,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCanvas: {fileID: 0}
+  npcCanvas: {fileID: 0}
   statusPanel: {fileID: 0}
   quetPanel: {fileID: 0}
   inventoryPanel: {fileID: 0}
-  npcCanvas: {fileID: 0}
+  gameOverPanel: {fileID: 0}
   miniMap: {fileID: 0}
   fullMap: {fileID: 0}
   isViewMap: 0

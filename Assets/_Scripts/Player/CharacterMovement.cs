@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics.Tracing;
-using System.Xml.Serialization;
-using Unity.Profiling;
-using UnityEngine;
-using UnityEngine.Rendering.Universal;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class CharacterMovement : MonoBehaviour
@@ -48,8 +41,10 @@ public class CharacterMovement : MonoBehaviour
     [Header("Sound")]
     public PlayerSound sound;
 
-    [Header("Effect")]
+    [Header("Skill")]
     public ParticleSystem slashExplosion;
+    public SphereCollider slashCollider;
+    public SphereCollider explosionCollider;
 
     [Header("Inventory")]
     public Inventory inventory;
@@ -63,11 +58,14 @@ public class CharacterMovement : MonoBehaviour
         staminaSlider.value = curStamina;
         isUserSkill = false;
         Time.timeScale = 1.0f;
+
+        slashCollider.enabled = false;
+        explosionCollider.enabled = false;
     }
 
     private void FixedUpdate()
     {
-        
+
         switch (curState)
         {
             case CharState.Normal:
@@ -90,7 +88,7 @@ public class CharacterMovement : MonoBehaviour
     #endregion
     private void Movement()
     {
-        if (!canMove || isAttacking) return;
+        if (!canMove || isAttacking || animator.GetCurrentAnimatorStateInfo(0).IsName("SkillExplosion")) return;
 
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
@@ -284,7 +282,7 @@ public class CharacterMovement : MonoBehaviour
                 !animator.GetCurrentAnimatorStateInfo(0).IsName("SkillExplosion") &&
                 !sound.soundAttack01.isPlaying)
             {
-                canMove = false; 
+                canMove = false;
                 animator.SetTrigger("SkillExplosion");
                 sound.soundAttack01.Play();
                 speed = 0;
@@ -301,15 +299,30 @@ public class CharacterMovement : MonoBehaviour
 
     void ResetSkillState()
     {
-        canMove = true; 
-        isUserSkill = false; 
-        speed = 3f; 
+        canMove = true;
+        isUserSkill = false;
+        speed = 3f;
+        Invoke(nameof(EndSkillCollider), 0.3f);
     }
 
     void EffectDelay()
     {
         slashExplosion.Play();
+        slashCollider.enabled = true;
+        Invoke(nameof(ExplosionColliderOn), 0.7f);
     }
+
+    void ExplosionColliderOn()
+    {
+        explosionCollider.enabled = true;
+    }
+
+    void EndSkillCollider()
+    {
+        slashCollider.enabled = false;
+        explosionCollider.enabled = false;
+    }
+
     #endregion
 
     #region Stamina
@@ -358,7 +371,7 @@ public class CharacterMovement : MonoBehaviour
 
         if (direction.magnitude <= 0f)
         {
-            countReturn = 8f;
+            countReturn = 10f;
         }
         else if (curState == CharState.Normal)
         {
@@ -434,7 +447,7 @@ public class CharacterMovement : MonoBehaviour
         }
         else
         {
-            if(curState == CharState.Normal)
+            if (curState == CharState.Normal)
             {
                 speed = 3f;
             }

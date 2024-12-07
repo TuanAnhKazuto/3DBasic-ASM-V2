@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 744179988582123651}
   - component: {fileID: 883887896825601088}
   - component: {fileID: 8869803884007763986}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PointInMinimap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -232,7 +232,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 124.60004}
+  m_AnchoredPosition: {x: 0, y: 100}
   m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &744179988582123651
@@ -2244,15 +2244,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
+  playerQuest: {fileID: 0}
   navMeshAgent: {fileID: 2987553175454358159}
   target: {fileID: 0}
   hpSlider: {fileID: 8614962552521579764}
-  radius: 20
+  radius: 30
   originalPos: {x: 0, y: 0, z: 0}
   maxDistace: 50
   animator: {fileID: 258125890417509911}
   atkCollider: {fileID: 8965188098194101363}
-  itemPrefab: {fileID: 0}
   curState: 0
   moveAreaMin: {x: 0, y: 0, z: 0}
   moveAreaMax: {x: 0, y: 0, z: 0}
@@ -2266,7 +2266,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 3
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -2557,7 +2557,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 4, y: 4}
+  m_SizeDelta: {x: 5, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3070756110734155396
 CanvasRenderer:
@@ -3091,7 +3091,7 @@ GameObject:
   - component: {fileID: 1585908984949464099}
   - component: {fileID: 2489761366909269796}
   - component: {fileID: 2208689585098093258}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3115,7 +3115,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 2, y: 2}
+  m_SizeDelta: {x: 9, y: 9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2489761366909269796
 CanvasRenderer:

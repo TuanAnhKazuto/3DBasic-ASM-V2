@@ -18,7 +18,7 @@ public class EnemyAI : Health
     public BoxCollider atkCollider;
 
     // Vật phẩm rơi ra khi quái chết
-    public GameObject itemPrefab;
+    //public GameObject itemPrefab;
 
     // state machine
     public enum EnemyState
@@ -39,19 +39,32 @@ public class EnemyAI : Health
 
         originalPos = transform.position;
 
-        // Thiết lập vùng di chuyển dựa trên vị trí ban đầu
-        moveAreaMin = originalPos - new Vector3(maxDistace, 0, maxDistace);
-        moveAreaMax = originalPos + new Vector3(maxDistace, 0, maxDistace);
+        // Kiểm tra nếu vị trí ban đầu nằm trên NavMesh
+        if (NavMesh.SamplePosition(originalPos, out NavMeshHit hit, 10f, NavMesh.AllAreas))
+        {
+            originalPos = hit.position; // Đặt lại vị trí trên NavMesh
+            navMeshAgent.enabled = true; // Bật NavMeshAgent
+            navMeshAgent.Warp(originalPos); // Đặt vị trí ban đầu chính xác
+        }
+        else
+        {
+            Debug.LogError("Enemy không nằm trên NavMesh, kiểm tra vị trí ban đầu.");
+        }
 
         hpSlider.value = currentHealth;
         atkCollider.enabled = false;
 
-        // Quái sẽ không di chuyển cho đến khi phát hiện người chơi
-        navMeshAgent.isStopped = false;
+        navMeshAgent.isStopped = false; // Kích hoạt di chuyển chỉ khi NavMeshAgent hợp lệ
     }
+
 
     private void Update()
     {
+        if (curState == EnemyState.Die || !navMeshAgent.isOnNavMesh)
+        {
+            return; // Không thực hiện gì nếu Enemy đã chết hoặc không nằm trên NavMesh
+        }
+
         if (target != null)
         {
             var lookPos = target.position - transform.position;
@@ -59,47 +72,42 @@ public class EnemyAI : Health
             var rotation = Quaternion.LookRotation(lookPos);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 5);
         }
-        else
-        {
-            return;
-        }
-
-        if (curState == EnemyState.Die)
-        {
-            return;
-        }
 
         var distance = Vector3.Distance(target.position, transform.position);
 
-        // Nếu Player ở trong phạm vi phát hiện, lao đến tấn công
         if (distance <= radius)
         {
-            navMeshAgent.SetDestination(target.position); // Di chuyển về phía người chơi
-            animator.SetFloat("Speed", navMeshAgent.velocity.magnitude); // Điều chỉnh tốc độ animation
+            if (navMeshAgent.isOnNavMesh)
+            {
+                navMeshAgent.SetDestination(target.position);
+            }
 
-            if (distance <= 2f) // Khi gần đến quá trình tấn công
+            animator.SetFloat("Speed", navMeshAgent.velocity.magnitude);
+
+            if (distance <= 2f)
             {
                 ChangeState(EnemyState.Attack);
             }
             else
             {
-                ChangeState(EnemyState.Normal); // Quái tiếp tục đi tới
+                ChangeState(EnemyState.Normal);
             }
         }
         else
         {
-            // Nếu không phát hiện Player, quay lại vị trí ban đầu
-            animator.SetFloat("Speed", 0); // Dừng animation di chuyển
+            if (navMeshAgent.isOnNavMesh)
+            {
+                navMeshAgent.SetDestination(originalPos);
+            }
+
+            animator.SetFloat("Speed", 0);
             ChangeState(EnemyState.Normal);
-            navMeshAgent.SetDestination(originalPos);  // Quay lại vị trí ban đầu
-            navMeshAgent.isStopped = false;  // Tiếp tục di chuyển
         }
 
-        // Handle Death
         Death();
     }
-   
- 
+
+
 
     private void ChangeState(EnemyState newState)
     {
@@ -124,10 +132,10 @@ public class EnemyAI : Health
                 animator.SetTrigger("Die");
 
                 // Rơi vật phẩm tại vị trí quái chết
-                if (itemPrefab != null)
-                {
-                    Instantiate(itemPrefab, transform.position, Quaternion.identity);
-                }
+                //if (itemPrefab != null)
+                //{
+                //    Instantiate(itemPrefab, transform.position, Quaternion.identity);
+                //}
                 Destroy(gameObject, 1.8f);
                 break;
         }

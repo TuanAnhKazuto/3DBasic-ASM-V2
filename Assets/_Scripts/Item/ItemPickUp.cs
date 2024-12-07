@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class ItemPickUp : MonoBehaviour
 {
-   public Item item;
-
-    // nhặt Item lên
+    public Item item;
+    
     void PickUp()
     {
-        // Detroy
         Destroy(this.gameObject);
-        //Add Inventory
         InventoryManager.Instance.Add(item);
     }
 
@@ -20,6 +17,6 @@ public class ItemPickUp : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             PickUp();
-        }    
+        }
     }
 }

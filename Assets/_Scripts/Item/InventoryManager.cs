@@ -19,8 +19,7 @@ public class InventoryManager : MonoBehaviour
         if (Instance != null || Instance != this)
         {
             Destroy(Instance);
-           
-        }    
+        }
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
@@ -30,7 +29,7 @@ public class InventoryManager : MonoBehaviour
     {
         items.Add(item);
         DisplayInventory();
-    }    
+    }
 
     public void DisplayInventory()
     {
@@ -51,5 +50,6 @@ public class InventoryManager : MonoBehaviour
             Debug.Log("add item done");
         }
     }
+
 
 }

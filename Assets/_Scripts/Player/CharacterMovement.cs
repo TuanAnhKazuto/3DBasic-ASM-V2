@@ -8,7 +8,7 @@ public class CharacterMovement : MonoBehaviour
     public Animator animator;
 
     public Transform cam;
-    public float speed = 3f;
+    public float speed = 4f;
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
     [HideInInspector] public bool isRunning = false;
@@ -142,11 +142,11 @@ public class CharacterMovement : MonoBehaviour
             case CharState.Normal:
                 animator.SetBool("Run", false);
                 //isAttacking = false;
-                speed = 3f;
+                speed = 4f;
                 break;
             case CharState.Run:
                 animator.SetBool("Run", true);
-                speed = 8f;
+                speed = 13f;
                 break;
             case CharState.Attack:
                 //animator.SetBool("Attack", true);
@@ -273,7 +273,7 @@ public class CharacterMovement : MonoBehaviour
     #region Skill
     public void SkillControler()
     {
-
+        if (isAttacking) return;
         if (Input.GetKey(KeyCode.LeftShift))
         {
             isUserSkill = true;

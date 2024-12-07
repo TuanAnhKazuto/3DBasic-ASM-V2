@@ -6,8 +6,10 @@ using UnityEngine;
 public class SpawnEnemy : MonoBehaviour
 {
     public GameObject enemyPrefab;
+    public GameObject waveAreaInMinimap;
+    public GameObject waveAreaInFullmap;
     [HideInInspector] public int xPos;
-    public int yPos;
+    public float yPos;
     [HideInInspector] public int zPos;
     public int xPosStart;
     public int xPosEnd;
@@ -16,11 +18,19 @@ public class SpawnEnemy : MonoBehaviour
     [HideInInspector] public int _enemyCount;
     public int enemyCount;
 
+    private void Start()
+    {
+        waveAreaInMinimap.SetActive(true);
+        waveAreaInFullmap.SetActive(true);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
             StartCoroutine(EnemySpawn());
+            waveAreaInMinimap.SetActive(false);
+            waveAreaInFullmap.SetActive(false);
         }
     }
 
@@ -34,5 +44,7 @@ public class SpawnEnemy : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
             _enemyCount++;
         }
+        yield return new WaitForSeconds(0.1f);
+        Destroy(gameObject);
     }
 }

@@ -10,8 +10,8 @@ public class EnemyAI : Health
     public Transform target;
     public Slider hpSlider;
 
-    public float radius = 10f;
-    public Vector3 originalPos;
+    public float radius = 10f;  // Phạm vi phát hiện
+    public Vector3 originalPos; // Vị trí ban đầu
     public float maxDistace = 50f;
 
     public Animator animator;
@@ -33,11 +33,16 @@ public class EnemyAI : Health
     private void Start()
     {
         originalPos = transform.position;
+
+        // Thiết lập vùng di chuyển dựa trên vị trí ban đầu
+        moveAreaMin = originalPos - new Vector3(maxDistace, 0, maxDistace);
+        moveAreaMax = originalPos + new Vector3(maxDistace, 0, maxDistace);
+
         hpSlider.value = currentHealth;
         atkCollider.SetActive(false);
 
-        // Bắt đầu di chuyển trong khu vực nhỏ
-        StartCoroutine(MoveRandomly());
+        // Quái sẽ không di chuyển cho đến khi phát hiện người chơi
+        navMeshAgent.isStopped = false;
     }
 
     private void Update()
@@ -59,55 +64,34 @@ public class EnemyAI : Health
             return;
         }
 
-        var distanceToOriginal = Vector3.Distance(originalPos, transform.position);
         var distance = Vector3.Distance(target.position, transform.position);
 
         // Nếu Player ở trong phạm vi phát hiện, lao đến tấn công
         if (distance <= radius)
         {
-            navMeshAgent.SetDestination(target.position);
+            navMeshAgent.SetDestination(target.position); // Di chuyển về phía người chơi
             animator.SetFloat("Speed", navMeshAgent.velocity.magnitude); // Điều chỉnh tốc độ animation
 
-            if (distance <= 2f)
+            if (distance <= 2f) // Khi gần đến quá trình tấn công
             {
                 ChangeState(EnemyState.Attack);
+            }
+            else
+            {
+                ChangeState(EnemyState.Normal); // Quái tiếp tục đi tới
             }
         }
         else
         {
-            // Nếu không phát hiện Player, tiếp tục di chuyển ngẫu nhiên trong khu vực nhỏ
-            animator.SetFloat("Speed", navMeshAgent.velocity.magnitude); // Điều chỉnh tốc độ animation
+            // Nếu không phát hiện Player, quay lại vị trí ban đầu
+            animator.SetFloat("Speed", 0); // Dừng animation di chuyển
             ChangeState(EnemyState.Normal);
+            navMeshAgent.SetDestination(originalPos);  // Quay lại vị trí ban đầu
+            navMeshAgent.isStopped = false;  // Tiếp tục di chuyển
         }
 
         // Handle Death
         Death();
-    }
-
-    private IEnumerator MoveRandomly()
-    {
-        while (curState != EnemyState.Die)
-        {
-            Vector3 randomPos = new Vector3(
-                Random.Range(moveAreaMin.x, moveAreaMax.x),
-                transform.position.y, // Giữ chiều cao của zombie
-                Random.Range(moveAreaMin.z, moveAreaMax.z)
-            );
-
-            navMeshAgent.SetDestination(randomPos);
-            animator.SetFloat("Speed", navMeshAgent.velocity.magnitude); // Điều chỉnh tốc độ animation
-            yield return new WaitForSeconds(Random.Range(2f, 5f)); // Di chuyển ngẫu nhiên mỗi 2-5 giây
-        }
-    }
-
-    public void StartAttack()
-    {
-        atkCollider.SetActive(true);
-    }
-
-    public void EndAttack()
-    {
-        atkCollider.SetActive(false);
     }
 
     private void ChangeState(EnemyState newState)
@@ -151,7 +135,7 @@ public class EnemyAI : Health
         {
             currentHealth = 0;
             ChangeState(EnemyState.Die);
-            Debug.Log("Is die");
+            Debug.Log("Enemy died.");
         }
     }
 

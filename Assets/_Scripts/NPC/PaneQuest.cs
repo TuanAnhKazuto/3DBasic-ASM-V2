@@ -12,7 +12,8 @@ public class PaneQuest : MonoBehaviour
     [HideInInspector] public bool isPane;
     //public GameObject Tab;
     public TextMeshProUGUI questItemPrefab;
-    public GameObject muiTen;
+    public GameObject buttonMuiTen;
+    public GameObject textTab;
 
     // Start is called before the first frame update
     void Start()
@@ -24,22 +25,23 @@ public class PaneQuest : MonoBehaviour
     
     void Update()
     {
-        
 
+        
         // Kiểm tra nếu người chơi nhấn Tab và không có bảng nào đang mở
         if (Input.GetKeyDown(KeyCode.Tab) && !isPane)
         {
-            muiTen.transform.Rotate(0, 0, 180);
+            buttonMuiTen.transform.Rotate(0, 0, 180);
             ShowHideQuestsPanel();
             isPane = true;
-            
+            textTab.transform.Rotate(0, 0, 180);
+
         }
         else if (Input.GetKeyDown(KeyCode.Tab) && isPane)
         {
-            muiTen.transform.Rotate(0, 0, 180);
+            buttonMuiTen.transform.Rotate(0, 0, 180);
             ShowHideQuestsPanel();
             isPane = false;
-            
+            textTab.transform.Rotate(0, 0, 180);
         }
 
 
@@ -103,7 +105,7 @@ public class PaneQuest : MonoBehaviour
             var currentX = transform.localPosition.x;
             var currentY = transform.localPosition.y;
             var currentZ = transform.localPosition.z;
-            var targetX = show ? initialPosition.x + 40  : initialPosition.x - 230;
+            var targetX = show ? initialPosition.x + 50  : initialPosition.x - 210;
             var newX = Mathf.Lerp(currentX, targetX, Time.deltaTime * 2);
             transform.localPosition = new Vector3(newX, currentY, currentZ);
 

@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 public class EnemyAI : Health
 {
-    public QuestItem questItem;
-    public PlayerQuest playerQuest;
+    [HideInInspector] public QuestItem questItem;
+    [HideInInspector] public PlayerQuest playerQuest;
     public NavMeshAgent navMeshAgent;
     [HideInInspector] public Transform target;
     public Slider hpSlider;
@@ -36,8 +36,10 @@ public class EnemyAI : Health
         questItem = quets.GetComponent<QuestItem>();
 
         GameObject player = GameObject.FindWithTag("Player");
-
         target = player.GetComponent<Transform>();
+
+        GameObject plQuest = GameObject.FindWithTag("Player");
+        playerQuest = plQuest.GetComponent<PlayerQuest>();
 
         originalPos = transform.position;
 
@@ -143,6 +145,7 @@ public class EnemyAI : Health
         {
             playerQuest.UpdateQuest("Zombie");
             currentHealth = 0;
+            EndAttack();
             ChangeState(EnemyState.Die);
             Debug.Log("Enemy die.");
         }

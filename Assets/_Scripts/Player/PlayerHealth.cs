@@ -72,7 +72,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (other.gameObject.CompareTag("ZomAtk"))
         {
-            TakeDamage(2);
+            TakeDamage(1);
         }
     }
 }

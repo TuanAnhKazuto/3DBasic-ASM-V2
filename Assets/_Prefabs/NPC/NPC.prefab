@@ -4939,10 +4939,10 @@ GameObject:
   - component: {fileID: 5722036616377231221}
   - component: {fileID: 5618796138810314595}
   - component: {fileID: 490426556958203193}
-  - component: {fileID: 7626848599184003883}
+  - component: {fileID: 6573510836849710912}
   m_Layer: 0
   m_Name: NPC
-  m_TagString: Acction
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5028,11 +5028,9 @@ MonoBehaviour:
   - "\u0110\u1EBFn ng\xF4i l\xE0ng \u0111\xE3 b\u1ECB TR\u1EA7n Kim Kh\xE1nh x\xE2m
     chi\u1EBFm"
   - "H\xE3y \u0111\u1EBFn ti\xEAu di\u1EC7t Kh\xE1nh "
-  - "H\xE3y \u0111\u1EBFn C\u1ED5ng d\u1ECBch chuy\u1EC3n"
-  - "D\xE0nh l\u1EA1i ng\xF4i l\xE0ng "
-  questItem: {fileID: 7626848599184003883}
+  questItem: {fileID: 6573510836849710912}
   PlayerQuests: {fileID: 0}
---- !u!114 &7626848599184003883
+--- !u!114 &6573510836849710912
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5044,8 +5042,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8ac6696d3077004fbfd159d3659168d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  QuetsItemName: "Ti\xEAu Di\u1EC7t 5 To\xE0n b\u1ED9 qu\xE1i v\u1EADt"
-  questTargetAmount: 100
+  QuetsItemName: "Ti\xEAu di\u1EC7t 10 Zombie"
+  questTargetAmount: 10
   currentAmount: 0
   TargetItemtag: Zombie
 --- !u!1 &8582717948120093362

@@ -69,6 +69,7 @@ public class UIManager : MonoBehaviour
         {
             statusPanel.SetActive(false);
             miniMap.SetActive(false);
+            quetPanel.SetActive(false);
             fullMap.SetActive(true);
             isViewMap = true;
             Debug.Log("FullMap");
@@ -77,6 +78,7 @@ public class UIManager : MonoBehaviour
         {
             statusPanel.SetActive(true);
             miniMap.SetActive(true);
+            quetPanel.SetActive(true);
             fullMap.SetActive(false);
             isViewMap = false;
         }

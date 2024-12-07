@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class EnemyAI : Health
 {
     public NavMeshAgent navMeshAgent;
-    public Transform target;
+    [HideInInspector] public Transform target;
     public Slider hpSlider;
 
     public float radius = 10f;  // Phạm vi phát hiện
@@ -32,6 +32,10 @@ public class EnemyAI : Health
 
     private void Start()
     {
+        GameObject player = GameObject.FindWithTag("Player");
+
+        target = player.GetComponent<Transform>();  
+
         originalPos = transform.position;
 
         // Thiết lập vùng di chuyển dựa trên vị trí ban đầu
@@ -143,7 +147,7 @@ public class EnemyAI : Health
     {
         if (other.gameObject.CompareTag("PlayerAtk"))
         {
-            TakeDamage(30);
+            TakeDamage(40);
             hpSlider.value = currentHealth;
         }
     }

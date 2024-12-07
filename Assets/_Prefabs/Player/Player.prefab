@@ -11303,7 +11303,6 @@ GameObject:
   - component: {fileID: 5183778606994109616}
   - component: {fileID: 9142399540226433293}
   - component: {fileID: 487829426458689262}
-  - component: {fileID: 6034125119933339316}
   - component: {fileID: 8647081668235126079}
   m_Layer: 0
   m_Name: Player
@@ -11481,21 +11480,6 @@ MonoBehaviour:
   inventoryUI: {fileID: 0}
   freeLookCamera: {fileID: 0}
   isInventoryOpen: 0
---- !u!114 &6034125119933339316
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9119571945475001888}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf50fdbb8ccc3af4cb8b6a03c35ffcad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  items: []
-  itemContentPane: {fileID: 0}
-  itemPrefab: {fileID: 0}
 --- !u!114 &8647081668235126079
 MonoBehaviour:
   m_ObjectHideFlags: 0

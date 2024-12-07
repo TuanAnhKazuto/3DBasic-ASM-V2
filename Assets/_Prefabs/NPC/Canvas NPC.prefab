@@ -203,7 +203,7 @@ MonoBehaviour:
         m_MethodName: TakeQuest
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1053303955691470100}
+          m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: QuestItem, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -612,6 +612,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7288534928253618829}
     - target: {fileID: 490426556958203193, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
+      propertyPath: questItem
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 490426556958203193, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
       propertyPath: npcChatPanel
       value: 
       objectReference: {fileID: 1886638664393618414}
@@ -675,22 +679,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7626848599184003883, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
---- !u!114 &1053303955691470100 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7626848599184003883, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
-  m_PrefabInstance: {fileID: 7441657671763930687}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8ac6696d3077004fbfd159d3659168d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &2858516867753972422 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4678511911317060857, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}

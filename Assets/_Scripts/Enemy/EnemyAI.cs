@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class EnemyAI : Health
 {
+    public PlayerQuest playerQuest;
     public NavMeshAgent navMeshAgent;
     [HideInInspector] public Transform target;
     public Slider hpSlider;
@@ -96,6 +97,15 @@ public class EnemyAI : Health
 
         // Handle Death
         Death();
+    }
+    // cập nhật nhiệm vụ (Cường)
+    void OnDestroy()
+    {
+        // Cập nhật nhiệm vụ khi zombie bị tiêu diệt
+        if (playerQuest != null)
+        {
+            playerQuest.UpdateQuest("Zombie");
+        }
     }
 
     private void ChangeState(EnemyState newState)

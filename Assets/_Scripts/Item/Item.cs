@@ -11,6 +11,6 @@ public class Item : ScriptableObject
     public string itemName;
     public int value;
 
-    public Sprite inmage;
+    public Sprite image;
 
 }

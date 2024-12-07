@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class EnemyAI : Health
 {
-    [HideInInspector] public QuestItem questItem;
     [HideInInspector] public PlayerQuest playerQuest;
     public NavMeshAgent navMeshAgent;
     [HideInInspector] public Transform target;
@@ -32,9 +31,6 @@ public class EnemyAI : Health
 
     private void Start()
     {
-        GameObject quets= GameObject.FindWithTag("NPC");
-        questItem = quets.GetComponent<QuestItem>();
-
         GameObject player = GameObject.FindWithTag("Player");
         target = player.GetComponent<Transform>();
 

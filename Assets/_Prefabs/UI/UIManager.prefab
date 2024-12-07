@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 7925390104913011833}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.053051, y: 297.95084, z: 136.52121}
+  m_LocalPosition: {x: 589.55725, y: 103.41789, z: 191.86423}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -44,7 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db35a79a4c7194744ac3574a68a988f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingPanel: {fileID: 0}
-  loadingSlider: {fileID: 0}
-  loadingText: {fileID: 0}
-  mainCanvas: {fileID: 0}
+  playerCanvas: {fileID: 0}
+  statusPanel: {fileID: 0}
+  quetPanel: {fileID: 0}
+  inventoryPanel: {fileID: 0}
+  npcCanvas: {fileID: 0}
+  miniMap: {fileID: 0}
+  fullMap: {fileID: 0}
+  isViewMap: 0

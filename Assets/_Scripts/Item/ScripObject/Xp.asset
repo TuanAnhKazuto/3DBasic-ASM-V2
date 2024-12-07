@@ -15,4 +15,4 @@ MonoBehaviour:
   id: 2
   itemName: Xp
   value: 20
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: 9a2014850a1821943826c4988b48f808, type: 3}

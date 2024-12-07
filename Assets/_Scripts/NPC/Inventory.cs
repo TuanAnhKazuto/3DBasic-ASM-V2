@@ -13,12 +13,21 @@ public class Inventory : MonoBehaviour
 
     public bool isInventoryOpen = false; // Trạng thái Inventory
 
+    [HideInInspector] public InventoryManager inventoryManager;
+
+    private void Start()
+    {
+        GameObject ivtr = GameObject.FindWithTag("Player");
+        inventoryManager = ivtr.GetComponent<InventoryManager>();
+    }
+
     void Update()
     {
         // Nhấn phím E để mở/đóng Inventory
         if (Input.GetKeyDown(KeyCode.E))
         {
             ToggleInventory();
+            inventoryManager.DisplayInventory();
         }
     }
 

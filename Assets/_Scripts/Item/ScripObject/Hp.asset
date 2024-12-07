@@ -15,4 +15,4 @@ MonoBehaviour:
   id: 0
   itemName: Hp
   value: 10
-  inmage: {fileID: 21300000, guid: 80c0de6abee09f74d8fd5becae8d9545, type: 3}
+  image: {fileID: 21300000, guid: 80c0de6abee09f74d8fd5becae8d9545, type: 3}

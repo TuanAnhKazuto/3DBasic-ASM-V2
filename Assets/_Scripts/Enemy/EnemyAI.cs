@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class EnemyAI : Health
 {
+    public QuestItem questItem;
     public PlayerQuest playerQuest;
     public NavMeshAgent navMeshAgent;
     [HideInInspector] public Transform target;
@@ -33,6 +34,9 @@ public class EnemyAI : Health
 
     private void Start()
     {
+        GameObject quets= GameObject.FindWithTag("NPC");
+        questItem = quets.GetComponent<QuestItem>();
+
         GameObject player = GameObject.FindWithTag("Player");
 
         target = player.GetComponent<Transform>();  
@@ -98,15 +102,8 @@ public class EnemyAI : Health
         // Handle Death
         Death();
     }
-    // cập nhật nhiệm vụ (Cường)
-    void OnDestroy()
-    {
-        // Cập nhật nhiệm vụ khi zombie bị tiêu diệt
-        if (playerQuest != null)
-        {
-            playerQuest.UpdateQuest("Zombie");
-        }
-    }
+   
+ 
 
     private void ChangeState(EnemyState newState)
     {
@@ -147,6 +144,7 @@ public class EnemyAI : Health
     {
         if (currentHealth <= 0)
         {
+            playerQuest.UpdateQuest("Zombie");
             currentHealth = 0;
             ChangeState(EnemyState.Die);
             Debug.Log("Enemy died.");

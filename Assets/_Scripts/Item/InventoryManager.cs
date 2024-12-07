@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,10 +19,11 @@ public class InventoryManager : MonoBehaviour
         if (Instance != null || Instance != this)
         {
             Destroy(Instance);
-            //return;
+           
         }    
 
         Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     public void Add(Item item)
@@ -40,8 +42,11 @@ public class InventoryManager : MonoBehaviour
         foreach (Item item in items)
         {
             GameObject obj = Instantiate(itemPrefab, itemContentPane);
-            var itemImager = obj.transform.Find("Image").GetComponent<Image>();
-            itemImager.sprite = item.inmage;
+            var itemName = obj.transform.Find("ItemName").GetComponent<TextMeshProUGUI>();
+            var itemImager = obj.transform.Find("ItemImage").GetComponent<Image>();
+
+            itemName.text = item.itemName;
+            itemImager.sprite = item.image;
 
             Debug.Log("add item done");
         }

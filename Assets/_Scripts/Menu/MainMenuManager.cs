@@ -6,10 +6,14 @@ using UnityEngine.SceneManagement;
 public class MainMenuManager : MonoBehaviour
 {
     public GameObject buttonPanel;
+    public GameObject nameText;
+    public GameObject bgrNameText;
     public GameObject textClick;
 
     private void Awake()
     {
+        nameText.SetActive(true);
+        bgrNameText.SetActive(true);
         textClick.SetActive(true);
         buttonPanel.SetActive(false);
     }
@@ -32,7 +36,15 @@ public class MainMenuManager : MonoBehaviour
     #region Button Manager
     public void ButtonPlay()
     {
-        SceneManager.LoadScene(1);
+        HideUI();
+    }
+
+    void HideUI()
+    {
+        nameText.SetActive(false);
+        bgrNameText.SetActive(false);
+        buttonPanel.SetActive(false);
+        textClick.SetActive(false);
     }
 
     public void QuitButton()

@@ -24,6 +24,7 @@ TagManager:
   - resume
   - exit
   - Setting2
+  - Setting
   layers:
   - Default
   - TransparentFX

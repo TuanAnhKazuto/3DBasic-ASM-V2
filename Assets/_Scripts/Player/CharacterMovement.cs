@@ -51,8 +51,16 @@ public class CharacterMovement : MonoBehaviour
     #endregion
 
     #region Base Function
-    private void Awake()
+    private void Start()
     {
+        if (cam == null)
+        {
+            cam = Camera.main.transform; // Tự động gán Camera chính nếu chưa được gán
+            if (cam == null)
+            {
+                Debug.LogError("Camera không được gán và không tìm thấy Camera chính (Main Camera).");
+            }
+        }
         maxStm = 100f;
         curStamina = maxStm;
         staminaSlider.value = curStamina;

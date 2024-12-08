@@ -72,6 +72,10 @@ public class EnemyAI : Health
             var rotation = Quaternion.LookRotation(lookPos);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 5);
         }
+        else
+        {
+            return;
+        }
 
         var distance = Vector3.Distance(target.position, transform.position);
 

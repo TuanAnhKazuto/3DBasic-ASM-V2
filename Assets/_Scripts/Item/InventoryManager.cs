@@ -30,6 +30,10 @@ public class InventoryManager : MonoBehaviour
         items.Add(item);
         DisplayInventory();
     }
+    public void Remove(Item item)
+    {
+        items.Remove(item);
+    }
 
     public void DisplayInventory()
     {

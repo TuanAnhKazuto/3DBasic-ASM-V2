@@ -17,7 +17,7 @@ public class Inventory : MonoBehaviour
 
     private void Start()
     {
-        GameObject ivtr = GameObject.FindWithTag("Player");
+        GameObject ivtr = GameObject.FindWithTag("InventoryManager");
         inventoryManager = ivtr.GetComponent<InventoryManager>();
     }
 

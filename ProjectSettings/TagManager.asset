@@ -19,6 +19,7 @@ TagManager:
   - fKey
   - Explosion
   - UIManager
+  - InventoryManager
   layers:
   - Default
   - TransparentFX

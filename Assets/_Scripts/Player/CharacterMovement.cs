@@ -350,6 +350,16 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
+    public void RecoveryMp(int value)
+    {
+        curStamina += value;
+        staminaSlider.value = curStamina;
+    }
+
+
+
+
+
     public void SubStaminaWhenAttack()
     {
         curStamina -= 7f; // Giảm stamina khi Attack

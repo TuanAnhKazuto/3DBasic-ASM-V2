@@ -28,11 +28,11 @@ public class ItemUIControlle : MonoBehaviour
         switch(item.itemType)
         {
             case ItemType.Hp:
-                FindObjectOfType<EXP>().IncreaseExp(item.value); 
+                FindObjectOfType<PlayerHealth>().RecoveryHp(item.value); 
                 break;
 
             case ItemType.Mp:
-                FindObjectOfType<EXP>().IncreaseExp(item.value);
+                FindObjectOfType<CharacterMovement>().RecoveryMp(item.value);
                 break;
 
             case ItemType.Xp:

@@ -14,4 +14,5 @@ public class EXP : MonoBehaviour
         exp += value;
         expText.text = "Exp" + exp.ToString();
     }
+    
 }

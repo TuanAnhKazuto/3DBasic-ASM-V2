@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using UnityEngine;
@@ -29,6 +29,7 @@ public class PlayerHealth : MonoBehaviour
         root.SetActive(true);
         healthBar.UpdateBar(maxHp, curHp);
     }
+
 
     private void Update()
     {
@@ -80,4 +81,20 @@ public class PlayerHealth : MonoBehaviour
             TakeDamage(1);
         }
     }
+
+    // hồi Hp
+    public void RecoveryHp(int value)
+    {
+        curHp += value;
+        healthBar.UpdateBar(maxHp, curHp);
+
+    }
+    
+
+
+
+
+
+
+
 }

@@ -2,6 +2,7 @@
 
 public class GolemAI : MonoBehaviour
 {
+    [HideInInspector]
     public Transform player; // Gắn Player vào đây
     public float attackRange = 2.0f; // Khoảng cách để bắt đầu tấn công
     public float moveSpeed = 3.0f; // Tốc độ di chuyển
@@ -12,6 +13,9 @@ public class GolemAI : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+
+        GameObject _player = GameObject.FindWithTag("Player");
+        player = _player.GetComponent<Transform>();
     }
 
     void Update()
@@ -31,7 +35,7 @@ public class GolemAI : MonoBehaviour
         {
             // Ngoài tầm tấn công, di chuyển về phía Player
             isAttacking = false;
-            animator.SetTrigger("Run"); // Chuyển sang trạng thái Run
+            animator.SetFloat("Speed", moveSpeed); // Chuyển sang trạng thái Run
             MoveTowardsPlayer();
         }
     }

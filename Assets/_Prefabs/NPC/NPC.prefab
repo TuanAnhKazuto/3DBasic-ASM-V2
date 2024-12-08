@@ -5042,8 +5042,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8ac6696d3077004fbfd159d3659168d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  QuetsItemName: "Ti\xEAu di\u1EC7t 10 Zombie"
-  questTargetAmount: 10
+  QuetsItemName: "Ti\xEAu di\u1EC7t t\u1EA5t c\u1EA3 Zombie "
+  questTargetAmount: 100
   currentAmount: 0
   TargetItemtag: Zombie
 --- !u!1 &8582717948120093362

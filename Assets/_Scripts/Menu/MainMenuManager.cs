@@ -12,6 +12,8 @@ public class MainMenuManager : MonoBehaviour
 
     private void Awake()
     {
+        Time.timeScale = 1f;
+
         nameText.SetActive(true);
         bgrNameText.SetActive(true);
         textClick.SetActive(true);

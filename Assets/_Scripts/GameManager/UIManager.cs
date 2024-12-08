@@ -16,11 +16,13 @@ public class UIManager : MonoBehaviour
 
     [HideInInspector]
     public bool isViewMap = false;
+    public bool isGameOverPanelOn = false;
 
 
 
     private void Start()
     {
+        isGameOverPanelOn = false;
         Time.timeScale = 1f;
         
         HideMouse();
@@ -64,11 +66,12 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.LeftAlt) || isViewMap)
+        if (Input.GetKeyDown(KeyCode.LeftAlt))
         {
             ShowMouse();
         }
-        else
+        
+        if(Input.GetKeyUp(KeyCode.LeftAlt))
         {
             HideMouse();
         }
@@ -98,8 +101,12 @@ public class UIManager : MonoBehaviour
 
     public void OnGameOverPanel()
     {
-        playerCanvas.SetActive(false);
+        statusPanel.SetActive(false);
+        miniMap.SetActive(false);
+        quetPanel.SetActive(false);
+        fullMap.SetActive(false);
         gameOverPanel.SetActive(true);
+        ShowMouse();
         Invoke(nameof(StopGame), 0.2f);
     }
 

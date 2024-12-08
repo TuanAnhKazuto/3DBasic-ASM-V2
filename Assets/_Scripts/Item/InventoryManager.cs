@@ -25,11 +25,13 @@ public class InventoryManager : MonoBehaviour
         //DontDestroyOnLoad(gameObject);
     }
 
+
     public void Add(Item item)
     {
         items.Add(item);
         DisplayInventory();
     }
+
     public void Remove(Item item)
     {
         items.Remove(item);
@@ -51,7 +53,11 @@ public class InventoryManager : MonoBehaviour
             itemName.text = item.itemName;
             itemImager.sprite = item.image;
 
+
+            obj.GetComponent<ItemUIControlle>().SetItem(item);
+            
             Debug.Log("add item done");
+
         }
     }
 

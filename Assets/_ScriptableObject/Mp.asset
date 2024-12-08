@@ -16,3 +16,4 @@ MonoBehaviour:
   itemName: Mp
   value: 5
   image: {fileID: 21300000, guid: 34164f1cfa3dc4a409f3a82d1db65100, type: 3}
+  itemType: 1

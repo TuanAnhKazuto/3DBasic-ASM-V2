@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class ItemUIControlle : MonoBehaviour
 {
     public Item item;
 
 
+    public void SetItem(Item item)
+    {
+        this.item = item;
+    }
 
     public void Remove()
     {
@@ -14,17 +19,23 @@ public class ItemUIControlle : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+
     public void UseItem()
     {
-        //Optional
         Remove();
+        
 
         switch(item.itemType)
         {
-            case ItemType.Glass:
+            case ItemType.Hp:
                 FindObjectOfType<EXP>().IncreaseExp(item.value); 
                 break;
-            case ItemType.Bottle:
+
+            case ItemType.Mp:
+                FindObjectOfType<EXP>().IncreaseExp(item.value);
+                break;
+
+            case ItemType.Xp:
                 FindObjectOfType<EXP>().IncreaseExp(item.value);
                 break;
 

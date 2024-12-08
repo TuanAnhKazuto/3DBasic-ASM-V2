@@ -20,6 +20,10 @@ TagManager:
   - Explosion
   - UIManager
   - InventoryManager
+  - Pause
+  - resume
+  - exit
+  - Setting2
   layers:
   - Default
   - TransparentFX

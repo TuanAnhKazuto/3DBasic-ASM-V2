@@ -5,7 +5,7 @@ using UnityEngine;
 
 public enum ItemType
 {
-    Bottle, Glass 
+    Hp, Mp , Xp
 }
 
 

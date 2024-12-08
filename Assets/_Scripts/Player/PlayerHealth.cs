@@ -64,7 +64,12 @@ public class PlayerHealth : MonoBehaviour
         mC_skin.SetActive(false);
         root.SetActive(false);
         deathEf.Stop();
-        Destroy(gameObject, 0.2f);
+        Destroy(gameObject, 0.4f);
+        Invoke(nameof(OnGameOver), 0.3f);
+    }
+
+    void OnGameOver()
+    {
         uiManager.OnGameOverPanel();
     }
 

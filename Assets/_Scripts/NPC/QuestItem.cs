@@ -22,4 +22,5 @@ public class QuestItem : MonoBehaviour
         currentAmount++;
     }
 
+
 }

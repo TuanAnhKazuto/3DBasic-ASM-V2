@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+    public QuestItem quest;
+
     public GameObject playerCanvas;
     public GameObject npcCanvas;
 
@@ -21,7 +23,14 @@ public class UIManager : MonoBehaviour
     public bool isGameOverPanelOn = false;
     public bool isPauseGame = false;
 
-
+    void Victory()
+    {
+        if(quest.currentAmount == quest.questTargetAmount)
+        {
+            victoryPanel.SetActive(true);
+            Time.timeScale = 0f;
+        }
+    }
 
     private void Start()
     {
@@ -112,6 +121,7 @@ public class UIManager : MonoBehaviour
 
         ViewFullMap();
         PauseGameController();
+        Victory();
     }
 
     public void ViewFullMap()

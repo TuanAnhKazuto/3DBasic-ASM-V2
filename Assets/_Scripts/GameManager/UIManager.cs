@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     public GameObject inventoryPanel;
     public GameObject gameOverPanel;
     public GameObject victoryPanel;
+    public GameObject pausePanel;
 
     public GameObject miniMap;
     public GameObject fullMap;
@@ -18,18 +19,46 @@ public class UIManager : MonoBehaviour
     [HideInInspector]
     public bool isViewMap = false;
     public bool isGameOverPanelOn = false;
+    public bool isPauseGame = false;
 
 
 
     private void Start()
     {
-        isGameOverPanelOn = false;
         Time.timeScale = 1f;
         
         HideMouse();
 
         SetActiveTrue();
         SetActiveFalse();
+    }
+
+    public void PauseGameController()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && !isPauseGame)
+        {
+            ShowPauseGamePanel();
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && isPauseGame)
+        {
+            HidePauseGamePanle();
+        }
+    }
+
+    public void ShowPauseGamePanel()
+    {
+        pausePanel.SetActive(true);
+        isPauseGame = true;
+        Time.timeScale = 0f;
+        ShowMouse();
+    }
+
+    public void HidePauseGamePanle()
+    {
+        pausePanel.SetActive(false);
+        isPauseGame = false;
+        Time.timeScale = 1f;
+        HideMouse();
     }
 
     #region Mouse Setting
@@ -52,16 +81,20 @@ public class UIManager : MonoBehaviour
         npcCanvas.SetActive(b);
         quetPanel.SetActive(b);
         statusPanel.SetActive(b);
-
         miniMap.SetActive(b);
     }
 
     private void SetActiveFalse(bool b = false)
     {
+        isPauseGame = b;
+        isViewMap = b;
+        isGameOverPanelOn = b;
+
         inventoryPanel.SetActive(b);
         gameOverPanel.SetActive(b);
         victoryPanel.SetActive(b);
         fullMap.SetActive(b);
+        pausePanel.SetActive(b);
     }
     #endregion
 
@@ -78,6 +111,7 @@ public class UIManager : MonoBehaviour
         }
 
         ViewFullMap();
+        PauseGameController();
     }
 
     public void ViewFullMap()

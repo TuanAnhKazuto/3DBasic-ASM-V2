@@ -32,8 +32,6 @@ public class ItemUIController : MonoBehaviour
 
     public void UseItem()
     {
-        Remove();
-        
         switch(item.itemType)
         {
             case ItemType.Hp:
@@ -49,6 +47,7 @@ public class ItemUIController : MonoBehaviour
                 break;
 
         }
+        Remove();
     }
 
 

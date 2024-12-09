@@ -8,11 +8,15 @@ using UnityEngine.UI;
 public class SceneSwitcher : MonoBehaviour
 {
     public GameObject loadingPanel;
+    [HideInInspector] public UIManager uiManager;
     public Slider loadingSlider; // Slider hiển thị tiến trình tải
     public TextMeshProUGUI loadingText; // (Tùy chọn) Hiển thị phần trăm tải dưới dạng text
 
     private void Start()
     {
+        GameObject ui = GameObject.FindWithTag("UIManager");
+        uiManager = ui.GetComponent<UIManager>();
+
         loadingPanel.SetActive(false);
     }
 
@@ -20,6 +24,7 @@ public class SceneSwitcher : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            uiManager.OnLoadingScene();
             LoadSceneWithProgress(2);
         }
     }

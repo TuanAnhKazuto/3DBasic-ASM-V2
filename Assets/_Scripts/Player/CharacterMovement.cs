@@ -356,10 +356,6 @@ public class CharacterMovement : MonoBehaviour
         staminaSlider.value = curStamina;
     }
 
-
-
-
-
     public void SubStaminaWhenAttack()
     {
         curStamina -= 7f; // Giảm stamina khi Attack
@@ -372,7 +368,7 @@ public class CharacterMovement : MonoBehaviour
 
     public void SubStaminaWhenUserSkillSlashExplositon()
     {
-        curStamina -= 20;
+        curStamina -= 40;
         staminaSlider.value = curStamina;
 
     }
@@ -389,7 +385,7 @@ public class CharacterMovement : MonoBehaviour
 
         if (direction.magnitude <= 0f)
         {
-            countReturn = 10f;
+            countReturn = 7f;
         }
         else if (curState == CharState.Normal)
         {

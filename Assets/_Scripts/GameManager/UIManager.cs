@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     public GameObject quetPanel;
     public GameObject inventoryPanel;
     public GameObject gameOverPanel;
+    public GameObject victoryPanel;
 
     public GameObject miniMap;
     public GameObject fullMap;
@@ -59,7 +60,7 @@ public class UIManager : MonoBehaviour
     {
         inventoryPanel.SetActive(b);
         gameOverPanel.SetActive(b);
-
+        victoryPanel.SetActive(b);
         fullMap.SetActive(b);
     }
     #endregion
@@ -108,6 +109,23 @@ public class UIManager : MonoBehaviour
         gameOverPanel.SetActive(true);
         ShowMouse();
         Invoke(nameof(StopGame), 0.2f);
+    }
+
+    public void OnVictoryPanel()
+    {
+        statusPanel.SetActive(false);
+        miniMap.SetActive(false);
+        quetPanel.SetActive(false);
+        fullMap.SetActive(false);
+        victoryPanel.SetActive(true);
+        ShowMouse();
+        Invoke(nameof(StopGame), 0.2f);
+    }
+
+    public void OnLoadingScene()
+    {
+        playerCanvas.SetActive(false);
+        npcCanvas.SetActive(false);
     }
 
     void StopGame()

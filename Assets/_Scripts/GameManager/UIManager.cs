@@ -33,12 +33,12 @@ public class UIManager : MonoBehaviour
     }
 
     #region Mouse Setting
-    private void ShowMouse()
+    public void ShowMouse()
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
-    private void HideMouse()
+    public void HideMouse()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;

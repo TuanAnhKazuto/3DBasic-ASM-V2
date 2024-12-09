@@ -92,6 +92,11 @@ public class CharacterMovement : MonoBehaviour
         RecoveryStamina();
         SubStaminaWhenRun();
         SoundControler();
+
+        if(curStamina > maxStm)
+        {
+            curStamina = maxStm;
+        }
     }
     #endregion
     private void Movement()
@@ -352,6 +357,7 @@ public class CharacterMovement : MonoBehaviour
 
     public void RecoveryMp(int value)
     {
+        if(curStamina >= maxStm) return;
         curStamina += value;
         staminaSlider.value = curStamina;
     }

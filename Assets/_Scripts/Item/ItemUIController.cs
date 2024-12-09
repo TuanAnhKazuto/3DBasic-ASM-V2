@@ -3,10 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.Progress;
 
-public class ItemUIControlle : MonoBehaviour
+public class ItemUIController : MonoBehaviour
 {
     public Item item;
+    [HideInInspector] public CharacterMovement player;
+    [HideInInspector] public PlayerHealth playerHealth;
 
+    private void Start()
+    {
+        GameObject pl = GameObject.FindWithTag("Player");
+        player = pl.GetComponent<CharacterMovement>();;
+        playerHealth = pl.GetComponent<PlayerHealth>();
+    }
 
     public void SetItem(Item item)
     {
@@ -15,6 +23,8 @@ public class ItemUIControlle : MonoBehaviour
 
     public void Remove()
     {
+        if(player.curStamina >= player.maxStm || playerHealth.curHp >= playerHealth.maxHp) return;
+
         InventoryManager.Instance.Remove(item);
         Destroy(this.gameObject);
     }
@@ -22,9 +32,6 @@ public class ItemUIControlle : MonoBehaviour
 
     public void UseItem()
     {
-        Remove();
-        
-
         switch(item.itemType)
         {
             case ItemType.Hp:
@@ -40,7 +47,7 @@ public class ItemUIControlle : MonoBehaviour
                 break;
 
         }
-
+        Remove();
     }
 
 

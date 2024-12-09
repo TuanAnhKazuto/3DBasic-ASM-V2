@@ -38,6 +38,10 @@ public class PlayerHealth : MonoBehaviour
             TakeDamage(50);
         }
         OnDead();
+        if(curHp > maxHp)
+        {
+            curHp = maxHp;
+        }
     }
 
     public void TakeDamage(int damage)
@@ -85,9 +89,9 @@ public class PlayerHealth : MonoBehaviour
     // hồi Hp
     public void RecoveryHp(int value)
     {
+
         curHp += value;
         healthBar.UpdateBar(maxHp, curHp);
-
     }
     
 

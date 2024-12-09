@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3655059, g: 0.55901355, b: 0.68998814, a: 1}
+  m_IndirectSpecularColor: {r: 0.36550677, g: 0.5585923, b: 0.6900113, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -444,7 +444,7 @@ PrefabInstance:
     - target: {fileID: 8699269668807061358, guid: eb77db06befa9484aae9a47d5b348b50, type: 3}
       propertyPath: victoryPanel
       value: 
-      objectReference: {fileID: 1761527814}
+      objectReference: {fileID: 1013534837}
     - target: {fileID: 8699269668807061358, guid: eb77db06befa9484aae9a47d5b348b50, type: 3}
       propertyPath: gameOverPanel
       value: 
@@ -4631,24 +4631,47 @@ PrefabInstance:
       objectReference: {fileID: 2090104709}
     - target: {fileID: 490426556958203193, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
       propertyPath: chat.Array.size
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 490426556958203193, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
       propertyPath: chat.Array.data[0]
-      value: "\u0110\u1EBFn ng\xF4i l\xE0ng \u0111\xE3 b\u1ECB TR\u1EA7n Kim Kh\xE1nh
-        x\xE2m chi\u1EBFm"
+      value: "ch\xE0o d\u0169ng s\u0129 t\xF4i l\xE0 Yui"
       objectReference: {fileID: 0}
     - target: {fileID: 490426556958203193, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
       propertyPath: chat.Array.data[1]
-      value: "H\xE3y \u0111\u1EBFn ti\xEAu di\u1EC7t Kh\xE1nh "
+      value: "T\xF4i c\u1EA7n s\u1EF1 gi\xFAp \u0111\u1EE1 c\u1EE7a b\u1EA1n"
       objectReference: {fileID: 0}
     - target: {fileID: 490426556958203193, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
       propertyPath: chat.Array.data[2]
-      value: "H\xE3y \u0111\u1EBFn C\u1ED5ng d\u1ECBch chuy\u1EC3n"
+      value: "Ng\xF4i l\xE0ng c\u1EE7a ch\xFAng t\xF4i \u0111\xE3 b\u1ECB b\u1ECDn
+        Zombie t\u1EA5n c\xF4ng"
       objectReference: {fileID: 0}
     - target: {fileID: 490426556958203193, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
       propertyPath: chat.Array.data[3]
-      value: "D\xE0nh l\u1EA1i ng\xF4i l\xE0ng "
+      value: "Ch\xFAng qu\xE1 \u0111\xF4ng ch\xFAng t\xF4i kh\xF4ng \u0111\u1EE7
+        s\u1EE9c ch\u1ED1ng l\u1EA1i ch\xFAng"
+      objectReference: {fileID: 0}
+    - target: {fileID: 490426556958203193, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
+      propertyPath: chat.Array.data[4]
+      value: "h\xE3y nhanh l\xEAn ng\xF4i l\xE0ng \u0111ang c\u1EA7n s\u1EF1 gi\xFAp
+        \u0111\u1EE1 c\u1EE7a b\u1EA1n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 490426556958203193, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
+      propertyPath: chat.Array.data[5]
+      value: "H\xE3y \u0111i qua C\u1ED5ng d\u1ECBch chuy\u1EC3n ph\xEDa sau "
+      objectReference: {fileID: 0}
+    - target: {fileID: 490426556958203193, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
+      propertyPath: chat.Array.data[6]
+      value: "S\u1EBD \u0111\u1EBFn l\xE0ng c\u1EE7a t\xF4i"
+      objectReference: {fileID: 0}
+    - target: {fileID: 490426556958203193, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
+      propertyPath: chat.Array.data[7]
+      value: "\u0110i th\xF4i d\u0169ng s\u0129"
+      objectReference: {fileID: 0}
+    - target: {fileID: 490426556958203193, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
+      propertyPath: chat.Array.data[8]
+      value: "ch\u1ECB t\xF4i s\u1EBD cho b\u1EA1n bi\u1EBFt b\u1EA1n c\u1EA7n l\xE0m
+        g\xEC."
       objectReference: {fileID: 0}
     - target: {fileID: 4678511911317060857, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4689,6 +4712,18 @@ PrefabInstance:
     - target: {fileID: 4678511911317060857, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573510836849710912, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
+      propertyPath: QuetsItemName
+      value: "Nhi\u1EC7m v\u1EE5 ch\xEDnh ti\u1EBFn v\xE0o l\xE0ng "
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573510836849710912, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
+      propertyPath: TargetItemtag
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6573510836849710912, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
+      propertyPath: questTargetAmount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7626848599184003883, guid: 035424b6ed50c694fbeb42223eb5f10f, type: 3}
       propertyPath: QuetsItemName
@@ -6288,6 +6323,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2394d7d557201f048b00c84246231eb0, type: 3}
+--- !u!1 &1013534837 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2177078333672039907, guid: 60ad4a90e6724fd4aabcba90b7be7e74, type: 3}
+  m_PrefabInstance: {fileID: 2002746997}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1029805192
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10812,11 +10852,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1972450619528280243, guid: 62f6191494f161340b448c5f6a7f56d8, type: 3}
   m_PrefabInstance: {fileID: 1719176187}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1761527814 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2177078333672039907, guid: 60ad4a90e6724fd4aabcba90b7be7e74, type: 3}
-  m_PrefabInstance: {fileID: 2002746997}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1762729237
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11296,11 +11331,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8893644469198766273, guid: 66ce708da2aefc041aaaa32814f41895, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000005142743
+      value: -0.000000003855246
       objectReference: {fileID: 0}
     - target: {fileID: 8893644469198766273, guid: 66ce708da2aefc041aaaa32814f41895, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000011642952
+      value: 8.7281143e-10
       objectReference: {fileID: 0}
     - target: {fileID: 9070518563686442050, guid: 66ce708da2aefc041aaaa32814f41895, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12417,6 +12452,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 104621976502367915, guid: 60ad4a90e6724fd4aabcba90b7be7e74, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 515.1047
+      objectReference: {fileID: 0}
+    - target: {fileID: 104621976502367915, guid: 60ad4a90e6724fd4aabcba90b7be7e74, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 163.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 104621976502367915, guid: 60ad4a90e6724fd4aabcba90b7be7e74, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 21.389984
+      objectReference: {fileID: 0}
+    - target: {fileID: 104621976502367915, guid: 60ad4a90e6724fd4aabcba90b7be7e74, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 87.418
+      objectReference: {fileID: 0}
+    - target: {fileID: 927440358305259534, guid: 60ad4a90e6724fd4aabcba90b7be7e74, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1689923563255605913, guid: 60ad4a90e6724fd4aabcba90b7be7e74, type: 3}
       propertyPath: m_Name
       value: PlayerCanvas
@@ -12508,6 +12563,15 @@ PrefabInstance:
     - target: {fileID: 7755137094781349915, guid: 60ad4a90e6724fd4aabcba90b7be7e74, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9093316611661723652, guid: 60ad4a90e6724fd4aabcba90b7be7e74, type: 3}
+      propertyPath: m_text
+      value: "Nhi\u1EC7m v\u1EE5 ch\xEDnh\n\n\u0110i \u0111\u1EBFn c\xF4ng d\u1ECBch
+        chuy\u1EC3n n\xF3i chuy\u1EC7n v\u1EDBi ch\u1ECB em song sinh c\u1EE7a yui"
+      objectReference: {fileID: 0}
+    - target: {fileID: 9093316611661723652, guid: 60ad4a90e6724fd4aabcba90b7be7e74, type: 3}
+      propertyPath: m_margin.x
+      value: -1.3762054
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

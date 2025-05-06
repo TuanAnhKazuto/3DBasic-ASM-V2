@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEngine;
 using UnityEditor;
 
 public class MissingComponentsCleaner : MonoBehaviour
@@ -36,3 +37,4 @@ public class MissingComponentsCleaner : MonoBehaviour
         Debug.Log($"Đã xóa {removedCount} component bị Missing.");
     }
 }
+#endif
